@@ -1,11 +1,9 @@
+import { useNavigate } from "@solidjs/router";
 import { createSignal } from "solid-js";
 import { invoke } from "@tauri-apps/api/core";
 import Navbar from "../../navbar/Navbar";
-import { A } from "@solidjs/router";
 
-
-interface Entry
-{
+interface Entry {
     index: number,
     kanji: string,
     meaning: string,
@@ -13,49 +11,56 @@ interface Entry
     link: string,
 }
 
-function on_kanji_click(url: string)
-{
-	invoke("get_kanji", {url: url}).then((response) => 
-		{
-			console.log(response)
-		})
-}
 
-function Kanjis() 
-{
-	const [entries, set_entries] = createSignal([])
 
-	invoke("get_kanji_list").then((kanji: any) => 
+function Kanjis() {
+	const navigate = useNavigate();
+    const [entries, set_entries] = createSignal([])
+
+    invoke("get_kanji_list").then((kanji: any) => {
+        set_entries(kanji)
+    })
+
+	function on_kanji_click(url: string) 
 	{
-		set_entries(kanji)
-	})
+		// First fetch the kanji details
+		invoke("get_kanji", {url: url}).then((response) => {
+			// Then navigate to the kanji detail page with the data
+			navigate(`/kanji/${encodeURIComponent(url)}`, { 
+				state: { kanji: response }
+			});
+		});
+	}
 
     return (
-      <div class="w-full flex flex-col">
-        <div>
-          <Navbar/>
-        </div>
-        <div class="relative flex w-full h-full">
-          <div class="absolute w-full h-full overflow-y-auto overflow-x-hidden">
-              <ol class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-                {entries().map((entry: Entry) =>
-                  {
-                    return (
-                      <li class="mx-4 my-2.5 p-4 rounded-lg bg-gray-100 flex items-center">
-                        <div class="flex gap-16 w-full items-center">
-                          <span class="select-none">{entry.index}.</span>
-						  {/* href={`/kanji/${entry.link}`} */}
-                          <span onclick={() => on_kanji_click(entry.link)} class="text-blue-500 hover:bg-gray-200 px-1 rounded transition-all duration-150">{entry.kanji}</span>
-                          <span>{entry.meaning}</span>
+        <div class="flex flex-col w-full h-full bg-gray-50">
+            <Navbar/>
+            <div class="relative w-full h-full flex-1">
+                <div class="grid gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 absolute overflow-y-auto h-full px-6 pt-6 w-full pb-24">
+                    {entries().map((entry: Entry) => (
+                        <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                            <div class="p-4 flex items-center justify-between">
+                                <div class="flex items-center gap-6">
+                                    <span class="text-gray-400 font-medium w-8">{entry.index}.</span>	
+                                    <button 
+                                        onClick={() => on_kanji_click(entry.link)}
+                                        class="text-2xl font-semibold text-gray-700 hover:text-blue-600 transition-colors"
+                                    >
+                                        {entry.kanji}
+                                    </button>
+                                    <span class="text-gray-600">{entry.meaning}</span>
+                                </div>
+                                {entry.is_radical && 
+                                    <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded">
+                                        Radical
+                                    </span>
+                                }
+                            </div>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5 13v-1h6V6h1v6h6v1h-6v6h-1v-6z"/></svg>
-                      </li>
-                    )
-                  })}
-              </ol>
-          </div>
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
     )
 }
 

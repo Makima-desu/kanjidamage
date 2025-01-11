@@ -26,9 +26,9 @@ pub struct KanjiListing {
 pub struct KanjiDetail {
     pub kanji: String,
     pub meaning: String,
-    pub onyomi: Vec<String>,
+    pub onyomi: Vec<(String, String)>, // (reading, description)
     pub kunyomi: Vec<KunyomiEntry>,
-    pub examples: Vec<Example>,
+    pub jukugo : Vec<Jukugo>,
     pub mnemonic: Option<String>,
     pub usefulness: u8
 }
@@ -41,7 +41,7 @@ pub struct KunyomiEntry {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct Example {
+pub struct Jukugo  {
     pub japanese: String,
     pub reading: String,
     pub english: String,
