@@ -1,4 +1,3 @@
-// Kanji.tsx
 import { useLocation } from "@solidjs/router";
 import { createSignal, onMount } from "solid-js";
 import Navbar from "../../navbar/Navbar"
@@ -23,6 +22,11 @@ interface KanjiDetail {
     }[];
     mnemonic: string | null;
     usefulness: number;
+    used_in: string[];
+    synonyms: {
+        japanese: string;
+        english: string;
+    }[];
 }
 
 interface RouteParams {
@@ -87,9 +91,6 @@ function Kanji() {
                                     {kanji()?.mnemonic && (
                                         <div class="border-t border-gray-100 pt-6">
                                             <div class="flex items-start gap-6">
-                                                {/* <div class="bg-blue-50 p-4 rounded-xl">
-                                                    <span class="text-4xl text-blue-600">{kanji()?.kanji}</span>
-                                                </div> */}
                                                 <div class="flex-1">
                                                     <h2 class="text-lg font-semibold text-gray-700 mb-2">Mnemonic</h2>
                                                     <p class="text-gray-600 leading-relaxed">{kanji()?.mnemonic}</p>
@@ -174,6 +175,35 @@ function Kanji() {
                                 </div>
                             </div>
 
+                            {/* Used in Section */}
+                            {kanji()?.used_in && kanji()?.used_in.length! > 0 && (
+                                <div class="bg-white rounded-xl shadow-sm p-6">
+                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Used in</h2>
+                                    <div class="flex flex-wrap gap-4">
+                                        {kanji()?.used_in.map(term => (
+                                            <div class="p-3 bg-gray-50 rounded-lg text-gray-700">
+                                                {term} {/* make a link later */}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+
+                            {/* Synonyms Section */}
+                            {kanji()?.synonyms && kanji()?.synonyms.length! > 0 && (
+                                <div class="bg-white rounded-xl shadow-sm p-6">
+                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Synonyms</h2>
+                                    <div class="flex flex-col gap-4">
+                                        {kanji()?.synonyms.map(term => (
+                                            <div class="p-3 bg-gray-50 rounded-lg text-gray-700">
+                                                <div class="text-lg font-medium text-gray-800 mb-1">{term.english}</div>
+                                                <div class="text-gray-600">{term.japanese}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -182,4 +212,4 @@ function Kanji() {
     );
 }
 
-export default Kanji
+export default Kanji;

@@ -20,6 +20,7 @@ pub struct KanjiListing {
     pub meaning: String,
     pub is_radical: bool,
     pub link: String,
+    pub has_image: bool,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -30,7 +31,9 @@ pub struct KanjiDetail {
     pub kunyomi: Vec<KunyomiEntry>,
     pub jukugo : Vec<Jukugo>,
     pub mnemonic: Option<String>,
-    pub usefulness: u8
+    pub usefulness: u8,
+    pub used_in: Vec<String>,
+    pub synonyms: Vec<SynonymEntry>
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -47,4 +50,10 @@ pub struct Jukugo  {
     pub english: String,
     pub usefulness: u8,
     pub components: Vec<String>
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct SynonymEntry {
+    pub japanese: String,
+    pub english: String
 }
