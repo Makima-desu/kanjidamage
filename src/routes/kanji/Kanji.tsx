@@ -6,6 +6,7 @@ import { useParams } from "@solidjs/router";
 import { invoke } from "@tauri-apps/api/core";
 
 interface KanjiDetail {
+    index: number,
     kanji: string;
     meaning: string;
     onyomi: string[];
@@ -50,7 +51,6 @@ function Kanji() {
                 throw new Error("No URL provided");
             }
             const data = await invoke("get_kanji", { url: decodeURIComponent(params.url) });
-            console.log(data)
             setKanji(data as KanjiDetail);
         } catch (err) {
             setError(err as string);
@@ -67,6 +67,7 @@ function Kanji() {
             const data = await invoke("get_kanji", { 
                 url: decodeURIComponent(params.url) 
             });
+            console.log(data)
             setKanji(data as KanjiDetail);
         } catch (err) {
             setError(err as string);
@@ -77,12 +78,9 @@ function Kanji() {
 
     const handleNavigation = (link: string | null | undefined) => {
         if (!link) return;
-        
-        // Ensure absolute URL by adding base if needed
         const absoluteUrl = link.startsWith('http') 
             ? link 
             : `https://www.kanjidamage.com${link}`;
-            
         navigate(`/kanji/${encodeURIComponent(absoluteUrl)}`);
     };
 
@@ -106,7 +104,7 @@ function Kanji() {
                             </svg>
                             Previous
                         </button>
-                        
+                        <span>{kanji()?.index}</span>
                         <button 
                             class={`px-4 py-2 rounded-lg flex items-center gap-2 ${
                                 kanji()?.next_link 
@@ -136,10 +134,8 @@ function Kanji() {
                         </div>
                     ) : kanji() && (
                         <div class="space-y-6">
-                            {/* Header Section with Integrated Mnemonic */}
                             <div class="bg-white rounded-xl shadow-sm p-8">
                                 <div class="flex flex-col gap-6">
-                                    {/* Kanji and Meaning */}
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center gap-8">
                                             <span class="text-8xl font-bold text-gray-800">{kanji()?.kanji}</span>
@@ -153,7 +149,6 @@ function Kanji() {
                                         </div>
                                     </div>
 
-                                    {/* Mnemonic Section */}
                                     {kanji()?.mnemonic && (
                                         <div class="border-t border-gray-100 pt-6">
                                             <div class="flex items-start gap-6">
@@ -167,124 +162,133 @@ function Kanji() {
                                 </div>
                             </div>
 
-                            {/* Readings Section */}
-                            <div class="grid gap-6 md:grid-cols-2">
-                                {/* Onyomi */}
-                                <div class="bg-white rounded-xl shadow-sm p-6">
-                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">音読み (Onyomi)</h2>
-                                    <div class="space-y-4">
-                                        {kanji()?.onyomi.map(([reading, description]) => (
-                                            <div class="p-3 bg-gray-50 rounded-lg">
-                                                <div class="flex flex-col gap-2">
-                                                    <div class="text-lg font-medium text-gray-800">{reading}</div>
-                                                    {description && (
-                                                        <div class="text-gray-600 text-sm italic">
-                                                            {description}
-                                                        </div>
-                                                    )}
+                            {((kanji()?.onyomi?.some(([reading]) => reading.trim()) || 
+                                kanji()?.kunyomi?.length! > 0)) && (
+                                    <div class={`grid gap-6 ${
+                                        kanji()?.onyomi?.some(([reading]) => reading.trim()) && 
+                                        kanji()?.kunyomi?.length! > 0 
+                                            ? 'md:grid-cols-2' 
+                                            : 'md:grid-cols-1'
+                                    }`}>
+                                        {kanji()?.onyomi?.some(([reading]) => reading.trim()) && (
+                                            <div class="bg-white rounded-xl shadow-sm p-6">
+                                                <h2 class="text-xl font-semibold mb-4 text-gray-800">音読み (Onyomi)</h2>
+                                                <div class="space-y-4">
+                                                    {kanji()?.onyomi
+                                                        .filter(([reading]) => reading.trim())
+                                                        .map(([reading, description]) => (
+                                                            <div class="p-3 bg-gray-50 rounded-lg">
+                                                                <div class="flex flex-col gap-2">
+                                                                    <div class="text-lg font-medium text-gray-800">{reading}</div>
+                                                                    {description && (
+                                                                        <div class="text-gray-600 text-sm italic">
+                                                                            {description}
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                        ))}
                                                 </div>
                                             </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                        )}
 
-                                {/* Kunyomi */}
-                                <div class="bg-white rounded-xl shadow-sm p-6">
-                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">訓読み (Kunyomi)</h2>
-                                    <div class="space-y-4">
-                                        {kanji()?.kunyomi.map((kun: any) => (
-                                            <div class="p-3 bg-gray-50 rounded-lg">
-                                                <div class="flex justify-between items-center">
-                                                    <div>
-                                                        <div class="text-lg font-medium text-gray-800 flex items-center gap-2">
-                                                            {kun.reading}
-                                                            {kun.tags && kun.tags.map((tag: any) => (
-                                                                <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">
-                                                                    {tag}
-                                                                </span>
-                                                            ))}
+                                        {kanji()?.kunyomi?.length! > 0 && (
+                                            <div class="bg-white rounded-xl shadow-sm p-6">
+                                                <h2 class="text-xl font-semibold mb-4 text-gray-800">訓読み (Kunyomi)</h2>
+                                                <div class="space-y-4">
+                                                    {kanji()?.kunyomi.map((kun: any) => (
+                                                        <div class="p-3 bg-gray-50 rounded-lg">
+                                                            <div class="flex justify-between items-center">
+                                                                <div>
+                                                                    <div class="text-lg font-medium text-gray-800 flex items-center gap-2">
+                                                                        {kun.reading}
+                                                                        {kun.tags && kun.tags.map((tag: any) => (
+                                                                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">
+                                                                                {tag}
+                                                                            </span>
+                                                                        ))}
+                                                                    </div>
+                                                                    <div class="text-gray-600">{kun.meaning}</div>
+                                                                </div>
+                                                                <div class="text-yellow-500">
+                                                                    {'★'.repeat(kun.usefulness)}
+                                                                    {'☆'.repeat(5 - kun.usefulness)}
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="text-gray-600">{kun.meaning}</div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
+                            {kanji()?.jukugo?.length! > 0 && (
+                                <div class="bg-white rounded-xl shadow-sm p-6">
+                                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Jukugo</h2>
+                                    <div class="space-y-6">
+                                        {kanji()?.jukugo.map((jukugo: any) => (
+                                            <div class="border-b border-gray-100 pb-6">
+                                                <div class="flex justify-between items-start">
+                                                    <div class="space-y-2">
+                                                        <div class="flex items-center gap-3">
+                                                            <div class="text-2xl font-medium text-gray-800">
+                                                                {jukugo.japanese}
+                                                            </div>
+                                                            <div class="flex gap-2">
+                                                                {jukugo.tags && jukugo.tags.map((tag: any) => (
+                                                                    <span class="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full">
+                                                                        {tag}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-gray-500">{jukugo.reading}</div>
+                                                        <div class="text-gray-700 mt-1">{jukugo.english}</div>
+                                                        <div class="text-gray-600 text-sm mt-2">
+                                                            {Array.isArray(jukugo.components) && jukugo.components.map((component: any, index: any) => (
+                                                                <>
+                                                                    <span class="font-medium">
+                                                                        <a href={component.href} class="text-blue-600 hover:underline">
+                                                                            {component.kanji}
+                                                                        </a>
+                                                                        {' '}({component.meaning})
+                                                                    </span>
+                                                                    {index < jukugo.components.length - 1 && 
+                                                                        <span class="mx-1">+</span>
+                                                                    }
+                                                                </>
+                                                            ))}
+                                                            <span class="mx-2">=</span>
+                                                            <span class="font-medium">{jukugo.japanese}</span>
+                                                            <span class="ml-1">({jukugo.english})</span>
+                                                        </div>
                                                     </div>
                                                     <div class="text-yellow-500">
-                                                        {'★'.repeat(kun.usefulness)}
-                                                        {'☆'.repeat(5 - kun.usefulness)}
+                                                        {'★'.repeat(jukugo.usefulness)}
+                                                        {'☆'.repeat(5 - jukugo.usefulness)}
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Jukugo Section */}
-                            <div class="bg-white rounded-xl shadow-sm p-6">
-                                <h2 class="text-xl font-semibold mb-6 text-gray-800">Jukugo</h2>
-                                <div class="space-y-6">
-                                    {kanji()?.jukugo.map((jukugo: any) => (
-                                        <div class="border-b border-gray-100 pb-6">
-                                            <div class="flex justify-between items-start">
-                                                <div class="space-y-2">
-                                                    <div class="flex items-center gap-3">
-                                                        <div class="text-2xl font-medium text-gray-800">
-                                                            {jukugo.japanese}
-                                                        </div>
-                                                        <div class="flex gap-2">
-                                                            {jukugo.tags && jukugo.tags.map((tag: any) => (
-                                                                <span class="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full">
-                                                                    {tag}
-                                                                </span>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-gray-500">{jukugo.reading}</div>
-                                                    <div class="text-gray-700 mt-1">{jukugo.english}</div>
-                                                    <div class="text-gray-600 text-sm mt-2">
-                                                        {Array.isArray(jukugo.components) && jukugo.components.map((component: any, index: any) => (
-                                                            <>
-                                                                <span class="font-medium">
-                                                                    <a href={component.href} class="text-blue-600 hover:underline">
-                                                                        {component.kanji}
-                                                                    </a>
-                                                                    {' '}({component.meaning})
-                                                                </span>
-                                                                {index < jukugo.components.length - 1 && 
-                                                                    <span class="mx-1">+</span>
-                                                                }
-                                                            </>
-                                                        ))}
-                                                        <span class="mx-2">=</span>
-                                                        <span class="font-medium">{jukugo.japanese}</span>
-                                                        <span class="ml-1">({jukugo.english})</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-yellow-500">
-                                                    {'★'.repeat(jukugo.usefulness)}
-                                                    {'☆'.repeat(5 - jukugo.usefulness)}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Used in Section */}
-                            {kanji()?.used_in && kanji()?.used_in.length! > 0 && (
-                                <div class="bg-white rounded-xl shadow-sm p-6">
-                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Used in</h2>
-                                    <div class="flex flex-wrap gap-4">
-                                        {kanji()?.used_in.map(term => (
-                                            <div class="p-3 bg-gray-50 rounded-lg text-gray-700">
-                                                {term} {/* make a link later */}
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             )}
 
+                            {kanji()?.used_in?.length! > 0 && (
+                                <div class="bg-white rounded-xl shadow-sm p-6">
+                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Used in</h2>
+                                    <div class="flex flex-wrap gap-4">
+                                        {kanji()?.used_in.map(term => (
+                                            <div class="p-3 bg-gray-50 rounded-lg text-gray-700">
+                                                {term}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
-                            {/* Synonyms Section */}
-                            {kanji()?.synonyms && kanji()?.synonyms.length! > 0 && (
+                            {kanji()?.synonyms?.length! > 0 && (
                                 <div class="bg-white rounded-xl shadow-sm p-6">
                                     <h2 class="text-xl font-semibold mb-4 text-gray-800">Synonyms</h2>
                                     <div class="flex flex-col gap-4">

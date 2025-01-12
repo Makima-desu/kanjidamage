@@ -25,6 +25,7 @@ pub struct KanjiListing {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct KanjiDetail {
+    pub index: u32,
     pub kanji: String,
     pub meaning: String,
     pub onyomi: Vec<(String, String)>, // (reading, description)

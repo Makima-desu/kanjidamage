@@ -82,6 +82,20 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         .map_err(|e| e.to_string())?;
         
     let document = Html::parse_document(&response);
+
+    let index = document
+        .select(&Selector::parse("div.col-md-8.text-centered").unwrap())
+        .next()
+        .and_then(|el| {
+            el.text()
+                .collect::<String>()
+                .trim()
+                .replace("Number", "")
+                .trim()
+                .parse::<u32>()
+                .ok()
+        })
+        .unwrap_or(0);
     
     // Get kanji and meaning from h1
     let h1_selector = Selector::parse("h1").unwrap();
@@ -356,6 +370,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         .map(|href| href.to_string());
 
     Ok(KanjiDetail {
+        index,
         kanji,
         meaning,
         onyomi,
