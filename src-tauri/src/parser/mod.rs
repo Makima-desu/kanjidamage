@@ -1,10 +1,11 @@
 mod models;
 use std::fs::File;
 use std::io::{self, BufRead};
-use scraper::Element;
+use scraper::{Element, Node};
 
 
-use models::{Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, SynonymEntry};
+
+use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, SynonymEntry};
 use scraper::{CaseSensitivity, ElementRef, Html, Selector};
 
 #[tauri::command]
@@ -122,6 +123,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
             let description = first_row.select(&Selector::parse("td").unwrap())
                 .nth(1)
                 .map(|td| td.text().collect::<String>())
+                .map(|text| text.replace('★', "").trim().to_string())
                 .unwrap_or_default();
                 
             if !reading.is_empty() {
@@ -150,10 +152,32 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         if in_kunyomi_section && element.value().name() == "tr" {
             if let Some(kun) = element.select(&Selector::parse("span.kanji_character").unwrap()).next() {
                 let reading = kun.text().collect::<String>();
+                
                 let meaning = element.select(&Selector::parse("td").unwrap())
-                    .nth(1)
-                    .map(|td| td.text().collect::<String>())
-                    .unwrap_or_default();
+                .nth(1)
+                .map(|td| {
+                    td.children()
+                        .take_while(|child| {
+                            !matches!(child.value(), Node::Element(el) if el.has_class("label", CaseSensitivity::CaseSensitive))
+                        })
+                        .filter_map(|node| {
+                            if let Node::Text(text) = node.value() {
+                                Some(text.to_string())
+                            } else {
+                                None
+                            }
+                        })
+                        .collect::<String>()
+                        .trim()
+                        .to_string()
+                })
+                .unwrap_or_default();
+                
+                // Extract tags
+                let tags = element.select(&Selector::parse("td a.label").unwrap())
+                    .map(|tag| tag.text().collect::<String>())
+                    .collect::<Vec<String>>();
+                    
                 let stars = element.select(&Selector::parse("span.usefulness-stars").unwrap())
                     .next()
                     .map(|el| el.text().collect::<String>().matches('★').count() as u8)
@@ -163,6 +187,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
                     kunyomi.push(KunyomiEntry {
                         reading,
                         meaning,
+                        tags,
                         usefulness: stars
                     });
                 }
@@ -184,27 +209,82 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
                 .map(|el| el.text().collect::<String>())
                 .unwrap_or_default();
                 
-            let english = row.select(&Selector::parse("td").unwrap())
+                let english = row.select(&Selector::parse("td").unwrap())
                 .nth(1)
-                .map(|td| td.text().collect::<String>())
+                .map(|td| {
+                    td.select(&Selector::parse("p").unwrap())
+                        .next()
+                        .map(|p| {
+                            p.text()
+                                .collect::<String>()
+                                .split('★')
+                                .next()
+                                .unwrap_or("")
+                                .trim()
+                                .to_string()
+                        })
+                        .unwrap_or_default()
+                })
                 .unwrap_or_default();
+                
+            // Extract tags
+            let tags = row.select(&Selector::parse("td a.label").unwrap())
+                .map(|tag| tag.text().collect::<String>())
+                .collect::<Vec<String>>();
                 
             let stars = row.select(&Selector::parse("span.usefulness-stars").unwrap())
                 .next()
                 .map(|el| el.text().collect::<String>().matches('★').count() as u8)
                 .unwrap_or(0);
                 
-            let components = row.select(&Selector::parse("a.component").unwrap())
-                .map(|el| el.text().collect::<String>())
-                .collect();
-    
+            let components = row.select(&Selector::parse("td").unwrap())
+                .nth(1)
+                .map(|td| {
+                    let mut components = Vec::new();
+                    let mut current_kanji = String::new();
+                    let mut current_href = String::new();
+                    
+                    for node in td.select(&Selector::parse("p").unwrap())
+                        .next()
+                        .map(|p| p.children())
+                        .into_iter()
+                        .flatten() 
+                    {
+                        if let Some(element) = node.value().as_element() {
+                            if element.has_class("component", CaseSensitivity::CaseSensitive) {
+                                if let Some(element_ref) = ElementRef::wrap(node) {
+                                    current_kanji = element_ref.text().collect::<String>();
+                                    current_href = element.attr("href").unwrap_or_default().to_string();
+                                }
+                            }
+                        } else if let Some(text) = node.value().as_text() {
+                            if text.contains('(') && !current_kanji.is_empty() {
+                                if let Some(meaning) = text.split('(').nth(1).and_then(|s| s.split(')').next()) {
+                                    components.push(Component {
+                                        kanji: current_kanji.clone(),
+                                        meaning: meaning.to_string(),
+                                        href: current_href.clone(),
+                                    });
+                                    current_kanji.clear();
+                                    current_href.clear();
+                                }
+                            }
+                        }
+                    }
+                    
+                    components
+                })
+                .unwrap_or_default();
+            
+        
             if !japanese.is_empty() {
                 jukugo.push(Jukugo {
                     japanese,
                     reading,
                     english,
+                    tags,
                     usefulness: stars,
-                    components
+                    components,
                 });
             }
         }
@@ -263,6 +343,18 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
     })
     .collect::<Vec<SynonymEntry>>();
 
+    let prev_link = document
+    .select(&Selector::parse("div.navigation-header div.col-md-2 a").unwrap())
+    .next()
+    .and_then(|a| a.value().attr("href"))
+    .map(|href| href.to_string());
+
+    let next_link = document
+        .select(&Selector::parse("div.navigation-header div.col-md-2.text-righted a").unwrap())
+        .next()
+        .and_then(|a| a.value().attr("href"))
+        .map(|href| href.to_string());
+
     Ok(KanjiDetail {
         kanji,
         meaning,
@@ -272,6 +364,8 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         mnemonic,
         usefulness: stars,
         used_in,
-        synonyms
+        synonyms,
+        prev_link,
+        next_link
     })
 }

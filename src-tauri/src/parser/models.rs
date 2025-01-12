@@ -33,13 +33,16 @@ pub struct KanjiDetail {
     pub mnemonic: Option<String>,
     pub usefulness: u8,
     pub used_in: Vec<String>,
-    pub synonyms: Vec<SynonymEntry>
+    pub synonyms: Vec<SynonymEntry>,
+    pub prev_link: Option<String>,
+    pub next_link: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct KunyomiEntry {
     pub reading: String,
     pub meaning: String,
+    pub tags: Vec<String>,
     pub usefulness: u8
 }
 
@@ -48,12 +51,20 @@ pub struct Jukugo  {
     pub japanese: String,
     pub reading: String,
     pub english: String,
+    pub tags: Vec<String>,
     pub usefulness: u8,
-    pub components: Vec<String>
+    pub components: Vec<Component>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SynonymEntry {
     pub japanese: String,
     pub english: String
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Component {
+    pub kanji: String,
+    pub meaning: String,
+    pub href: String,
 }

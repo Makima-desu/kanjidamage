@@ -25,9 +25,7 @@ function Kanjis() {
         console.log(entry)
         if (!entry.link) return;
         
-        // First fetch the kanji details
         invoke("get_kanji", {url: entry.link}).then((response) => {
-            // Then navigate to the kanji detail page with the data
             navigate(`/kanji/${encodeURIComponent(entry.link)}`, { 
                 state: { kanji: response }
             });
@@ -43,7 +41,7 @@ function Kanjis() {
                 <img 
                     src={imageUrl}
                     alt={entry.meaning}
-                    class="h-8 w-8 object-contain"
+                    class="h-6 w-6 sm:h-8 sm:w-8 object-contain"
                     onError={(e) => {
                         console.error(`Failed to load image: ${imageUrl}`);
                         e.currentTarget.style.display = 'none';
@@ -58,22 +56,26 @@ function Kanjis() {
         <div class="flex flex-col w-full h-full bg-gray-50">
             <Navbar/>
             <div class="relative w-full h-full flex-1">
-                <div class="grid gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 absolute overflow-y-auto h-full px-6 pt-6 w-full pb-24">
+                <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 absolute overflow-y-auto h-full p-2 sm:px-6 sm:pt-6 w-full pb-24">
                     {entries().map((entry: Entry) => (
-                        <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                            <div class="p-4 flex items-center justify-between">
-                                <div class="flex items-center gap-6">
-                                    <span class="text-gray-400 font-medium w-8">{entry.index}.</span>    
+                        <div class={`bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ${entry.is_radical ? 'border-l-4 border-blue-400 sm:border-l-0' : ''}`}>
+                            <div class="p-3 sm:p-4 flex items-center justify-between">
+                                <div class="flex items-center gap-2 sm:gap-6">
+                                    <span class="text-gray-400 font-medium text-sm sm:text-base w-6 sm:w-8">
+                                        {entry.index}.
+                                    </span>    
                                     <button 
                                         onClick={() => on_kanji_click(entry)}
-                                        class="text-2xl font-semibold text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-center min-w-[2rem]"
+                                        class="text-xl sm:text-2xl font-semibold text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-center min-w-[1.5rem] sm:min-w-[2rem]"
                                     >
                                         {render_kanji_content(entry)}
                                     </button>
-                                    <span class="text-gray-600">{entry.meaning}</span>
+                                    <span class="text-gray-600 text-sm sm:text-base break-words">
+                                        {entry.meaning}
+                                    </span>
                                 </div>
                                 {entry.is_radical && 
-                                    <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded">
+                                    <span class="hidden sm:inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded ml-2">
                                         Radical
                                     </span>
                                 }
@@ -85,6 +87,5 @@ function Kanjis() {
         </div>
     )
 }
-
 
 export default Kanjis;
