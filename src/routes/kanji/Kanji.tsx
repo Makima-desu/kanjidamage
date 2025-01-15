@@ -9,6 +9,7 @@ interface KanjiDetail {
     index: number,
     kanji: string;
     meaning: string;
+    tags: any[],
     description: string,
     onyomi: string[];
     kunyomi: {
@@ -155,14 +156,24 @@ function Kanji() {
                                                 {'☆'.repeat(5 - (kanji()?.usefulness || 0))}
                                             </span>
                                         </div>
+                                        <div class="flex gap-2 mt-2">
+                                            {kanji()?.tags.map(tag => (
+                                                <a
+                                                    href={`https://www.kanjidamage.com/${tag.link}`}
+                                                    class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200"
+                                                >
+                                                    {tag.name}
+                                                </a>
+                                            ))}
+                                        </div>
                                         <div class="text-gray-600 text-sm mt-2">
                                             <div 
                                                 class="font-medium inline"
                                                 innerHTML={kanji()?.breakdown}
                                             />
-                                            <span class="mx-2">=</span>
+                                            {/* <span class="mx-2">=</span>
                                             <span class="font-medium">{kanji()?.kanji}</span>
-                                            <span class="ml-1">({kanji()?.meaning})</span>
+                                            <span class="ml-1">({kanji()?.meaning})</span> */}
                                         </div>
                                     </div>
                                 </div>
@@ -209,9 +220,12 @@ function Kanji() {
                                                                     <div class="text-lg font-medium text-gray-800 flex items-center gap-2">
                                                                         {kun.reading}
                                                                         {kun.tags && kun.tags.map((tag: any) => (
-                                                                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">
-                                                                                {tag}
-                                                                            </span>
+                                                                            <a
+                                                                                href={`https://www.kanjidamage.com/${tag.link}`}
+                                                                                class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200"
+                                                                            >
+                                                                                {tag.name}
+                                                                            </a>
                                                                         ))}
                                                                     </div>
                                                                     <div class="text-gray-600">{kun.meaning}</div>
@@ -243,9 +257,12 @@ function Kanji() {
                                                             </div>
                                                             <div class="flex gap-2">
                                                                 {jukugo.tags && jukugo.tags.map((tag: any) => (
-                                                                    <span class="bg-blue-100 text-blue-600 text-sm px-3 py-1 rounded-full">
-                                                                        {tag}
-                                                                    </span>
+                                                                    <a
+                                                                        href={`https://www.kanjidamage.com/${tag.link}`}
+                                                                        class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200"
+                                                                    >
+                                                                        {tag.name}
+                                                                    </a>
                                                                 ))}
                                                             </div>
                                                         </div>

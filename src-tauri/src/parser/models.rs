@@ -28,6 +28,7 @@ pub struct KanjiDetail {
     pub index: u32,
     pub kanji: String,
     pub meaning: String,
+    pub tags: Vec<Tag>,
     pub description: Option<String>,
     pub onyomi: Vec<(String, String)>, // (reading, description)
     pub kunyomi: Vec<KunyomiEntry>,
@@ -54,7 +55,7 @@ pub struct Jukugo  {
     pub japanese: String,
     pub reading: String,
     pub english: String,
-    pub tags: Vec<String>,
+    pub tags: Vec<Tag>,
     pub usefulness: u8,
     pub components: Vec<Component>,
 }
@@ -71,4 +72,11 @@ pub struct Component {
     pub meaning: String,
     pub href: String,
     pub image_src: Option<String>
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Tag
+{
+    pub name: String,
+    pub link: String,
 }

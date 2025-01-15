@@ -6,7 +6,7 @@ use scraper::{Element, Node};
 
 
 
-use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, SynonymEntry};
+use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, SynonymEntry, Tag};
 use scraper::{CaseSensitivity, ElementRef, Html, Selector};
 
 #[tauri::command]
@@ -122,7 +122,25 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         .select(&Selector::parse("div.description").unwrap())
         .next()
         .map(|div| div.html());
-
+    
+    let container_selector = Selector::parse("div.col-md-4.text-righted").unwrap();
+    let tag_selector = Selector::parse("a.label.label-info").unwrap();
+        
+    let tags: Vec<Tag> = document
+        .select(&container_selector)
+        .next()
+        .map(|container| {
+            container
+                .select(&tag_selector)
+                .map(|el| Tag {
+                    name: el.text().collect::<String>(),
+                    link: el.value().attr("href")
+                        .unwrap_or_default()
+                        .to_string(),
+                })
+                .collect()
+        })
+        .unwrap_or_default();
     
     // Find h1 and get its sibling components
     let mut breakdown = String::new();
@@ -263,9 +281,14 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
                 .unwrap_or_default();
                 
             // Extract tags
-            let tags = row.select(&Selector::parse("td a.label").unwrap())
-                .map(|tag| tag.text().collect::<String>())
-                .collect::<Vec<String>>();
+            let tags = row.select(&Selector::parse("a.label.label-info").unwrap())
+            .map(|tag| Tag {
+                name: tag.text().collect::<String>(),
+                link: tag.value().attr("href")
+                    .unwrap_or_default()
+                    .to_string(),
+            })
+            .collect::<Vec<Tag>>();
                 
             let stars = row.select(&Selector::parse("span.usefulness-stars").unwrap())
                 .next()
@@ -400,6 +423,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         index,
         kanji,
         meaning,
+        tags,
         description,
         onyomi,
         kunyomi,
