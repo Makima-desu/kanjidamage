@@ -6,7 +6,7 @@ use scraper::{Element, Node};
 
 
 
-use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, SynonymEntry, Tag};
+use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, SynonymEntry, Tag, UsedIn};
 use scraper::{CaseSensitivity, ElementRef, Html, Selector};
 
 #[tauri::command]
@@ -375,10 +375,16 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
 
     // Then get the list items if section found
     let used_in = document
-    .select(&Selector::parse("ul.lacidar li a").unwrap())
-    .map(|a| a.text().collect::<String>().trim().to_string())
-    .filter(|s| !s.is_empty())
-    .collect::<Vec<String>>();
+        .select(&Selector::parse("ul.lacidar li a").unwrap())
+        .map(|a| UsedIn {
+            kanji: a.text().collect::<String>().trim().to_string(),
+            link: format!("https://www.kanjidamage.com{}",
+                a.value().attr("href")
+                    .unwrap_or_default()
+                    .to_string()
+            ),
+        })
+        .collect::<Vec<UsedIn>>();
     
     // Get "Synonyms" section
     let synonyms = document

@@ -47,6 +47,18 @@ function Kanji() {
     const [loading, setLoading] = createSignal(true);
     const [error, setError] = createSignal<string>();
 
+    function on_kanji_click(url: any) 
+    {
+        console.log(url)
+        if (!url.link) return;
+        
+        invoke("get_kanji", {url: url}).then((response) => {
+            navigate(`/kanji/${encodeURIComponent(url)}`, { 
+                state: { kanji: response }
+            });
+        });
+    }
+
     const stripHtml = (html: string) => {
         const tmp = document.createElement('div');
         tmp.innerHTML = html;
@@ -298,18 +310,21 @@ function Kanji() {
                                 </div>
                             )}
 
-                            {kanji()?.used_in?.length! > 0 && (
-                                <div class="bg-white rounded-xl shadow-sm p-6">
-                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Used in</h2>
-                                    <div class="flex flex-wrap gap-4">
-                                        {kanji()?.used_in.map(term => (
-                                            <div class="p-3 bg-gray-50 rounded-lg text-gray-700">
-                                                {term}
-                                            </div>
-                                        ))}
+                                {kanji()?.used_in?.length! > 0 && (
+                                    <div class="bg-white rounded-xl shadow-sm p-6">
+                                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Used in</h2>
+                                        <div class="flex flex-wrap gap-4">
+                                            {kanji()?.used_in.map((term: any) => (
+                                                <button
+                                                    onClick={() => on_kanji_click(term.link)} 
+                                                    class="p-3 bg-gray-50 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                                                >
+                                                    {term.kanji}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
 
                             {kanji()?.synonyms?.length! > 0 && (
                                 <div class="bg-white rounded-xl shadow-sm p-6">

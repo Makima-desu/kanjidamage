@@ -35,7 +35,7 @@ pub struct KanjiDetail {
     pub jukugo : Vec<Jukugo>,
     pub mnemonic: Option<String>,
     pub usefulness: u8,
-    pub used_in: Vec<String>,
+    pub used_in: Vec<UsedIn>,
     pub synonyms: Vec<SynonymEntry>,
     pub prev_link: Option<String>,
     pub next_link: Option<String>,
@@ -78,5 +78,12 @@ pub struct Component {
 pub struct Tag
 {
     pub name: String,
+    pub link: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct UsedIn
+{
+    pub kanji: String,
     pub link: String,
 }
