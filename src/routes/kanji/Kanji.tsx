@@ -178,15 +178,18 @@ function Kanji() {
                                                 </a>
                                             ))}
                                         </div>
-                                        <div class="text-gray-600 text-sm mt-2">
-                                            <div 
-                                                class="font-medium inline"
-                                                innerHTML={kanji()?.breakdown}
-                                            />
-                                            {/* <span class="mx-2">=</span>
-                                            <span class="font-medium">{kanji()?.kanji}</span>
-                                            <span class="ml-1">({kanji()?.meaning})</span> */}
-                                        </div>
+                                        <div
+                                            class="text-gray-600 text-sm mt-2"
+                                            innerHTML={kanji()?.breakdown}
+                                            onClick={(e) => {
+                                                const target = e.target as HTMLElement;
+                                                if (target.classList.contains('component')) {
+                                                    e.preventDefault();
+                                                    const link = target.getAttribute('href');
+                                                    handleNavigation(link);
+                                                }
+                                            }}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -284,9 +287,11 @@ function Kanji() {
                                                             {Array.isArray(jukugo.components) && jukugo.components.map((component: any, index: any) => (
                                                                 <>
                                                                     <span class="font-medium">
-                                                                        <a href={component.href} class="text-blue-600 hover:underline">
+                                                                        <button 
+                                                                            onClick={() => on_kanji_click(component.href)} 
+                                                                            class="text-blue-600 hover:underline">
                                                                             {component.kanji}
-                                                                        </a>
+                                                                        </button>
                                                                         {' '}({component.meaning})
                                                                     </span>
                                                                     {index < jukugo.components.length - 1 && 

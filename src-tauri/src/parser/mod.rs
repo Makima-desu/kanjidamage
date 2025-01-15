@@ -321,7 +321,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
                                     components.push(Component {
                                         kanji: current_kanji.clone(),
                                         meaning: meaning.to_string(),
-                                        href: current_href.clone(),
+                                        href: format!("https://www.kanjidamage.com{}", current_href.clone()),
                                         image_src: None,
                                     });
                                     current_kanji.clear();
