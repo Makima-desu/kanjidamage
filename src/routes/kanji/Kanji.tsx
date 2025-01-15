@@ -9,6 +9,7 @@ interface KanjiDetail {
     index: number,
     kanji: string;
     meaning: string;
+    description: string,
     onyomi: string[];
     kunyomi: {
         reading: string;
@@ -31,6 +32,7 @@ interface KanjiDetail {
     }[];
     prev_link: string | null;
     next_link: string | null;
+    breakdown: string;
 }
 
 interface RouteParams {
@@ -43,6 +45,12 @@ function Kanji() {
     const [kanji, setKanji] = createSignal<KanjiDetail>();
     const [loading, setLoading] = createSignal(true);
     const [error, setError] = createSignal<string>();
+
+    const stripHtml = (html: string) => {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || '';
+    };
 
     onMount(async () => {
         try {
@@ -104,7 +112,7 @@ function Kanji() {
                             </svg>
                             Previous
                         </button>
-                        <span>{kanji()?.index}</span>
+                        <span class="font-bold">Number {kanji()?.index}</span>
                         <button 
                             class={`px-4 py-2 rounded-lg flex items-center gap-2 ${
                                 kanji()?.next_link 
@@ -134,56 +142,54 @@ function Kanji() {
                         </div>
                     ) : kanji() && (
                         <div class="space-y-6">
-                            <div class="bg-white rounded-xl shadow-sm p-8">
-                                <div class="flex flex-col gap-6">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-8">
-                                            <span class="text-8xl font-bold text-gray-800">{kanji()?.kanji}</span>
-                                            <div>
-                                                <h1 class="text-3xl text-gray-700 font-medium">{kanji()?.meaning}</h1>
-                                                <div class="text-yellow-500 text-2xl mt-2">
-                                                    {'★'.repeat(kanji()?.usefulness || 0)}
-                                                    {'☆'.repeat(5 - (kanji()?.usefulness || 0))}
-                                                </div>
-                                            </div>
+                            <div class="flex items-center justify-between border-b border-gray-100 pb-6">
+                                <div class="flex items-center gap-8">
+                                    <span class="text-8xl font-bold text-gray-800 font-japanese">{kanji()?.kanji}</span>
+                                    <div>
+                                        <h1 class="text-3xl text-green-600 font-medium tracking-wide">
+                                            {kanji()?.meaning}
+                                        </h1>
+                                        <div class="text-yellow-500 text-2xl mt-3">
+                                            {'★'.repeat(kanji()?.usefulness || 0)}
+                                            <span class="text-gray-300">
+                                                {'☆'.repeat(5 - (kanji()?.usefulness || 0))}
+                                            </span>
+                                        </div>
+                                        <div class="text-gray-600 text-sm mt-2">
+                                            <div 
+                                                class="font-medium inline"
+                                                innerHTML={kanji()?.breakdown}
+                                            />
+                                            <span class="mx-2">=</span>
+                                            <span class="font-medium">{kanji()?.kanji}</span>
+                                            <span class="ml-1">({kanji()?.meaning})</span>
                                         </div>
                                     </div>
-
-                                    {kanji()?.mnemonic && (
-                                        <div class="border-t border-gray-100 pt-6">
-                                            <div class="flex items-start gap-6">
-                                                <div class="flex-1">
-                                                    <h2 class="text-lg font-semibold text-gray-700 mb-2">Mnemonic</h2>
-                                                    <p class="text-gray-600 leading-relaxed">{kanji()?.mnemonic}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
                             </div>
 
-                            {((kanji()?.onyomi?.some(([reading]) => reading.trim()) || 
-                                kanji()?.kunyomi?.length! > 0)) && (
+                            {((kanji()?.onyomi?.some(([reading]) => stripHtml(reading).trim()) || 
+                                    kanji()?.kunyomi?.length! > 0)) && (
                                     <div class={`grid gap-6 ${
-                                        kanji()?.onyomi?.some(([reading]) => reading.trim()) && 
+                                        kanji()?.onyomi?.some(([reading]) => stripHtml(reading).trim()) && 
                                         kanji()?.kunyomi?.length! > 0 
                                             ? 'md:grid-cols-2' 
                                             : 'md:grid-cols-1'
                                     }`}>
-                                        {kanji()?.onyomi?.some(([reading]) => reading.trim()) && (
+                                        {kanji()?.onyomi?.some(([reading]) => stripHtml(reading).trim()) && (
                                             <div class="bg-white rounded-xl shadow-sm p-6">
                                                 <h2 class="text-xl font-semibold mb-4 text-gray-800">音読み (Onyomi)</h2>
                                                 <div class="space-y-4">
                                                     {kanji()?.onyomi
-                                                        .filter(([reading]) => reading.trim())
+                                                        .filter(([reading]) => stripHtml(reading).trim())
                                                         .map(([reading, description]) => (
                                                             <div class="p-3 bg-gray-50 rounded-lg">
                                                                 <div class="flex flex-col gap-2">
-                                                                    <div class="text-lg font-medium text-gray-800">{reading}</div>
-                                                                    {description && (
-                                                                        <div class="text-gray-600 text-sm italic">
-                                                                            {description}
-                                                                        </div>
+                                                                    <div class="text-lg font-medium text-gray-800" 
+                                                                        innerHTML={reading} />
+                                                                    {stripHtml(description).trim() && (
+                                                                        <div class="text-gray-600 text-sm"
+                                                                            innerHTML={description} />
                                                                     )}
                                                                 </div>
                                                             </div>

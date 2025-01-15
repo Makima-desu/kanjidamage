@@ -28,6 +28,7 @@ pub struct KanjiDetail {
     pub index: u32,
     pub kanji: String,
     pub meaning: String,
+    pub description: Option<String>,
     pub onyomi: Vec<(String, String)>, // (reading, description)
     pub kunyomi: Vec<KunyomiEntry>,
     pub jukugo : Vec<Jukugo>,
@@ -37,6 +38,7 @@ pub struct KanjiDetail {
     pub synonyms: Vec<SynonymEntry>,
     pub prev_link: Option<String>,
     pub next_link: Option<String>,
+    pub breakdown: String
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -68,4 +70,5 @@ pub struct Component {
     pub kanji: String,
     pub meaning: String,
     pub href: String,
+    pub image_src: Option<String>
 }

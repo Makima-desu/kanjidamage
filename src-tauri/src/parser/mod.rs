@@ -1,6 +1,7 @@
 mod models;
 use std::fs::File;
 use std::io::{self, BufRead};
+use scraper::selector::CssLocalName;
 use scraper::{Element, Node};
 
 
@@ -116,7 +117,28 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         .next()
         .map(|el| el.text().collect::<String>().matches('★').count() as u8)
         .unwrap_or(0);
+
+    let description = document
+        .select(&Selector::parse("div.description").unwrap())
+        .next()
+        .map(|div| div.html());
+
     
+    // Find h1 and get its sibling components
+    let mut breakdown = String::new();
+
+    if let Some(h1_element) = document.select(&h1_selector).next() {
+        let mut current = h1_element.next_sibling();
+        
+        while let Some(node) = current {
+            if let Some(element_ref) = ElementRef::wrap(node) {
+                breakdown.push_str(&element_ref.html());
+            } else if let Some(text) = node.value().as_text() {
+                breakdown.push_str(text);
+            }
+            current = node.next_sibling();
+        }
+    }
     // First find the Onyomi section
     let mut onyomi = Vec::new();
 
@@ -131,13 +153,12 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         if let Some(first_row) = onyomi_table.select(&Selector::parse("tr").unwrap()).next() {
             let reading = first_row.select(&Selector::parse("td").unwrap())
                 .next()
-                .map(|td| td.text().collect::<String>())
+                .map(|td| td.html())
                 .unwrap_or_default();
                 
             let description = first_row.select(&Selector::parse("td").unwrap())
                 .nth(1)
-                .map(|td| td.text().collect::<String>())
-                .map(|text| text.replace('★', "").trim().to_string())
+                .map(|td| td.html())  // Use html() instead of text()
                 .unwrap_or_default();
                 
             if !reading.is_empty() {
@@ -278,6 +299,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
                                         kanji: current_kanji.clone(),
                                         meaning: meaning.to_string(),
                                         href: current_href.clone(),
+                                        image_src: None,
                                     });
                                     current_kanji.clear();
                                     current_href.clear();
@@ -312,8 +334,13 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         .and_then(|table| {
             table.select(&Selector::parse("tr td p").unwrap())
                 .next()
-                .map(|p| p.text().collect::<String>().trim().to_string())
+                .map(|p: ElementRef<'_>| p.html())
         });
+        // .and_then(|table| {
+        //     table.select(&Selector::parse("tr td p").unwrap())
+        //         .next()
+        //         .map(|p: ElementRef<'_>| p.text().collect::<String>().trim().to_string())
+        // });
 
     // Get "Used in" section
     let section = document
@@ -373,6 +400,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         index,
         kanji,
         meaning,
+        description,
         onyomi,
         kunyomi,
         jukugo,
@@ -381,6 +409,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         used_in,
         synonyms,
         prev_link,
-        next_link
+        next_link,
+        breakdown,
     })
 }

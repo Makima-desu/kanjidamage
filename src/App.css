@@ -11,3 +11,18 @@
     }
 
 }
+
+.onyomi 
+{
+    @apply text-orange-300; 
+}
+
+.translation
+{
+    @apply text-green-500
+}
+
+.component 
+{
+    @apply text-red-300
+}
