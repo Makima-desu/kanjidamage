@@ -1,16 +1,121 @@
 mod models;
-use std::fs::File;
-use std::io::{self, BufRead};
+use std::fs::{self, File};
+use std::io::{self, BufRead, Write};
+use std::path::Path;
+use anyhow::Result;
 use scraper::selector::CssLocalName;
 use scraper::{Element, Node};
 
 
 
-use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, Lookalike, SynonymEntry, Tag, UsedIn};
+use models::{CommandError, Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, Lookalike, SynonymEntry, Tag, UsedIn};
 use scraper::{CaseSensitivity, ElementRef, Html, Selector};
 
 #[tauri::command]
+pub async fn fetch_and_save_kanji_list() -> Result<Vec<KanjiListing>, String> {
+    let file_path = "kanji_list.json";
+    
+    // Check if file exists
+    if Path::new(file_path).exists() {
+        // Read and parse existing file
+        return match fs::read_to_string(file_path) {
+            Ok(contents) => {
+                serde_json::from_str(&contents)
+                    .map_err(|e| format!("Failed to parse JSON: {}", e))
+            }
+            Err(e) => Err(format!("Failed to read file: {}", e))
+        };
+    }
+    
+    // If file doesn't exist, fetch from web
+    let client = reqwest::Client::new();
+    let response = client
+        .get("https://www.kanjidamage.com/kanji")
+        .send()
+        .await
+        .map_err(|e| format!("Failed to fetch data: {}", e))?
+        .text()
+        .await
+        .map_err(|e| format!("Failed to get response text: {}", e))?;
+    
+    let document = scraper::Html::parse_document(&response);
+    let row_selector = scraper::Selector::parse("tr").unwrap();
+    let td_selector = scraper::Selector::parse("td").unwrap();
+    let kanji_char_selector = scraper::Selector::parse("span.kanji_character").unwrap();
+    let img_selector = scraper::Selector::parse("img").unwrap();
+    
+    let mut entries = Vec::new();
+    
+    for row in document.select(&row_selector) {
+        let tds: Vec<_> = row.select(&td_selector).collect();
+        if tds.len() >= 4 {
+            let index = tds[0].text()
+                .next()
+                .and_then(|t| t.trim().parse::<i32>().ok())
+                .unwrap_or(0);
+                
+            let is_radical = tds[1].select(&img_selector).next().is_some();
+            
+            let (kanji, link, has_image) = if let Some(kanji_span) = tds[2].select(&kanji_char_selector).next() {
+                let k = kanji_span.text().collect::<String>();
+                let l = tds[2].select(&scraper::Selector::parse("a").unwrap())
+                    .next()
+                    .map(|a| format!("https://www.kanjidamage.com{}", 
+                        a.value().attr("href").unwrap_or("")))
+                    .unwrap_or_else(|| format!("https://www.kanjidamage.com/kanji/{}", index));
+                (k, l, false)
+            } else if let Some(img) = tds[2].select(&img_selector).next() {
+                let src = img.value().attr("src").unwrap_or_default();
+                let l = format!("https://www.kanjidamage.com/kanji/{}", index);
+                (format!("https://www.kanjidamage.com{}", src), l, true)
+            } else {
+                let k = tds[2].text().collect::<String>().trim().to_string();
+                let l = format!("https://www.kanjidamage.com/kanji/{}", index);
+                (k, l, false)
+            };
+            
+            let meaning = tds[3].text().next().unwrap_or("").trim().to_string();
+            
+            if !meaning.is_empty() {
+                entries.push(KanjiListing {
+                    index,
+                    kanji,
+                    meaning,
+                    is_radical,
+                    link,
+                    has_image
+                });
+            }
+        }
+    }
+    
+    // Save to file
+    let json = serde_json::to_string_pretty(&entries)
+        .map_err(|e| format!("Failed to serialize JSON: {}", e))?;
+    File::create(file_path)
+        .map_err(|e| format!("Failed to create file: {}", e))?
+        .write_all(json.as_bytes())
+        .map_err(|e| format!("Failed to write file: {}", e))?;
+    
+    Ok(entries)
+}
+
+
+#[tauri::command]
 pub async fn get_kanji_list() -> Result<Vec<KanjiListing>, String> {
+    // Read the JSON file
+    let file_content = std::fs::read_to_string("kanji_list.json")
+        .map_err(|e| e.to_string())?;
+    
+    // Parse the JSON content
+    let kanji_list: Vec<KanjiListing> = serde_json::from_str(&file_content)
+        .map_err(|e| e.to_string())?;
+    
+    Ok(kanji_list)
+}
+
+#[tauri::command]
+pub async fn get_kanji_list_v1() -> Result<Vec<KanjiListing>, String> {
     let file = include_str!("kanjis.txt");
     let document = scraper::Html::parse_document(file);
     let row_selector = scraper::Selector::parse("tr").unwrap();
@@ -73,6 +178,25 @@ pub async fn get_kanji_list() -> Result<Vec<KanjiListing>, String> {
 
 #[tauri::command]
 pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
+    let file_path = "kanji_details.json";
+    let kanji_id = url.split('/').last().unwrap_or_default();
+    
+    // Try to read from local file first
+    if Path::new(file_path).exists() {
+        let file_content = fs::read_to_string(file_path)
+            .map_err(|e| format!("Failed to read file: {}", e))?;
+            
+        let mut kanji_map: serde_json::Map<String, serde_json::Value> = 
+            serde_json::from_str(&file_content)
+            .map_err(|e| format!("Failed to parse JSON: {}", e))?;
+            
+        // Check if kanji exists in the map
+        if let Some(kanji_value) = kanji_map.get(kanji_id) {
+            return serde_json::from_value(kanji_value.clone())
+                .map_err(|e| format!("Failed to parse kanji data: {}", e));
+        }
+    }
+
     let client = reqwest::Client::new();
     let response = client.get(&url)
         .send()
@@ -497,22 +621,46 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         })
         .collect::<Vec<Lookalike>>();
 
-    Ok(KanjiDetail {
-        index,
-        kanji,
-        meaning,
-        tags,
-        description,
-        onyomi,
-        kunyomi,
-        jukugo,
-        mnemonic,
-        usefulness: stars,
-        used_in,
-        synonyms,
-        prev_link,
-        next_link,
-        breakdown,
-        lookalikes,
-    })
+        let kanji_detail = KanjiDetail {
+            index,
+            kanji,
+            meaning,
+            tags,
+            description,
+            onyomi,
+            kunyomi,
+            jukugo,
+            mnemonic,
+            usefulness: stars,
+            used_in,
+            synonyms,
+            prev_link,
+            next_link,
+            breakdown,
+            lookalikes,
+        };
+        
+        // Save to local file
+        let mut kanji_map = if Path::new(file_path).exists() {
+            let content = fs::read_to_string(file_path)
+                .map_err(|e| format!("Failed to read file: {}", e))?;
+            serde_json::from_str(&content)
+                .map_err(|e| format!("Failed to parse JSON: {}", e))?
+        } else {
+            serde_json::Map::new()
+        };
+        
+        kanji_map.insert(
+            kanji_id.to_string(),
+            serde_json::to_value(&kanji_detail)
+                .map_err(|e| format!("Failed to serialize kanji: {}", e))?
+        );
+        
+        let json = serde_json::to_string_pretty(&kanji_map)
+            .map_err(|e| format!("Failed to serialize JSON: {}", e))?;
+            
+        fs::write(file_path, json)
+            .map_err(|e| format!("Failed to write file: {}", e))?;
+        
+        Ok(kanji_detail)
 }

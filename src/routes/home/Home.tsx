@@ -1,3 +1,4 @@
+import { invoke } from "@tauri-apps/api/core"
 import Navbar from "../../navbar/Navbar"
 
 function Home()

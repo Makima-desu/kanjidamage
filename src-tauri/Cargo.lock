@@ -2019,6 +2019,7 @@ dependencies = [
 name = "kanjidamage"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "reqwest 0.11.27",
  "scraper",
  "serde",

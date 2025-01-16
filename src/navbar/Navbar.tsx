@@ -11,7 +11,7 @@ function Navbar() {
                 <div class="flex justify-between items-center h-16">
                     {/* Logo/Brand */}
                     <div class="flex-shrink-0">
-                        <A href="/" class="text-white font-bold text-xl">Kanjidamage Practice</A>
+                        <A href="/" class="text-white font-bold text-xl">The KanjiDamage Way</A>
                     </div>
 
                     {/* Desktop Menu */}

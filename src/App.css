@@ -19,10 +19,10 @@
 
 .translation
 {
-    @apply text-green-500
+    @apply text-green-500;
 }
 
 .component 
 {
-    @apply text-red-300
+    @apply text-red-300;
 }
