@@ -39,7 +39,8 @@ pub struct KanjiDetail {
     pub synonyms: Vec<SynonymEntry>,
     pub prev_link: Option<String>,
     pub next_link: Option<String>,
-    pub breakdown: String
+    pub breakdown: String,
+    pub lookalikes: Vec<Lookalike>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -86,4 +87,14 @@ pub struct UsedIn
 {
     pub kanji: String,
     pub link: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Lookalike {
+    pub kanji: String,
+    pub kanji_link: String,
+    pub meaning: String,
+    pub hint: String,
+    pub radical: String,
+    pub radical_link: String,
 }

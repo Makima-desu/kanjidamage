@@ -6,7 +6,7 @@ use scraper::{Element, Node};
 
 
 
-use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, SynonymEntry, Tag, UsedIn};
+use models::{Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, Lookalike, SynonymEntry, Tag, UsedIn};
 use scraper::{CaseSensitivity, ElementRef, Html, Selector};
 
 #[tauri::command]
@@ -439,6 +439,64 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         .and_then(|a| a.value().attr("href"))
         .map(|href| href.to_string());
 
+    let lookalikes = document
+        .select(&Selector::parse("table.table tr").unwrap())
+        .skip(1) // Skip header row
+        .filter_map(|row| {
+            let cells: Vec<ElementRef> = row.select(&Selector::parse("td").unwrap()).collect();
+            if cells.len() >= 4 {
+                let kanji_anchor = cells[0]
+                    .select(&Selector::parse("a.kanji_character").unwrap())
+                    .next();
+                    
+                let kanji_link = kanji_anchor
+                    .and_then(|a| a.value().attr("href"))
+                    .map(|href| format!("https://www.kanjidamage.com{}", href))
+                    .unwrap_or_default();
+    
+                let kanji = kanji_anchor
+                    .map(|a| {
+                        a.select(&Selector::parse("img").unwrap())
+                            .next()
+                            .and_then(|img| img.value().attr("src"))
+                            .map(|src| format!("https://www.kanjidamage.com{}", src))
+                            .unwrap_or_else(|| a.text().collect::<String>())
+                    })
+                    .unwrap_or_default();
+    
+                let radical_anchor = cells[3]
+                    .select(&Selector::parse("a").unwrap())
+                    .next();
+    
+                let radical = radical_anchor
+                    .map(|a| {
+                        a.select(&Selector::parse("img").unwrap())
+                            .next()
+                            .and_then(|img| img.value().attr("src"))
+                            .map(|src| format!("https://www.kanjidamage.com{}", src))
+                            .unwrap_or_else(|| a.text().collect::<String>())
+                    })
+                    .unwrap_or_default();
+    
+                let radical_link = radical_anchor
+                    .and_then(|a| a.value().attr("href"))
+                    .map(|href| format!("https://www.kanjidamage.com{}", href))
+                    .unwrap_or_default();
+    
+                Some(Lookalike {
+                    kanji,
+                    kanji_link,
+                    meaning: cells[1].text().collect::<String>(),
+                    hint: cells[2].text().collect::<String>(),
+                    radical,
+                    radical_link,
+                })
+            } else {
+                None
+            }
+        })
+        .collect::<Vec<Lookalike>>();
+
     Ok(KanjiDetail {
         index,
         kanji,
@@ -455,5 +513,6 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         prev_link,
         next_link,
         breakdown,
+        lookalikes,
     })
 }

@@ -34,6 +34,7 @@ interface KanjiDetail {
     prev_link: string | null;
     next_link: string | null;
     breakdown: string;
+    lookalikes: any[];
 }
 
 interface RouteParams {
@@ -439,6 +440,66 @@ function Kanji() {
                                                 <div class="text-gray-600">{term.japanese}</div>
                                             </div>
                                         ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {kanji()?.lookalikes?.length! > 0 && (
+                                <div class="bg-white rounded-xl shadow-sm p-6">
+                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Lookalikes</h2>
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full">
+                                            <thead>
+                                                <tr class="border-b border-gray-200">
+                                                    <th class="py-3 px-4 text-left text-sm font-semibold text-gray-900">Kanji</th>
+                                                    <th class="py-3 px-4 text-left text-sm font-semibold text-gray-900">Meaning</th>
+                                                    <th class="py-3 px-4 text-left text-sm font-semibold text-gray-900">Hint</th>
+                                                    <th class="py-3 px-4 text-left text-sm font-semibold text-gray-900">Radical</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-gray-200">
+                                                {kanji()?.lookalikes!.map(lookalike => (
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="py-4 px-4">
+                                                            <button
+                                                                onClick={() => handleNavigation(lookalike.kanji_link)}
+                                                                class="text-2xl font-medium text-gray-900 hover:text-blue-600 transition-colors"
+                                                            >
+                                                                {lookalike.kanji.startsWith('http') ? (
+                                                                    <img 
+                                                                        src={lookalike.kanji}
+                                                                        alt="Kanji character"
+                                                                        class="h-8 w-auto inline-block"
+                                                                        style="object-fit: contain"
+                                                                    />
+                                                                ) : (
+                                                                    lookalike.kanji
+                                                                )}
+                                                            </button>
+                                                        </td>
+                                                        <td class="py-4 px-4 text-gray-700">{lookalike.meaning}</td>
+                                                        <td class="py-4 px-4 text-gray-700">{lookalike.hint}</td>
+                                                        <td class="py-4 px-4">
+                                                        <button
+                                                            onClick={() => handleNavigation(lookalike.radical_link)}
+                                                            class="text-gray-700 hover:text-blue-600 transition-colors flex items-center"
+                                                        >
+                                                            {lookalike.radical.startsWith('http') ? (
+                                                                <img 
+                                                                    src={lookalike.radical}
+                                                                    alt="Radical character"
+                                                                    class="h-6 w-auto"
+                                                                    style="object-fit: contain"
+                                                                />
+                                                            ) : (
+                                                                lookalike.radical
+                                                            )}
+                                                        </button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             )}
