@@ -100,10 +100,24 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
     
     // Get kanji and meaning from h1
     let h1_selector = Selector::parse("h1").unwrap();
+    let kanji_span_selector = Selector::parse("span.kanji_character").unwrap();
+    let img_selector = Selector::parse("img").unwrap();
+    
     let kanji = document.select(&h1_selector)
         .next()
-        .and_then(|el| el.select(&Selector::parse("span.kanji_character").unwrap()).next())
-        .map(|el| el.text().collect::<String>())
+        .and_then(|el| el.select(&kanji_span_selector).next())
+        .and_then(|span| {
+            // First try to find img and get its src
+            span.select(&img_selector)
+                .next()
+                .and_then(|img| img.value().attr("src"))
+                .map(String::from)
+                // If no img found, try to get text content
+                .or_else(|| {
+                    let text = span.text().collect::<String>();
+                    if text.is_empty() { None } else { Some(text) }
+                })
+        })
         .unwrap_or_default();
         
     let meaning = document.select(&h1_selector)
@@ -365,24 +379,24 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         //         .map(|p: ElementRef<'_>| p.text().collect::<String>().trim().to_string())
         // });
 
-    // Get "Used in" section
-    let section = document
-        .select(&Selector::parse("div.kanji-details section").unwrap())
-        .find(|section| {
-            section.select(&Selector::parse("h2").unwrap())
-                .any(|h2| h2.text().collect::<String>().trim() == "Used in")
-        });
-
-    // Then get the list items if section found
     let used_in = document
         .select(&Selector::parse("ul.lacidar li a").unwrap())
-        .map(|a| UsedIn {
-            kanji: a.text().collect::<String>().trim().to_string(),
-            link: format!("https://www.kanjidamage.com{}",
-                a.value().attr("href")
+        .map(|a| {
+            let text_content = a.text().collect::<String>().trim().to_string();
+            let kanji = if !text_content.is_empty() {
+                text_content
+            } else {
+                a.select(&Selector::parse("img").unwrap())
+                    .next()
+                    .and_then(|img| img.value().attr("src"))
+                    .map(|src| format!("https://www.kanjidamage.com{}", src))
                     .unwrap_or_default()
-                    .to_string()
-            ),
+            };
+            
+            UsedIn {
+                kanji,
+                link: a.value().attr("href").unwrap_or_default().to_string()
+            }
         })
         .collect::<Vec<UsedIn>>();
     

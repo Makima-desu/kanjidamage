@@ -59,6 +59,31 @@ function Kanji() {
         });
     }
 
+    function processBreakdown(breakdown: string) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = breakdown;
+        
+        // Process all image sources
+        tempDiv.querySelectorAll('img').forEach(img => {
+            const src = img.getAttribute('src');
+            if (src?.startsWith('/')) {
+                img.setAttribute('src', `https://www.kanjidamage.com${src}`);
+            }
+            img.className = 'h-4 w-auto inline-block align-middle';
+            img.style.objectFit = 'contain';
+        });
+        
+        // Process all component links
+        tempDiv.querySelectorAll('a.component').forEach(a => {
+            const href = a.getAttribute('href');
+            if (href?.startsWith('/')) {
+                a.setAttribute('href', `https://www.kanjidamage.com${href}`);
+            }
+        });
+        
+        return tempDiv.innerHTML;
+    }
+
     const stripHtml = (html: string) => {
         const tmp = document.createElement('div');
         tmp.innerHTML = html;
@@ -157,7 +182,18 @@ function Kanji() {
                         <div class="space-y-6">
                             <div class="flex items-center justify-between border-b border-gray-100 pb-6">
                                 <div class="flex items-center gap-8">
-                                    <span class="text-8xl font-bold text-gray-800 font-japanese">{kanji()?.kanji}</span>
+                                <span class="text-8xl font-bold text-gray-800 font-japanese">
+                                        {kanji()?.kanji.startsWith('/') ? (
+                                            <img 
+                                                src={`https://www.kanjidamage.com/${kanji()?.kanji}`} 
+                                                alt="Kanji character"
+                                                class="h-[1em] w-auto inline-block"
+                                                style="object-fit: contain"
+                                            />
+                                        ) : (
+                                            kanji()?.kanji
+                                        )}
+                                    </span>
                                     <div>
                                         <h1 class="text-3xl text-green-600 font-medium tracking-wide">
                                             {kanji()?.meaning}
@@ -172,7 +208,7 @@ function Kanji() {
                                             {kanji()?.tags.map(tag => (
                                                 <a
                                                     href={`https://www.kanjidamage.com/${tag.link}`}
-                                                    class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200"
+                                                    class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200"
                                                 >
                                                     {tag.name}
                                                 </a>
@@ -180,7 +216,7 @@ function Kanji() {
                                         </div>
                                         <div
                                             class="text-gray-600 text-sm mt-2"
-                                            innerHTML={kanji()?.breakdown}
+                                            innerHTML={processBreakdown(kanji()?.breakdown!)}
                                             onClick={(e) => {
                                                 const target = e.target as HTMLElement;
                                                 if (target.classList.contains('component')) {
@@ -237,7 +273,7 @@ function Kanji() {
                                                                         {kun.tags && kun.tags.map((tag: any) => (
                                                                             <a
                                                                                 href={`https://www.kanjidamage.com/${tag.link}`}
-                                                                                class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200"
+                                                                                class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200"
                                                                             >
                                                                                 {tag.name}
                                                                             </a>
@@ -274,7 +310,7 @@ function Kanji() {
                                                                 {jukugo.tags && jukugo.tags.map((tag: any) => (
                                                                     <a
                                                                         href={`https://www.kanjidamage.com/${tag.link}`}
-                                                                        class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200"
+                                                                        class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200"
                                                                     >
                                                                         {tag.name}
                                                                     </a>
@@ -315,21 +351,31 @@ function Kanji() {
                                 </div>
                             )}
 
-                                {kanji()?.used_in?.length! > 0 && (
-                                    <div class="bg-white rounded-xl shadow-sm p-6">
-                                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Used in</h2>
-                                        <div class="flex flex-wrap gap-4">
-                                            {kanji()?.used_in.map((term: any) => (
-                                                <button
-                                                    onClick={() => on_kanji_click(term.link)} 
-                                                    class="p-3 bg-gray-50 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200"
-                                                >
-                                                    {term.kanji}
-                                                </button>
-                                            ))}
-                                        </div>
+                            {kanji()?.used_in?.length! > 0 && (
+                                <div class="bg-white rounded-xl shadow-sm p-6">
+                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Used in</h2>
+                                    <div class="flex flex-wrap gap-4">
+                                        {kanji()?.used_in.map((term: any) => (
+                                            <button
+                                                // onClick={() => on_kanji_click(term.link)} 
+                                                onClick = { () => handleNavigation(term.link)}
+                                                class="p-3 bg-gray-50 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center"
+                                            >
+                                                {term.kanji.startsWith('https') ? (
+                                                    <img 
+                                                        src={term.kanji}
+                                                        alt="Kanji character" 
+                                                        class="h-6 w-auto"
+                                                        style="object-fit: contain"
+                                                    />
+                                                ) : (
+                                                    term.kanji
+                                                )}
+                                            </button>
+                                        ))}
                                     </div>
-                                )}
+                                </div>
+                            )}
 
                             {kanji()?.synonyms?.length! > 0 && (
                                 <div class="bg-white rounded-xl shadow-sm p-6">
