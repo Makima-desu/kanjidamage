@@ -59,6 +59,30 @@ function Kanji() {
         });
     }
 
+    function processHtmlContent(html: string) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+    
+        // Process any links or components if needed
+        tempDiv.querySelectorAll('a').forEach(a => {
+            const href = a.getAttribute('href');
+            if (href?.startsWith('/')) {
+                a.setAttribute('href', `https://www.kanjidamage.com${href}`);
+            }
+        });
+    
+        // Process any images if needed
+        tempDiv.querySelectorAll('img').forEach(img => {
+            const src = img.getAttribute('src');
+            if (src?.startsWith('/')) {
+                img.setAttribute('src', `https://www.kanjidamage.com${src}`);
+            }
+        });
+    
+        return tempDiv.innerHTML;
+    }
+    
+
     function processBreakdown(breakdown: string) {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = breakdown;
@@ -229,6 +253,34 @@ function Kanji() {
                                     </div>
                                 </div>
                             </div>
+
+                            {kanji()?.description && (
+                                <div class="mt-6 bg-white rounded-xl shadow-sm p-6">
+                                    {/* <h2 class="text-xl font-semibold mb-4 text-gray-800"></h2> */}
+                                    <div 
+                                        class="text-gray-600 prose prose-sm"
+                                        innerHTML={processHtmlContent(kanji()?.description!)}
+                                    />
+                                </div>
+                            )}
+
+                            {kanji()?.mnemonic && (
+                                <div class="mt-6 bg-white rounded-xl shadow-sm p-6">
+                                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Mnemonic</h2>
+                                    <div 
+                                        class="text-gray-600 prose prose-sm"
+                                        innerHTML={processHtmlContent(kanji()?.mnemonic!)}
+                                        onClick={(e) => {
+                                            const target = e.target as HTMLElement;
+                                            if (target.classList.contains('component')) {
+                                                e.preventDefault();
+                                                const link = target.getAttribute('href');
+                                                handleNavigation(link);
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            )}
 
                             {((kanji()?.onyomi?.some(([reading]) => stripHtml(reading).trim()) || 
                                     kanji()?.kunyomi?.length! > 0)) && (
