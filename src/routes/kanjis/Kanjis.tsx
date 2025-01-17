@@ -22,7 +22,6 @@ function Kanjis() {
 
     function on_kanji_click(entry: Entry) 
     {
-        console.log(entry)
         if (!entry.link) return;
         
         invoke("get_kanji", {url: entry.link}).then((response) => {

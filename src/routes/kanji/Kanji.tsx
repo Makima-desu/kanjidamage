@@ -50,7 +50,6 @@ function Kanji() {
 
     function on_kanji_click(url: any) 
     {
-        console.log(url)
         if (!url.link) return;
         
         invoke("get_kanji", {url: url}).then((response) => {
@@ -138,7 +137,6 @@ function Kanji() {
             const data = await invoke("get_kanji", { 
                 url: decodeURIComponent(params.url) 
             });
-            console.log(data)
             setKanji(data as KanjiDetail);
         } catch (err) {
             setError(err as string);

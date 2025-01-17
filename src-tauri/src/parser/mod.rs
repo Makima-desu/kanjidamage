@@ -1,4 +1,4 @@
-mod models;
+pub mod models;
 use std::fs::{self, File};
 use std::io::{self, BufRead, Write};
 use std::path::Path;
@@ -8,8 +8,9 @@ use scraper::{Element, Node};
 
 
 
-use models::{CommandError, Component, Jukugo, KanjiDetail, KanjiListing, KunyomiEntry, Lookalike, SynonymEntry, Tag, UsedIn};
+use models::{CommandError, Component, Jukugo, KanjiDatabaseState, KanjiDetail, KanjiListing, KunyomiEntry, Lookalike, SynonymEntry, Tag, UsedIn};
 use scraper::{CaseSensitivity, ElementRef, Html, Selector};
+use tauri::State;
 
 #[tauri::command]
 pub async fn fetch_and_save_kanji_list() -> Result<Vec<KanjiListing>, String> {
@@ -43,6 +44,7 @@ pub async fn fetch_and_save_kanji_list() -> Result<Vec<KanjiListing>, String> {
     let td_selector = scraper::Selector::parse("td").unwrap();
     let kanji_char_selector = scraper::Selector::parse("span.kanji_character").unwrap();
     let img_selector = scraper::Selector::parse("img").unwrap();
+    let link_selector = scraper::Selector::parse("a").unwrap();
     
     let mut entries = Vec::new();
     
@@ -58,25 +60,33 @@ pub async fn fetch_and_save_kanji_list() -> Result<Vec<KanjiListing>, String> {
             
             let (kanji, link, has_image) = if let Some(kanji_span) = tds[2].select(&kanji_char_selector).next() {
                 let k = kanji_span.text().collect::<String>();
-                let l = tds[2].select(&scraper::Selector::parse("a").unwrap())
+                let l = tds[2].select(&link_selector)
                     .next()
-                    .map(|a| format!("https://www.kanjidamage.com{}", 
-                        a.value().attr("href").unwrap_or("")))
-                    .unwrap_or_else(|| format!("https://www.kanjidamage.com/kanji/{}", index));
+                    .and_then(|a| a.value().attr("href"))
+                    .map(|href| format!("https://www.kanjidamage.com{}", href))
+                    .unwrap_or_default();
                 (k, l, false)
             } else if let Some(img) = tds[2].select(&img_selector).next() {
                 let src = img.value().attr("src").unwrap_or_default();
-                let l = format!("https://www.kanjidamage.com/kanji/{}", index);
+                let l = tds[2].select(&link_selector)
+                    .next()
+                    .and_then(|a| a.value().attr("href"))
+                    .map(|href| format!("https://www.kanjidamage.com{}", href))
+                    .unwrap_or_default();
                 (format!("https://www.kanjidamage.com{}", src), l, true)
             } else {
                 let k = tds[2].text().collect::<String>().trim().to_string();
-                let l = format!("https://www.kanjidamage.com/kanji/{}", index);
+                let l = tds[2].select(&link_selector)
+                    .next()
+                    .and_then(|a| a.value().attr("href"))
+                    .map(|href| format!("https://www.kanjidamage.com{}", href))
+                    .unwrap_or_default();
                 (k, l, false)
             };
             
             let meaning = tds[3].text().next().unwrap_or("").trim().to_string();
             
-            if !meaning.is_empty() {
+            if !meaning.is_empty() && !link.is_empty() {
                 entries.push(KanjiListing {
                     index,
                     kanji,
@@ -186,7 +196,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         let file_content = fs::read_to_string(file_path)
             .map_err(|e| format!("Failed to read file: {}", e))?;
             
-        let mut kanji_map: serde_json::Map<String, serde_json::Value> = 
+        let kanji_map: serde_json::Map<String, serde_json::Value> = 
             serde_json::from_str(&file_content)
             .map_err(|e| format!("Failed to parse JSON: {}", e))?;
             
@@ -663,4 +673,21 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
             .map_err(|e| format!("Failed to write file: {}", e))?;
         
         Ok(kanji_detail)
+}
+
+#[tauri::command]
+pub async fn search_kanji(
+    state: State<'_, KanjiDatabaseState>,
+    index: Option<i32>,
+    kanji: Option<String>,
+    meaning: Option<String>
+) -> Result<Vec<KanjiListing>, String> {
+    let db = state.0.lock().map_err(|_| "Failed to lock database".to_string())?;
+    let results = db.search(
+        index,
+        kanji.as_deref(),
+        meaning.as_deref()
+    );
+    
+    Ok(results.into_iter().cloned().collect())
 }

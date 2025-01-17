@@ -1,4 +1,8 @@
 use serde::{Deserialize, Serialize};
+use std::{collections::HashSet, sync::Mutex};
+
+use super::get_kanji_list;
+
 
 #[derive(Debug, serde::Serialize)]
 pub struct CommandError {
@@ -13,7 +17,7 @@ impl From<std::io::Error> for CommandError {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, Hash)]
 pub struct KanjiListing {
     pub index: i32,
     pub kanji: String,
@@ -21,6 +25,58 @@ pub struct KanjiListing {
     pub is_radical: bool,
     pub link: String,
     pub has_image: bool,
+}
+
+impl KanjiListing {
+    // Search by exact index
+    pub fn search_by_index<'a>(kanjis: &'a [KanjiListing], target_index: i32) -> Option<&'a KanjiListing> {
+        kanjis.iter().find(|k| k.index == target_index)
+    }
+
+    pub fn search_by_kanji<'a>(kanjis: &'a [KanjiListing], target_kanji: &str) -> Option<&'a KanjiListing> {
+        kanjis.iter().find(|k| k.kanji == target_kanji)
+    }
+
+    pub fn search_by_meaning<'a>(kanjis: &'a [KanjiListing], target_meaning: &str) -> Vec<&'a KanjiListing> {
+        let search_term = target_meaning.to_lowercase();
+        kanjis
+            .iter()
+            .filter(|k| k.meaning.to_lowercase().contains(&search_term))
+            .collect()
+    }
+
+    // Combined search function that returns unique results matching any criteria
+    pub fn search<'a>(
+        kanjis: &'a [KanjiListing],
+        index: Option<i32>,
+        kanji: Option<&str>,
+        meaning: Option<&str>,
+    ) -> Vec<&'a KanjiListing> {
+        let mut results = HashSet::new();
+
+        // Search by index if provided
+        if let Some(idx) = index {
+            if let Some(result) = Self::search_by_index(kanjis, idx) {
+                results.insert(result);
+            }
+        }
+
+        // Search by kanji if provided
+        if let Some(k) = kanji {
+            if let Some(result) = Self::search_by_kanji(kanjis, k) {
+                results.insert(result);
+            }
+        }
+
+        // Search by meaning if provided
+        if let Some(m) = meaning {
+            for result in Self::search_by_meaning(kanjis, m) {
+                results.insert(result);
+            }
+        }
+
+        results.into_iter().collect()
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -97,4 +153,28 @@ pub struct Lookalike {
     pub hint: String,
     pub radical: String,
     pub radical_link: String,
+}
+
+pub struct KanjiDatabase {
+    pub kanjis: Vec<KanjiListing>,
+}
+
+impl KanjiDatabase {
+    // These methods now just delegate to the KanjiListing implementations
+    pub fn search(
+        &self,
+        index: Option<i32>,
+        kanji: Option<&str>,
+        meaning: Option<&str>
+    ) -> Vec<&KanjiListing> {
+        KanjiListing::search(&self.kanjis, index, kanji, meaning)
+    }
+}
+
+pub struct KanjiDatabaseState(pub Mutex<KanjiDatabase>);
+
+impl KanjiDatabaseState {
+    pub fn new(db: KanjiDatabase) -> Self {
+        Self(Mutex::new(db))
+    }
 }

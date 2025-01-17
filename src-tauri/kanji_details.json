@@ -1,4 +1,461 @@
 {
+  "1": {
+    "breakdown": "\n\n",
+    "description": "<div class=\"description\">\n<p><img src=\"/visualaids/1eazy.jpg\">\n</p></div>",
+    "index": 1,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1144-times-%E5%BA%A6",
+            "image_src": null,
+            "kanji": "度",
+            "meaning": "times"
+          }
+        ],
+        "english": "one more time!",
+        "japanese": "もう一度(もういちど)",
+        "reading": "もういちど",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/257-together-%E7%B7%92",
+            "image_src": null,
+            "kanji": "緒",
+            "meaning": "together"
+          }
+        ],
+        "english": "together",
+        "japanese": "一緒(いっしょ)",
+        "reading": "いっしょ",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/61-person-%E4%BA%BA",
+            "image_src": null,
+            "kanji": "人",
+            "meaning": "person"
+          }
+        ],
+        "english": "one person, alone",
+        "japanese": "一人(ひとり)",
+        "reading": "ひとり",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1430-motivation-al-%E7%9A%84",
+            "image_src": null,
+            "kanji": "的",
+            "meaning": "motivation / '-al'"
+          }
+        ],
+        "english": "ordinary",
+        "japanese": "一般的(いっぱんてき)",
+        "reading": "いっぱんてき",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/23-sun-day-%E6%97%A5",
+            "image_src": null,
+            "kanji": "日",
+            "meaning": "sun, day"
+          }
+        ],
+        "english": "first day of the month",
+        "japanese": "一日(ついたち)",
+        "reading": "ついたち",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/395-number-%E7%95%AA",
+            "image_src": null,
+            "kanji": "番",
+            "meaning": "number"
+          }
+        ],
+        "english": "number one!",
+        "japanese": "一番(いちばん)",
+        "reading": "いちばん",
+        "tags": [
+          {
+            "link": "/tags/15",
+            "name": "NEO"
+          }
+        ],
+        "usefulness": 4
+      }
+    ],
+    "kanji": "一",
+    "kunyomi": [
+      {
+        "meaning": "one thing",
+        "reading": "ひと*つ",
+        "tags": [],
+        "usefulness": 4
+      }
+    ],
+    "lookalikes": [],
+    "meaning": "one/line radical",
+    "mnemonic": null,
+    "next_link": "/kanji/2-two-%E4%BA%8C",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">ICHI, ITSU</span>\n</td>",
+        "<td>\n<p>\"<span class=\"onyomi\">Eazy</span>-e's debut album \"<span class=\"onyomi\">EAZY</span> duz it\" was so good, <span class=\"onyomi\">IT'S</span> going to go to number <span class=\"translation\">one</span> on the charts.\"</p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/2-two-%E4%BA%8C",
+    "synonyms": [
+      {
+        "english": "all the more, furthermore",
+        "japanese": "一層\n  \n尚更"
+      },
+      {
+        "english": "correspond to",
+        "japanese": "一致\n  \n該当\n  \n当たる\n  \n適応\n  \n意味する"
+      },
+      {
+        "english": "instantly",
+        "japanese": "瞬間\n  \n一瞬"
+      },
+      {
+        "english": "normal",
+        "japanese": "普通な\n  \n並みの\n  \n普段\n  \n一般的な\n  \n尋常\n  \n典型的"
+      },
+      {
+        "english": "on the other hand",
+        "japanese": "その反面、xxx\n  \nxxx一方\n  \n他方で yyy"
+      },
+      {
+        "english": "once again",
+        "japanese": "また\n未だ\n  \nもう一度\n  \nもう一回\n  \nもういっぺん"
+      },
+      {
+        "english": "one person",
+        "japanese": "一人\n  \n独り"
+      },
+      {
+        "english": "perhaps",
+        "japanese": "たしか～\nひょっとして～\n万が一～"
+      },
+      {
+        "english": "to do your best, to try your hardest",
+        "japanese": "一生懸命\n  \n努力\n  \n必死\n  \n奮闘"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      },
+      {
+        "link": "/tags/18",
+        "name": "PK"
+      },
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "子",
+        "link": "/kanji/5-child-%E5%AD%90"
+      },
+      {
+        "kanji": "言",
+        "link": "/kanji/11-say-%E8%A8%80"
+      },
+      {
+        "kanji": "上",
+        "link": "/kanji/123-above-%E4%B8%8A"
+      },
+      {
+        "kanji": "宅",
+        "link": "/kanji/127-residence-%E5%AE%85"
+      },
+      {
+        "kanji": "丸",
+        "link": "/kanji/183-round-%E4%B8%B8"
+      },
+      {
+        "kanji": "系",
+        "link": "/kanji/219-group-tribe-%E7%B3%BB"
+      },
+      {
+        "kanji": "千",
+        "link": "/kanji/229-thousand-%E5%8D%83"
+      },
+      {
+        "kanji": "正",
+        "link": "/kanji/280-correct-%E6%AD%A3"
+      },
+      {
+        "kanji": "丘",
+        "link": "/kanji/317-hill-%E4%B8%98"
+      },
+      {
+        "kanji": "本",
+        "link": "/kanji/338-book-the-real-%E6%9C%AC"
+      },
+      {
+        "kanji": "末",
+        "link": "/kanji/380-the-tip-%E6%9C%AB"
+      },
+      {
+        "kanji": "未",
+        "link": "/kanji/381-not-yet-%E6%9C%AA"
+      },
+      {
+        "kanji": "来",
+        "link": "/kanji/394-comefuture-%E6%9D%A5"
+      },
+      {
+        "kanji": "王",
+        "link": "/kanji/444-king-%E7%8E%8B"
+      },
+      {
+        "kanji": "中",
+        "link": "/kanji/489-middle-%E4%B8%AD"
+      },
+      {
+        "kanji": "虫",
+        "link": "/kanji/493-insizzect-%E8%99%AB"
+      },
+      {
+        "kanji": "戸",
+        "link": "/kanji/505-door-%E6%88%B8"
+      },
+      {
+        "kanji": "革",
+        "link": "/kanji/514-leatherrevolution-%E9%9D%A9"
+      },
+      {
+        "kanji": "元",
+        "link": "/kanji/571-original-%E5%85%83"
+      },
+      {
+        "kanji": "酒",
+        "link": "/kanji/578-liquor-%E9%85%92"
+      },
+      {
+        "kanji": "夫",
+        "link": "/kanji/588-husband-%E5%A4%AB"
+      },
+      {
+        "kanji": "及",
+        "link": "/kanji/625-reach-amount-to-%E5%8F%8A"
+      },
+      {
+        "kanji": "与",
+        "link": "/kanji/651-bestow-%E4%B8%8E"
+      },
+      {
+        "kanji": "衰",
+        "link": "/kanji/774-declinewane-%E8%A1%B0"
+      },
+      {
+        "kanji": "帯",
+        "link": "/kanji/825-belt-%E5%B8%AF"
+      },
+      {
+        "kanji": "天",
+        "link": "/kanji/880-heaven-%E5%A4%A9"
+      },
+      {
+        "kanji": "世",
+        "link": "/kanji/1029-society-%E4%B8%96"
+      },
+      {
+        "kanji": "午",
+        "link": "/kanji/1192-noon-%E5%8D%88"
+      },
+      {
+        "kanji": "色",
+        "link": "/kanji/1210-color-%E8%89%B2"
+      },
+      {
+        "kanji": "申",
+        "link": "/kanji/1367-humbly-say-god-radical-%E7%94%B3"
+      },
+      {
+        "kanji": "監",
+        "link": "/kanji/1439-oversee-%E7%9B%A3"
+      },
+      {
+        "kanji": "更",
+        "link": "/kanji/1591-all-over-again-%E6%9B%B4"
+      },
+      {
+        "kanji": "使",
+        "link": "/kanji/1593-use-%E4%BD%BF"
+      },
+      {
+        "kanji": "妻",
+        "link": "/kanji/1667-wife-%E5%A6%BB"
+      },
+      {
+        "kanji": "乏",
+        "link": "/kanji/1701-shoddy-%E4%B9%8F"
+      },
+      {
+        "kanji": "旧",
+        "link": "/kanji/28-former-%E6%97%A7"
+      },
+      {
+        "kanji": "旦",
+        "link": "/kanji/30-danna-husband-%E6%97%A6"
+      },
+      {
+        "kanji": "不",
+        "link": "/kanji/13-un-%E4%B8%8D"
+      },
+      {
+        "kanji": "万",
+        "link": "/kanji/85-10000-%E4%B8%87"
+      },
+      {
+        "kanji": "必",
+        "link": "/kanji/99-surely-%E5%BF%85"
+      },
+      {
+        "kanji": "死",
+        "link": "/kanji/120-death-%E6%AD%BB"
+      },
+      {
+        "kanji": "武",
+        "link": "/kanji/662-military-%E6%AD%A6"
+      },
+      {
+        "kanji": "臣",
+        "link": "/kanji/685-vassal-%E8%87%A3"
+      },
+      {
+        "kanji": "引",
+        "link": "/kanji/898-pull-%E5%BC%95"
+      },
+      {
+        "kanji": "出",
+        "link": "/kanji/1024-pull-out-hand-over-%E5%87%BA"
+      },
+      {
+        "kanji": "修",
+        "link": "/kanji/1118-master-a-skill-%E4%BF%AE"
+      },
+      {
+        "kanji": "七",
+        "link": "/kanji/20-seven-%E4%B8%83"
+      },
+      {
+        "kanji": "少",
+        "link": "/kanji/193-a-little-amount-%E5%B0%91"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/dizzy-cac8f7fcc19378e40705516e2202e521af656f4b13a5e5e4bf8a08d4533772ba.jpg",
+        "link": "/kanji/252-dizzy"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/bamboo-key-b40e78c53b3336f9cf18bbedf57e4c1e25f6613a5e66498380eadf244939d36f.jpg",
+        "link": "/kanji/324-key"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/wheat-5c10238911c756f95569a39bc86184e3f08246b959af46f84bbb342305bedff0.jpg",
+        "link": "/kanji/367-wheat"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/kanji-no-kan-5fc45c2561c2d627790a493a80daf8d66f82033826d03cfb07a7de961fa1c267.jpg",
+        "link": "/kanji/420-from-china-radical"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/nest-c615192568fa8f2d0d4674ab27de4c1d86bf78524f9d8828a42ce9a510971982.jpg",
+        "link": "/kanji/602-nest"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/spearthree-1237d0259e43c07b511af51d7d4cd37e1f5a3af5c742c089bfde9e8b42c12b95.jpg",
+        "link": "/kanji/665-spear"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/hitler-4b76f0c76d4d8ea085e1e6cda3b7d25841272f4fad56777afc29dd5daa0ced51.jpg",
+        "link": "/kanji/1763-hitler"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/risk-72bcf8103577ba53a33af648a808df633422429f9145158ee2668a15d9a10a8e.jpg",
+        "link": "/kanji/415-risk"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/crows-d312a1500ced69aed1e944e99b93f96ce7649d411356f44d741f04018b503329.jpg",
+        "link": "/kanji/1108-crows"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/order-rule-f81bf6e19f39cc1dd21afd3385f9141dcb7c41215f6eb8adc9ac36cc2058231a.jpg",
+        "link": "/kanji/1244-decapitated-cow"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/dragon-0ebdc05bfc5929a3cf8da0b22f3924ea3252fc6758ae9c7eee03495eb97c0c2f.jpg",
+        "link": "/kanji/1400-dragon-radical"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/wine-bottle-326a630e521ebaa33b144ad5eb73e00f177f587df5f3151d71dc99b119e705f0.jpg",
+        "link": "/kanji/1499-wine-bottle"
+      }
+    ],
+    "usefulness": 5
+  },
   "1-one-line-radical-%E4%B8%80": {
     "breakdown": "\n\n",
     "description": "<div class=\"description\">\n<p><img src=\"/visualaids/1eazy.jpg\">\n</p></div>",
@@ -456,6 +913,961 @@
     ],
     "usefulness": 5
   },
+  "10": {
+    "breakdown": "\n<a href=\"/kanji/9-mouth-small-box-radical-%E5%8F%A3\" class=\"component\">口</a>\n(mouth/small box radical)\n\n",
+    "description": null,
+    "index": 10,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1641-merchandise-%E5%95%86",
+            "image_src": null,
+            "kanji": "商",
+            "meaning": "merchandise"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81",
+            "image_src": null,
+            "kanji": "品",
+            "meaning": "products"
+          }
+        ],
+        "english": "items for sale, merchandise",
+        "japanese": "商品(しょうひん)",
+        "reading": "しょうひん",
+        "tags": [],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/325-make-%E4%BD%9C",
+            "image_src": null,
+            "kanji": "作",
+            "meaning": "make"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81",
+            "image_src": null,
+            "kanji": "品",
+            "meaning": "products"
+          }
+        ],
+        "english": "artworks.",
+        "japanese": "作品(さくひん)",
+        "reading": "さくひん",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/12-below-%E4%B8%8B",
+            "image_src": null,
+            "kanji": "下",
+            "meaning": "below"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81",
+            "image_src": null,
+            "kanji": "品",
+            "meaning": "products"
+          }
+        ],
+        "english": "crude",
+        "japanese": "下品(げひん)",
+        "reading": "げひん",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/345-new-%E6%96%B0",
+            "image_src": null,
+            "kanji": "新",
+            "meaning": "new"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81",
+            "image_src": null,
+            "kanji": "品",
+            "meaning": "products"
+          }
+        ],
+        "english": "new items",
+        "japanese": "新品(しんぴん)",
+        "reading": "しんぴん",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/123-above-%E4%B8%8A",
+            "image_src": null,
+            "kanji": "上",
+            "meaning": "above"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81",
+            "image_src": null,
+            "kanji": "品",
+            "meaning": "products"
+          }
+        ],
+        "english": "sophisticated",
+        "japanese": "上品(じょうひん)",
+        "reading": "じょうひん",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "品",
+    "kunyomi": [],
+    "lookalikes": [
+      {
+        "hint": "No 'BIG'",
+        "kanji": "品",
+        "kanji_link": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81",
+        "meaning": "products",
+        "radical": "",
+        "radical_link": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81"
+      },
+      {
+        "hint": "BIG",
+        "kanji": "器",
+        "kanji_link": "https://www.kanjidamage.com/kanji/403-instrument-%E5%99%A8",
+        "meaning": "instrument",
+        "radical": "大",
+        "radical_link": "https://www.kanjidamage.com/kanji/397-big-%E5%A4%A7"
+      }
+    ],
+    "meaning": "products",
+    "mnemonic": "<p>Please show <span class=\"onyomi\">HIM</span> the <span class=\"component\">boxes</span> of <span class=\"translation\">products</span>. (he's the customer)</p>",
+    "next_link": "/kanji/11-say-%E8%A8%80",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">HIN</span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+    "synonyms": [
+      {
+        "english": "classy or sophisticated",
+        "japanese": "上品\n  \n洗練された\n  \n優雅な"
+      },
+      {
+        "english": "magic",
+        "japanese": "魔法\n  \n魔術\n  \n手品\n  \n魔女\n  \n魔法使い"
+      },
+      {
+        "english": "personality",
+        "japanese": "性格\n  \n性質\n  \n品性"
+      },
+      {
+        "english": "prize",
+        "japanese": "賞品\n  \n褒美\n  \nxxx賞"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/2",
+        "name": "BETA"
+      },
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      },
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "繰",
+        "link": "/kanji/363-spin-%E7%B9%B0"
+      },
+      {
+        "kanji": "操",
+        "link": "/kanji/364-manipulate-chastity-%E6%93%8D"
+      },
+      {
+        "kanji": "器",
+        "link": "/kanji/403-instrument-%E5%99%A8"
+      },
+      {
+        "kanji": "臨",
+        "link": "/kanji/690-to-confront-%E8%87%A8"
+      }
+    ],
+    "usefulness": 3
+  },
+  "12": {
+    "breakdown": "\n\n",
+    "description": null,
+    "index": 12,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1600-area-%E5%9C%B0",
+            "image_src": null,
+            "kanji": "地",
+            "meaning": "area"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/12-below-%E4%B8%8B",
+            "image_src": null,
+            "kanji": "下",
+            "meaning": "below"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1052-iron-%E9%89%84",
+            "image_src": null,
+            "kanji": "鉄",
+            "meaning": "iron"
+          }
+        ],
+        "english": "subway",
+        "japanese": "地下鉄(ちかてつ)",
+        "reading": "ちかてつ",
+        "tags": [],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/12-below-%E4%B8%8B",
+            "image_src": null,
+            "kanji": "下",
+            "meaning": "below"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/293-hand-%E6%89%8B",
+            "image_src": null,
+            "kanji": "手",
+            "meaning": "hand"
+          }
+        ],
+        "english": "untalented / poor",
+        "japanese": "下手(へた)",
+        "reading": "へた",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/12-below-%E4%B8%8B",
+            "image_src": null,
+            "kanji": "下",
+            "meaning": "below"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1350-diarrhea-%E7%97%A2",
+            "image_src": null,
+            "kanji": "痢",
+            "meaning": "diarrhea"
+          }
+        ],
+        "english": "diarrhea",
+        "japanese": "下痢(げり)",
+        "reading": "げり",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "下",
+    "kunyomi": [
+      {
+        "meaning": "please (formal spelling only)",
+        "reading": "くだ＊ さい",
+        "tags": [
+          "NP",
+          "KANA"
+        ],
+        "usefulness": 3
+      },
+      {
+        "meaning": "below",
+        "reading": "した",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "meaning": "I lower it",
+        "reading": "さ＊げる",
+        "tags": [
+          "1/2 KANA"
+        ],
+        "usefulness": 3
+      },
+      {
+        "meaning": "it gets lowered",
+        "reading": "くだ＊る",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "lookalikes": [],
+    "meaning": "below",
+    "mnemonic": "<p>The <span class=\"onyomi\">GAY</span> fella was <span class=\"translation\">below</span> your <span class=\"onyomi\">CAR</span>, cutting your brakes (FYI - you're <a href=\"http://www.positiveatheism.org/writ/drlaura.htm\">Dr. Laura)</a>.</p>",
+    "next_link": "/kanji/13-un-%E4%B8%8D",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">GE, KA</span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/11-say-%E8%A8%80",
+    "synonyms": [
+      {
+        "english": "deny, reject",
+        "japanese": "断る\n  \n否定\n  \n拒否\n  \n拒む\n  \nボツにする\n却下"
+      },
+      {
+        "english": "lower",
+        "japanese": "下げる\n  \n提げる"
+      },
+      {
+        "english": "put down",
+        "japanese": "下がる\n  \n下ろす"
+      },
+      {
+        "english": "small corporations",
+        "japanese": "傘下\n  \n子会社"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/18",
+        "name": "PK"
+      },
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "不",
+        "link": "/kanji/13-un-%E4%B8%8D"
+      }
+    ],
+    "usefulness": 5
+  },
+  "1406": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/209-string-%E7%B3%B8\">糸</a>\n(string)\n + <a class=\"component\" href=\"/kanji/1405-turtle-%E4%BA%80\">亀</a>\n(turtle)\n\n",
+    "description": null,
+    "index": 1408,
+    "jukugo": [
+      {
+        "components": [],
+        "english": "Okinawa",
+        "japanese": "沖縄(おきなわ)",
+        "reading": "おきなわ",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1406-rope-%E7%B8%84",
+            "image_src": null,
+            "kanji": "縄",
+            "meaning": "rope"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1654-leap-up-%E8%B7%B3",
+            "image_src": null,
+            "kanji": "跳",
+            "meaning": "leap up"
+          }
+        ],
+        "english": "jump rope",
+        "japanese": "縄跳び(なわとび)",
+        "reading": "なわとび",
+        "tags": [],
+        "usefulness": 1
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1406-rope-%E7%B8%84",
+            "image_src": null,
+            "kanji": "縄",
+            "meaning": "rope"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/906-stretch-%E5%BC%B5",
+            "image_src": null,
+            "kanji": "張",
+            "meaning": "stretch"
+          }
+        ],
+        "english": "turf",
+        "japanese": "縄張り(なわばり)",
+        "reading": "なわばり",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "縄",
+    "kunyomi": [
+      {
+        "meaning": "rope",
+        "reading": "なわ",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "lookalikes": [],
+    "meaning": "rope",
+    "mnemonic": "<p>You can't tie a big ole' <span class=\"component\">turtle</span> with <span class=\"component\">string</span> - you have to use a <span class=\"translation\">rope</span>.</p>",
+    "next_link": "/kanji/1407-comb",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\"></span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/1405-turtle-%E4%BA%80",
+    "synonyms": [
+      {
+        "english": "rope",
+        "japanese": "縄\n  \n糸\n  \n綱\n  \n命の綱"
+      }
+    ],
+    "tags": [],
+    "used_in": [],
+    "usefulness": 1
+  },
+  "1408": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/1383-rain-%E9%9B%A8\">雨</a>\n(rain)\n + <a href=\"/kanji/1407-comb\" class=\"component\"><img src=\"/assets/radsmall/comb-b107dddd2850504d1859dfd8b218207be718be224b6de0508c727a8517394f77.jpg\"></a>\n(comb)\n\n",
+    "description": null,
+    "index": 1410,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1408-demand-%E9%9C%80",
+            "image_src": null,
+            "kanji": "需",
+            "meaning": "demand"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/581-important-%E8%A6%81",
+            "image_src": null,
+            "kanji": "要",
+            "meaning": "important"
+          }
+        ],
+        "english": "demand",
+        "japanese": "需要(じゅよう)",
+        "reading": "じゅよう",
+        "tags": [
+          {
+            "link": "/tags/16",
+            "name": "NP"
+          }
+        ],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/99-surely-%E5%BF%85",
+            "image_src": null,
+            "kanji": "必",
+            "meaning": "surely"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1408-demand-%E9%9C%80",
+            "image_src": null,
+            "kanji": "需",
+            "meaning": "demand"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/10-products-%E5%93%81",
+            "image_src": null,
+            "kanji": "品",
+            "meaning": "products"
+          }
+        ],
+        "english": "necessities\n☆☆☆☆☆\n\n\n必 (surely) + 需 (demand) + 品 (products)\n = 必需品 (necessities)",
+        "japanese": "必需品(ひつじゅひん)",
+        "reading": "ひつじゅひん",
+        "tags": [],
+        "usefulness": 0
+      }
+    ],
+    "kanji": "需",
+    "kunyomi": [],
+    "lookalikes": [],
+    "meaning": "demand",
+    "mnemonic": "<p>My hair got wet in the <span class=\"component\">rain</span> and I <span class=\"translation\">demand</span> to receive a <span class=\"component\">comb</span>.</p>",
+    "next_link": "/kanji/1409-withstand-%E8%80%90",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">JU</span>\n</td>",
+        "<td>\n<p>I <span class=\"translation\">demand</span> your <span class=\"onyomi\">Juicy Underwear</span>!</p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/1407-comb",
+    "synonyms": [
+      {
+        "english": "demand",
+        "japanese": "求める\n  \n要求\n  \n需要\n  \n請求\n  \n欲求"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/2",
+        "name": "BETA"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 2
+  },
+  "1553-flood-%E6%B4%AA": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/33-water-%E6%B0%B4\"><img src=\"/assets/radsmall/water-4770d222295684a6fc1b8e8cec486da119e1bcc2eac91d06622b4671e0098359.jpg\"></a>\n(waterleft)\n + <a class=\"component\" href=\"/kanji/1548-with-%E5%85%B1\">共</a>\n(with)\n\n",
+    "description": null,
+    "index": 1558,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1553-flood-%E6%B4%AA",
+            "image_src": null,
+            "kanji": "洪",
+            "meaning": "flood"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/33-water-%E6%B0%B4",
+            "image_src": null,
+            "kanji": "水",
+            "meaning": "water"
+          }
+        ],
+        "english": "flood",
+        "japanese": "洪水(こうずい)",
+        "reading": "こうずい",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "洪",
+    "kunyomi": [],
+    "lookalikes": [],
+    "meaning": "flood",
+    "mnemonic": "<p><span class=\"component\">Water</span> goes <span class=\"component\">with</span> a <span class=\"translation\">flood</span>. It is common sense!! You don't have a <span class=\"translation\">flood</span> of Bailey's!! (although, what if?!?)</p>",
+    "next_link": "/kanji/1554-tha-treetz-%E5%B7%B7",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">KOU</span>\n</td>",
+        "<td>\n<p>Poo <span class=\"translation\">flooded</span> out of my <span class=\"onyomi\">COLON</span></p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/1552-choose-%E9%81%B8",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/21",
+        "name": "SIDEKICK"
+      },
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 1
+  },
+  "1554": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/719-myself-%E5%B7%B1\">己</a>\n(myself)\n + <a class=\"component\" href=\"/kanji/1548-with-%E5%85%B1\">共</a>\n(with)\n\n",
+    "description": null,
+    "index": 1559,
+    "jukugo": [],
+    "kanji": "巷",
+    "kunyomi": [
+      {
+        "meaning": "literally, it means a street. But it's usually used figuratively: word on the street is. . . . the streets are talking . . . his name rings out on the streets.",
+        "reading": "ちまた",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "lookalikes": [],
+    "meaning": "Tha $treetz",
+    "mnemonic": "<p>..I'm on <span class=\"translation\">Tha $treetz</span> <span class=\"component\">with</span> <span class=\"component\">myself</span> - nobody's got your back on <span class=\"translation\">tha $treetz</span>.</p>",
+    "next_link": "/kanji/1555-harbor-%E6%B8%AF",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\"></span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/1553-flood-%E6%B4%AA",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/23",
+        "name": "SOLO"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "港",
+        "link": "/kanji/1555-harbor-%E6%B8%AF"
+      }
+    ],
+    "usefulness": 1
+  },
+  "1554-tha-treetz-%E5%B7%B7": {
+    "breakdown": "\n<a href=\"/kanji/719-myself-%E5%B7%B1\" class=\"component\">己</a>\n(myself)\n + <a class=\"component\" href=\"/kanji/1548-with-%E5%85%B1\">共</a>\n(with)\n\n",
+    "description": null,
+    "index": 1559,
+    "jukugo": [],
+    "kanji": "巷",
+    "kunyomi": [
+      {
+        "meaning": "literally, it means a street. But it's usually used figuratively: word on the street is. . . . the streets are talking . . . his name rings out on the streets.",
+        "reading": "ちまた",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "lookalikes": [],
+    "meaning": "Tha $treetz",
+    "mnemonic": "<p>..I'm on <span class=\"translation\">Tha $treetz</span> <span class=\"component\">with</span> <span class=\"component\">myself</span> - nobody's got your back on <span class=\"translation\">tha $treetz</span>.</p>",
+    "next_link": "/kanji/1555-harbor-%E6%B8%AF",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\"></span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/1553-flood-%E6%B4%AA",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/23",
+        "name": "SOLO"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "港",
+        "link": "/kanji/1555-harbor-%E6%B8%AF"
+      }
+    ],
+    "usefulness": 1
+  },
+  "1555-harbor-%E6%B8%AF": {
+    "breakdown": "\n<a href=\"/kanji/33-water-%E6%B0%B4\" class=\"component\"><img src=\"/assets/radsmall/water-4770d222295684a6fc1b8e8cec486da119e1bcc2eac91d06622b4671e0098359.jpg\"></a>\n(waterleft)\n + <a href=\"/kanji/1554-tha-treetz-%E5%B7%B7\" class=\"component\">巷</a>\n(Tha $treetz)\n\n",
+    "description": null,
+    "index": 1560,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/646-air-%E7%A9%BA",
+            "image_src": null,
+            "kanji": "空",
+            "meaning": "air"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1555-harbor-%E6%B8%AF",
+            "image_src": null,
+            "kanji": "港",
+            "meaning": "harbor"
+          }
+        ],
+        "english": "airport",
+        "japanese": "空港(くうこう)",
+        "reading": "くうこう",
+        "tags": [],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/377-good-smell-%E9%A6%99",
+            "image_src": null,
+            "kanji": "香",
+            "meaning": "good smell"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1555-harbor-%E6%B8%AF",
+            "image_src": null,
+            "kanji": "港",
+            "meaning": "harbor"
+          }
+        ],
+        "english": "Hong Kong",
+        "japanese": "香港(ほんこん)",
+        "reading": "ほんこん",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "港",
+    "kunyomi": [
+      {
+        "meaning": "harbor",
+        "reading": "みなと",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "lookalikes": [
+      {
+        "hint": "POWER",
+        "kanji": "券",
+        "kanji_link": "https://www.kanjidamage.com/kanji/890-certificate-cupon-%E5%88%B8",
+        "meaning": "certificate, cupon",
+        "radical": "力",
+        "radical_link": "https://www.kanjidamage.com/kanji/175-strong-%E5%8A%9B"
+      },
+      {
+        "hint": "WET",
+        "kanji": "港",
+        "kanji_link": "https://www.kanjidamage.com/kanji/1555-harbor-%E6%B8%AF",
+        "meaning": "harbor",
+        "radical": "水",
+        "radical_link": "https://www.kanjidamage.com/kanji/33-water-%E6%B0%B4"
+      },
+      {
+        "hint": "NO WATER",
+        "kanji": "巻",
+        "kanji_link": "https://www.kanjidamage.com/kanji/888-roll-up-%E5%B7%BB",
+        "meaning": "roll up",
+        "radical": "",
+        "radical_link": "https://www.kanjidamage.com/kanji/1555-harbor-%E6%B8%AF"
+      }
+    ],
+    "meaning": "harbor",
+    "mnemonic": "<p>The <span class=\"translation\">harbor</span> is basically a big $treet full of <span class=\"component\">water</span>, where all the boats drive, I mean float.\n</p>",
+    "next_link": "/kanji/1556-to-differ-%E7%95%B0",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">KOU</span>\n</td>",
+        "<td>\n<p>They confiscated like 300 kilos of <span class=\"onyomi\">COCAINE</span> on a ship at the <span class=\"translation\">harbor</span>.</p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/1554-tha-treetz-%E5%B7%B7",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 2
+  },
+  "2": {
+    "breakdown": "\n\n",
+    "description": null,
+    "index": 2,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/61-person-%E4%BA%BA",
+            "image_src": null,
+            "kanji": "人",
+            "meaning": "person"
+          }
+        ],
+        "english": "two people",
+        "japanese": "二人(ふたり)",
+        "reading": "ふたり",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/41-moon-organ-%E6%9C%88",
+            "image_src": null,
+            "kanji": "月",
+            "meaning": "moon"
+          }
+        ],
+        "english": "February",
+        "japanese": "二月(にがつ)",
+        "reading": "にがつ",
+        "tags": [
+          {
+            "link": "/tags/12",
+            "name": "KANA"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/23-sun-day-%E6%97%A5",
+            "image_src": null,
+            "kanji": "日",
+            "meaning": "sun, day"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/579-drunk-%E9%85%94",
+            "image_src": null,
+            "kanji": "酔",
+            "meaning": "drunk"
+          }
+        ],
+        "english": "hangover",
+        "japanese": "二日酔い(ふつかよい)",
+        "reading": "ふつかよい",
+        "tags": [
+          {
+            "link": "/tags/20",
+            "name": "SARC"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/23-sun-day-%E6%97%A5",
+            "image_src": null,
+            "kanji": "日",
+            "meaning": "sun, day"
+          }
+        ],
+        "english": "second day of the month",
+        "japanese": "二日(ふつか)",
+        "reading": "ふつか",
+        "tags": [],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1059-heavy-overlap-%E9%87%8D",
+            "image_src": null,
+            "kanji": "重",
+            "meaning": "heavy / overlap"
+          }
+        ],
+        "english": "double-xxx",
+        "japanese": "二重(にじゅう)",
+        "reading": "にじゅう",
+        "tags": [
+          {
+            "link": "/tags/35",
+            "name": "PRE"
+          }
+        ],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "二",
+    "kunyomi": [
+      {
+        "meaning": "two things",
+        "reading": "ふた*つ",
+        "tags": [],
+        "usefulness": 4
+      }
+    ],
+    "lookalikes": [],
+    "meaning": "two",
+    "mnemonic": null,
+    "next_link": "/kanji/3-three-%E4%B8%89",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">NI</span>\n</td>",
+        "<td>\n<p>as in, \"Vince <span class=\"onyomi\">NEIL</span> has <span class=\"translation\">two</span> chins.\"</p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/1-one-line-radical-%E4%B8%80",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "示",
+        "link": "/kanji/200-show-altar-radical-%E7%A4%BA"
+      },
+      {
+        "kanji": "重",
+        "link": "/kanji/1059-heavy-overlap-%E9%87%8D"
+      },
+      {
+        "kanji": "霊",
+        "link": "/kanji/1395-ghost-%E9%9C%8A"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/payback-66dfafac87810e3d8a87ed5e8294a1752a622ff197275a59230b5b472ab11438.jpg",
+        "link": "/kanji/1171-payback"
+      },
+      {
+        "kanji": "云",
+        "link": "/kanji/1265-twin-decapited-cows-%E4%BA%91"
+      }
+    ],
+    "usefulness": 5
+  },
   "2-two-%E4%BA%8C": {
     "breakdown": "\n\n",
     "description": null,
@@ -644,6 +2056,56 @@
     ],
     "usefulness": 5
   },
+  "203-supervisor-%E7%9D%A3": {
+    "breakdown": "\n<a href=\"/kanji/123-above-%E4%B8%8A\" class=\"component\">上</a>\n(above)\n + <a href=\"/kanji/192-small-size-%E5%B0%8F\" class=\"component\">小</a>\n(small size)\n + <a href=\"/kanji/89-again-crotch-radical-%E5%8F%88\" class=\"component\">又</a>\n(again/crotch radical)\n + <a href=\"/kanji/76-eye-%E7%9B%AE\" class=\"component\">目</a>\n(eye)\n\n",
+    "description": null,
+    "index": 199,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1439-oversee-%E7%9B%A3",
+            "image_src": null,
+            "kanji": "監",
+            "meaning": "oversee"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/203-supervisor-%E7%9D%A3",
+            "image_src": null,
+            "kanji": "督",
+            "meaning": "supervisor"
+          }
+        ],
+        "english": "director",
+        "japanese": "監督(かんとく)",
+        "reading": "かんとく",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "督",
+    "kunyomi": [],
+    "lookalikes": [],
+    "meaning": "supervisor",
+    "mnemonic": "<p>The <span class=\"translation\">supervisor</span>'s <span class=\"component\">eye</span> looks <span class=\"component\">up</span> at the <span class=\"component\">small</span> <span class=\"component\">crotch</span> of the attractive temp worker. Asshole!</p>",
+    "next_link": "/kanji/204-eazy",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">TOKU</span>\n</td>",
+        "<td>\n<p>They <span class=\"translation\">supervise</span> you at school to make sure you don't <span class=\"onyomi\">TOKE</span> between classes.</p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/202-lonely-%E5%AF%82",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/21",
+        "name": "SIDEKICK"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 1
+  },
   "3-three-%E4%B8%89": {
     "breakdown": "\n\n",
     "description": null,
@@ -764,6 +2226,151 @@
       }
     ],
     "usefulness": 5
+  },
+  "4": {
+    "breakdown": "\n\n",
+    "description": null,
+    "index": 4,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/572-complete-%E5%AE%8C",
+            "image_src": null,
+            "kanji": "完",
+            "meaning": "complete"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+            "image_src": null,
+            "kanji": "了",
+            "meaning": "total"
+          }
+        ],
+        "english": "finish",
+        "japanese": "完了(かんりょう)",
+        "reading": "かんりょう",
+        "tags": [
+          {
+            "link": "/tags/16",
+            "name": "NP"
+          }
+        ],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+            "image_src": null,
+            "kanji": "了",
+            "meaning": "total"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1199-solve-untie-%E8%A7%A3",
+            "image_src": null,
+            "kanji": "解",
+            "meaning": "solve / untie"
+          }
+        ],
+        "english": "OK, got it.",
+        "japanese": "了解(りょうかい)",
+        "reading": "りょうかい",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/955-end-%E7%B5%82",
+            "image_src": null,
+            "kanji": "終",
+            "meaning": "end"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+            "image_src": null,
+            "kanji": "了",
+            "meaning": "total"
+          }
+        ],
+        "english": "expire\n☆☆☆☆☆\nNP\n\n終 (end) + 了 (total)\n = 終了 (expire)",
+        "japanese": "終了(しゅうりょう)",
+        "reading": "しゅうりょう",
+        "tags": [
+          {
+            "link": "/tags/16",
+            "name": "NP"
+          }
+        ],
+        "usefulness": 0
+      }
+    ],
+    "kanji": "了",
+    "kunyomi": [],
+    "lookalikes": [
+      {
+        "hint": "the 'one' radical ",
+        "kanji": "子",
+        "kanji_link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+        "meaning": "child",
+        "radical": "一",
+        "radical_link": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80"
+      },
+      {
+        "hint": "NO  'one' radical",
+        "kanji": "了",
+        "kanji_link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+        "meaning": "total",
+        "radical": "",
+        "radical_link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86"
+      },
+      {
+        "hint": "katakana MA ",
+        "kanji": "予",
+        "kanji_link": "https://www.kanjidamage.com/kanji/1329-beforehand-%E4%BA%88",
+        "meaning": "beforehand",
+        "radical": "マ",
+        "radical_link": "https://www.kanjidamage.com/kanji/1327-mama-%E3%83%9E"
+      }
+    ],
+    "meaning": "total",
+    "mnemonic": "<p>To me it just looks like a broken coat hanger, which is totally useless.</p>",
+    "next_link": "/kanji/5-child-%E5%AD%90",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">RYOU</span>\n</td>",
+        "<td>\n<p>as in, \"We don't have the <span class=\"translation\">total</span> number of parts, so we need to <span class=\"onyomi\">REORDER</span> more.\"</p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/3-three-%E4%B8%89",
+    "synonyms": [
+      {
+        "english": "finish",
+        "japanese": "済ませる\n  \n完成\n  \n完了\n  \n終了　\n  \n結末\n  \n終わり\n  \n完全"
+      },
+      {
+        "english": "ok, fine",
+        "japanese": "了解\n  \n順調\n  \n平気"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/2",
+        "name": "BETA"
+      },
+      {
+        "link": "/tags/18",
+        "name": "PK"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "子",
+        "link": "/kanji/5-child-%E5%AD%90"
+      }
+    ],
+    "usefulness": 4
   },
   "4-total-%E4%BA%86": {
     "breakdown": "\n\n",
@@ -909,6 +2516,291 @@
       }
     ],
     "usefulness": 4
+  },
+  "5": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/1-one-line-radical-%E4%B8%80\">一</a>\n(one/line radical)\n + <a class=\"component\" href=\"/kanji/4-total-%E4%BA%86\">了</a>\n(total)\n\n",
+    "description": "<div class=\"description\">\nFrom now on, when you see a kanji with the onyomi of \"KO\", please use 子供 (KOdomo) for the English keyword.\n</div>",
+    "index": 5,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+            "image_src": null,
+            "kanji": "子",
+            "meaning": "child"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1551-follower-%E4%BE%9B",
+            "image_src": null,
+            "kanji": "供",
+            "meaning": "follower"
+          }
+        ],
+        "english": "child",
+        "japanese": "子供(こども)",
+        "reading": "こども",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/525-parentskindness-%E8%A6%AA",
+            "image_src": null,
+            "kanji": "親",
+            "meaning": "parents/kindness"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+            "image_src": null,
+            "kanji": "子",
+            "meaning": "child"
+          }
+        ],
+        "english": "meat and eggs",
+        "japanese": "親子(おやこ)",
+        "reading": "おやこ",
+        "tags": [
+          {
+            "link": "/tags/20",
+            "name": "SARC"
+          },
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1636-check-out-%E8%AA%BF",
+            "image_src": null,
+            "kanji": "調",
+            "meaning": "check out"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+            "image_src": null,
+            "kanji": "子",
+            "meaning": "child"
+          }
+        ],
+        "english": "condition",
+        "japanese": "調子(ちょうし)",
+        "reading": "ちょうし",
+        "tags": [],
+        "usefulness": 4
+      },
+      {
+        "components": [],
+        "english": "chair",
+        "japanese": "椅子(いす)",
+        "reading": "いす",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          },
+          {
+            "link": "/tags/31",
+            "name": "1/2 KANA"
+          }
+        ],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1058-car-%E8%BB%8A",
+            "image_src": null,
+            "kanji": "車",
+            "meaning": "car"
+          }
+        ],
+        "english": "wheelchair",
+        "japanese": "車椅子(くるまいす)",
+        "reading": "くるまいす",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          },
+          {
+            "link": "/tags/15",
+            "name": "NEO"
+          }
+        ],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "子",
+    "kunyomi": [
+      {
+        "meaning": "child",
+        "reading": "こ",
+        "tags": [],
+        "usefulness": 5
+      }
+    ],
+    "lookalikes": [
+      {
+        "hint": "the 'one' radical ",
+        "kanji": "子",
+        "kanji_link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+        "meaning": "child",
+        "radical": "一",
+        "radical_link": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80"
+      },
+      {
+        "hint": "NO  'one' radical",
+        "kanji": "了",
+        "kanji_link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+        "meaning": "total",
+        "radical": "",
+        "radical_link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90"
+      },
+      {
+        "hint": "katakana MA ",
+        "kanji": "予",
+        "kanji_link": "https://www.kanjidamage.com/kanji/1329-beforehand-%E4%BA%88",
+        "meaning": "beforehand",
+        "radical": "マ",
+        "radical_link": "https://www.kanjidamage.com/kanji/1327-mama-%E3%83%9E"
+      }
+    ],
+    "meaning": "child",
+    "mnemonic": "<p>That poor <span class=\"translation\">child</span>  ーSHE has lived a <span class=\"component\">total</span> of <span class=\"component\">one</span> year!</p>",
+    "next_link": "/kanji/6-woman-%E5%A5%B3",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">SHI</span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/4-total-%E4%BA%86",
+    "synonyms": [
+      {
+        "english": "condition or context",
+        "japanese": "状況\n  \n事態\n  \n事情\n  \n状態\n  \n様子\n  \n調子\n  \n具合"
+      },
+      {
+        "english": "egg",
+        "japanese": "玉子\n  \n卵"
+      },
+      {
+        "english": "family",
+        "japanese": "家族\n  \n家庭\n  \n親戚\n  \n妻子"
+      },
+      {
+        "english": "girl, woman, female",
+        "japanese": "女性\n  \n女の人\n  \n嬢\n  \n乙女\n  \n女の子\n  \n女子"
+      },
+      {
+        "english": "go too far, jump the gun, press your luck",
+        "japanese": "先走り\n  \n席を越す\n  \n調子に乗る\n  \nあんまり"
+      },
+      {
+        "english": "kid",
+        "japanese": "子供\n  \n童\n  \n児童\n  \n児\n  \n小児科"
+      },
+      {
+        "english": "plurals",
+        "japanese": "~等\n  \nあいつ等\n  \n彼等\n  \n奴等\n  \n達\n  \n仲間達\n  \n人達\n  \n子供達"
+      },
+      {
+        "english": "small corporations",
+        "japanese": "傘下\n  \n子会社"
+      },
+      {
+        "english": "student",
+        "japanese": "弟子\n  \n学生\n  \n生徒\n  \n教徒"
+      },
+      {
+        "english": "tone of voice",
+        "japanese": "調子\n  \n口調\n  \n喋り方"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "好",
+        "link": "/kanji/7-like-%E5%A5%BD"
+      },
+      {
+        "kanji": "孫",
+        "link": "/kanji/220-grandchild-%E5%AD%AB"
+      },
+      {
+        "kanji": "承",
+        "link": "/kanji/1723-to-be-told-consent-%E6%89%BF"
+      },
+      {
+        "kanji": "字",
+        "link": "/kanji/129-letter-%E5%AD%97"
+      },
+      {
+        "kanji": "熟",
+        "link": "/kanji/184-get-good-at-%E7%86%9F"
+      },
+      {
+        "kanji": "塾",
+        "link": "/kanji/244-cram-school-%E5%A1%BE"
+      },
+      {
+        "kanji": "孝",
+        "link": "/kanji/254-filial-piety-%E5%AD%9D"
+      },
+      {
+        "kanji": "季",
+        "link": "/kanji/375-season-%E5%AD%A3"
+      },
+      {
+        "kanji": "遊",
+        "link": "/kanji/1753-play-around-%E9%81%8A"
+      },
+      {
+        "kanji": "浮",
+        "link": "/kanji/603-float-%E6%B5%AE"
+      },
+      {
+        "kanji": "厚",
+        "link": "/kanji/732-thick-%E5%8E%9A"
+      },
+      {
+        "kanji": "存",
+        "link": "/kanji/1104-be-aware-of-%E5%AD%98"
+      },
+      {
+        "kanji": "猛",
+        "link": "/kanji/1454-fierce-%E7%8C%9B"
+      },
+      {
+        "kanji": "乳",
+        "link": "/kanji/1507-milk-%E4%B9%B3"
+      },
+      {
+        "kanji": "学",
+        "link": "/kanji/1624-knowledge-%E5%AD%A6"
+      },
+      {
+        "kanji": "孤",
+        "link": "/kanji/1738-isolation-%E5%AD%A4"
+      }
+    ],
+    "usefulness": 5
   },
   "5-child-%E5%AD%90": {
     "breakdown": "\n<a href=\"/kanji/1-one-line-radical-%E4%B8%80\" class=\"component\">一</a>\n(one/line radical)\n + <a class=\"component\" href=\"/kanji/4-total-%E4%BA%86\">了</a>\n(total)\n\n",
@@ -1997,5 +3889,441 @@
     "tags": [],
     "used_in": [],
     "usefulness": 5
+  },
+  "798-guy-so-macho-he-has-two-dicks": {
+    "breakdown": "\n(left radical)\n\n",
+    "description": null,
+    "index": 814,
+    "jukugo": [],
+    "kanji": "/assets/radsmall/twodicks-af32ffb3e4cd232d3c0faee7316c346055f2fa52ba5fbcd9e897fb29b93f3217.jpg",
+    "kunyomi": [],
+    "lookalikes": [],
+    "meaning": "guy so macho he has two dicks",
+    "mnemonic": null,
+    "next_link": "/kanji/799-epic-%E5%A3%AE",
+    "onyomi": [],
+    "prev_link": "/kanji/797-double-%E5%80%8D",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/18",
+        "name": "PK"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "壮",
+        "link": "/kanji/799-epic-%E5%A3%AE"
+      },
+      {
+        "kanji": "寝",
+        "link": "/kanji/802-go-to-bed-%E5%AF%9D"
+      },
+      {
+        "kanji": "状",
+        "link": "/kanji/801-circumstance-%E7%8A%B6"
+      },
+      {
+        "kanji": "北",
+        "link": "/kanji/803-north-%E5%8C%97"
+      }
+    ],
+    "usefulness": 0
+  },
+  "812-terrorist": {
+    "breakdown": "\n(top radical)\n\n",
+    "description": "<div class=\"description\">\nThis is basically the katakana TE (テ) , and what word starts with \"TE\"? TErrorist, that's what. \n</div>",
+    "index": 829,
+    "jukugo": [],
+    "kanji": "/assets/radsmall/terrorist-174419015a14b75cb4cd2d68bb6edec48b7df3b2d312e41741e9e86467b8fc34.jpg",
+    "kunyomi": [],
+    "lookalikes": [],
+    "meaning": "terrorist",
+    "mnemonic": null,
+    "next_link": "/kanji/813-front-surface-face-%E9%9D%A2",
+    "onyomi": [],
+    "prev_link": "/kanji/811-wash-%E6%B4%97",
+    "synonyms": [],
+    "tags": [],
+    "used_in": [
+      {
+        "kanji": "百",
+        "link": "/kanji/814-hundred-%E7%99%BE"
+      },
+      {
+        "kanji": "石",
+        "link": "/kanji/819-rock-%E7%9F%B3"
+      },
+      {
+        "kanji": "頭",
+        "link": "/kanji/841-head-%E9%A0%AD"
+      },
+      {
+        "kanji": "面",
+        "link": "/kanji/813-front-surface-face-%E9%9D%A2"
+      }
+    ],
+    "usefulness": 0
+  },
+  "813-front-surface-face-%E9%9D%A2": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/812-terrorist\"><img src=\"/assets/radsmall/terrorist-174419015a14b75cb4cd2d68bb6edec48b7df3b2d312e41741e9e86467b8fc34.jpg\"></a>\n(terrorist)\n + <a href=\"/kanji/431-big-box\" class=\"component\"><img src=\"/assets/radsmall/box-16826d5946d15d36e7dd5e7c225739103c6bc96ac7ea022e07b3ddbe7a4e32fb.jpg\"></a>\n(big box)\n + <a href=\"/kanji/1767\" class=\"component\">???</a>\n(???)\n\n",
+    "description": null,
+    "index": 830,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/813-front-surface-face-%E9%9D%A2",
+            "image_src": null,
+            "kanji": "面",
+            "meaning": "front surface / face"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/31-white-%E7%99%BD",
+            "image_src": null,
+            "kanji": "白",
+            "meaning": "white"
+          }
+        ],
+        "english": "interesting",
+        "japanese": "面白*い(おもしろい)",
+        "reading": "おもしろい",
+        "tags": [
+          {
+            "link": "/tags/20",
+            "name": "SARC"
+          },
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [],
+        "english": "pain in the ass",
+        "japanese": "面倒臭い(めんどうくさい)",
+        "reading": "めんどうくさい",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1039-a-drawing-%E7%94%BB",
+            "image_src": null,
+            "kanji": "画",
+            "meaning": "a drawing"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/813-front-surface-face-%E9%9D%A2",
+            "image_src": null,
+            "kanji": "面",
+            "meaning": "front surface / face"
+          }
+        ],
+        "english": "screen",
+        "japanese": "画面(がめん)",
+        "reading": "がめん",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1600-area-%E5%9C%B0",
+            "image_src": null,
+            "kanji": "地",
+            "meaning": "area"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/813-front-surface-face-%E9%9D%A2",
+            "image_src": null,
+            "kanji": "面",
+            "meaning": "front surface / face"
+          }
+        ],
+        "english": "ground",
+        "japanese": "地面(じめん)",
+        "reading": "じめん",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/813-front-surface-face-%E9%9D%A2",
+            "image_src": null,
+            "kanji": "面",
+            "meaning": "front surface / face"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/76-eye-%E7%9B%AE",
+            "image_src": null,
+            "kanji": "目",
+            "meaning": "eye"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/362-guaranteemaintain-%E4%BF%9D",
+            "image_src": null,
+            "kanji": "保",
+            "meaning": "guarantee/maintain "
+          }
+        ],
+        "english": "save face",
+        "japanese": "面目を保つ(めんぼくをたもつ)",
+        "reading": "めんぼくをたもつ",
+        "tags": [
+          {
+            "link": "/tags/4",
+            "name": "CCW"
+          }
+        ],
+        "usefulness": 1
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/767-express-%E8%A1%A8",
+            "image_src": null,
+            "kanji": "表",
+            "meaning": "express"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/813-front-surface-face-%E9%9D%A2",
+            "image_src": null,
+            "kanji": "面",
+            "meaning": "front surface / face"
+          }
+        ],
+        "english": "exterior\n☆☆☆☆☆\n\n\n表 (express) + 面 (front surface / face)\n = 表面 (exterior)",
+        "japanese": "表面(ひょうめん)",
+        "reading": "ひょうめん",
+        "tags": [],
+        "usefulness": 0
+      }
+    ],
+    "kanji": "面",
+    "kunyomi": [
+      {
+        "meaning": "2 meanings  1) ENTIRE surface of a 3-dimensional object, as opposed to 表, which is the front surface of a 2-D object (deeeeyammn!!),  2) the head or face - usually used in the context of expressions like 'meet face to face' or 'dare you to say it to my face!'. In other words, you wouldn't tell a drunk model, 'Hey there, nice 面！’",
+        "reading": "めん",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "meaning": "Yakuza slang for face: 'I can't believe you'd dare show your face around here! '",
+        "reading": "づら",
+        "tags": [
+          "ABU"
+        ],
+        "usefulness": 1
+      }
+    ],
+    "lookalikes": [],
+    "meaning": "front surface / face",
+    "mnemonic": "<p>there seems to be a <span class=\"component\">LADDER</span> in the center of this kanji! So we can say . . \n</p>",
+    "next_link": "/kanji/814-hundred-%E7%99%BE",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">MEN</span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/812-terrorist",
+    "synonyms": [
+      {
+        "english": "annoying",
+        "japanese": "面倒くさい\n  \n厄介な\n  \n煩わしい\n  \nややこしい"
+      },
+      {
+        "english": "dummy, idiot, fool, doo doo dumb",
+        "japanese": "バカ\n愚か\n  \n間抜け\n  \nバカ面\n  \nボケ\nあほ"
+      },
+      {
+        "english": "map, diagram",
+        "japanese": "地図\n  \n図面\n  \n図表"
+      },
+      {
+        "english": "on the other hand",
+        "japanese": "その反面、xxx\n  \nxxx一方\n  \n他方で yyy"
+      },
+      {
+        "english": "surface",
+        "japanese": "表\n  \n面\n  \n面\n  \n表面"
+      },
+      {
+        "english": "to confront, to face",
+        "japanese": "向く\n  \n向き合う\n  \n面する\n  \n対向\n  \n臨む"
+      },
+      {
+        "english": "to take care",
+        "japanese": "お世話\n  \n面倒みる"
+      }
+    ],
+    "tags": [],
+    "used_in": [],
+    "usefulness": 5
+  },
+  "814": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/31-white-%E7%99%BD\">白</a>\n(white)\n + <a href=\"/kanji/812-terrorist\" class=\"component\"><img src=\"/assets/radsmall/terrorist-174419015a14b75cb4cd2d68bb6edec48b7df3b2d312e41741e9e86467b8fc34.jpg\"></a>\n(terrorist)\n\n",
+    "description": null,
+    "index": 831,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/814-hundred-%E7%99%BE",
+            "image_src": null,
+            "kanji": "百",
+            "meaning": "hundred"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/72-yencircle-%E5%86%86",
+            "image_src": null,
+            "kanji": "円",
+            "meaning": "yen/circle"
+          }
+        ],
+        "english": "１００ yen",
+        "japanese": "百円(ひゃくえん)",
+        "reading": "ひゃくえん",
+        "tags": [],
+        "usefulness": 5
+      }
+    ],
+    "kanji": "百",
+    "kunyomi": [],
+    "lookalikes": [],
+    "meaning": "hundred",
+    "mnemonic": "<p>There's a <span class=\"translation\">hundred</span> <span class=\"component\">white</span>-power <span class=\"component\">terrorists</span> in my backyard! help!</p>",
+    "next_link": "/kanji/815-grieve-%E6%86%82",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">HYAKU</span>\n</td>",
+        "<td>\n<p>Somebody shut that tweeker up. <span class=\"onyomi\">HE'S YAKKING</span> away at a <span class=\"translation\">hundred</span> words a minute.</p>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/813-front-surface-face-%E9%9D%A2",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/38",
+        "name": "COUNTER"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "憂",
+        "link": "/kanji/815-grieve-%E6%86%82"
+      },
+      {
+        "kanji": "宿",
+        "link": "/kanji/817-lodge-at-%E5%AE%BF"
+      }
+    ],
+    "usefulness": 5
+  },
+  "912": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/909-gold-%E9%87%91\">金</a>\n(gold)\n + <a class=\"component\" href=\"/kanji/1751-snout\"><img src=\"/assets/radsmall/snout-479afa4dcfc6b6c187c4eaaa61ea5deff6e93f1a25dd6fd5ec370b18e968944f.jpg\"></a>\n(snout)\n + <a class=\"component\" href=\"/kanji/33-water-%E6%B0%B4\">水</a>\n(water)\n\n",
+    "description": null,
+    "index": 934,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/912-record-%E9%8C%B2",
+            "image_src": null,
+            "kanji": "録",
+            "meaning": "record"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/156-sound-%E9%9F%B3",
+            "image_src": null,
+            "kanji": "音",
+            "meaning": "sound"
+          }
+        ],
+        "english": "sound recording",
+        "japanese": "録音(ろくおん)",
+        "reading": "ろくおん",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1179-climb-%E7%99%BB",
+            "image_src": null,
+            "kanji": "登",
+            "meaning": "climb"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/912-record-%E9%8C%B2",
+            "image_src": null,
+            "kanji": "録",
+            "meaning": "record"
+          }
+        ],
+        "english": "register, enter data",
+        "japanese": "登録(とうろく)",
+        "reading": "とうろく",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "録",
+    "kunyomi": [],
+    "lookalikes": [
+      {
+        "hint": "WATER",
+        "kanji": "緑",
+        "kanji_link": "https://www.kanjidamage.com/kanji/632-green-%E7%B7%91",
+        "meaning": "green",
+        "radical": "水",
+        "radical_link": "https://www.kanjidamage.com/kanji/33-water-%E6%B0%B4"
+      },
+      {
+        "hint": "HOUSE",
+        "kanji": "縁",
+        "kanji_link": "https://www.kanjidamage.com/kanji/1222-rim-omen-%E7%B8%81",
+        "meaning": "rim / omen",
+        "radical": "家",
+        "radical_link": "https://www.kanjidamage.com/kanji/1223-home-%E5%AE%B6"
+      },
+      {
+        "hint": "GOLD",
+        "kanji": "録",
+        "kanji_link": "https://www.kanjidamage.com/kanji/912-record-%E9%8C%B2",
+        "meaning": "record",
+        "radical": "金",
+        "radical_link": "https://www.kanjidamage.com/kanji/909-gold-%E9%87%91"
+      }
+    ],
+    "meaning": "record",
+    "mnemonic": "<p>Recording a <span class=\"onyomi\">ROCK</span> song about a <span class=\"component\">wet</span> <span class=\"component\">snout</span> will earn us a lot of <span class=\"component\">gold</span>!\n</p>",
+    "next_link": "/kanji/913-mirror-%E9%8F%A1",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">ROKU</span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "prev_link": "/kanji/911-rust-%E9%8C%86",
+    "synonyms": [
+      {
+        "english": "data entry",
+        "japanese": "入力\n  \n記入\n  \n登録"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/2",
+        "name": "BETA"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 3
   }
 }
