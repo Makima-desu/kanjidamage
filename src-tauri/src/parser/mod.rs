@@ -5,10 +5,10 @@ use std::path::Path;
 use anyhow::Result;
 use scraper::selector::CssLocalName;
 use scraper::{Element, Node};
+use rand::seq::SliceRandom;
 
 
-
-use models::{CommandError, Component, Jukugo, KanjiDatabaseState, KanjiDetail, KanjiListing, KunyomiEntry, Lookalike, SynonymEntry, Tag, UsedIn};
+use models::{CommandError, Component, Jukugo, KanjiDatabaseState, KanjiDetail, KanjiListing, KunyomiEntry, Lookalike, PracticeItem, SynonymEntry, Tag, UsedIn};
 use scraper::{CaseSensitivity, ElementRef, Html, Selector};
 use tauri::State;
 
@@ -202,6 +202,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
             
         // Check if kanji exists in the map
         if let Some(kanji_value) = kanji_map.get(kanji_id) {
+            println!("{:#?}", kanji_value);
             return serde_json::from_value(kanji_value.clone())
                 .map_err(|e| format!("Failed to parse kanji data: {}", e));
         }
@@ -633,6 +634,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
 
         let kanji_detail = KanjiDetail {
             index,
+            link: url.clone(),
             kanji,
             meaning,
             tags,
@@ -648,6 +650,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
             next_link,
             breakdown,
             lookalikes,
+            practice: false
         };
         
         // Save to local file
@@ -691,3 +694,150 @@ pub async fn search_kanji(
     
     Ok(results.into_iter().cloned().collect())
 }
+
+#[tauri::command]
+pub fn update_kanji_practice(index: u32, practice: bool) -> Result<(), String> {
+    let file_path = "kanji_details.json";
+    
+    // Read the existing JSON file
+    let file_content = fs::read_to_string(file_path)
+        .map_err(|e| format!("Failed to read file: {}", e))?;
+        
+    let mut kanji_map: serde_json::Map<String, serde_json::Value> = 
+        serde_json::from_str(&file_content)
+        .map_err(|e| format!("Failed to parse JSON: {}", e))?;
+    
+    // Find the kanji entry with matching index
+    let kanji_key = kanji_map.iter()
+        .find(|(_, value)| {
+            value.get("index")
+                .and_then(|i| i.as_u64())
+                .map_or(false, |i| i as u32 == index)
+        })
+        .map(|(key, _)| key.clone())
+        .ok_or_else(|| format!("Kanji with index {} not found", index))?;
+    
+    // Update the practice value
+    if let Some(kanji_value) = kanji_map.get_mut(&kanji_key) {
+        if let Some(obj) = kanji_value.as_object_mut() {
+            obj.insert(
+                "practice".to_string(), 
+                serde_json::Value::Bool(practice)
+            );
+            
+            // Write the updated map back to file
+            let updated_content = serde_json::to_string_pretty(&kanji_map)
+                .map_err(|e| format!("Failed to serialize JSON: {}", e))?;
+                
+            fs::write(file_path, updated_content)
+                .map_err(|e| format!("Failed to write file: {}", e))?;
+                
+            Ok(())
+        } else {
+            Err("Invalid kanji data structure".to_string())
+        }
+    } else {
+        Err(format!("Failed to update kanji with index {}", index))
+    }
+}
+
+#[tauri::command]
+pub fn initialize_practice_pool() -> Result<Vec<KanjiDetail>, String> {
+    let file_path = "kanji_details.json";
+    
+    let file_content = fs::read_to_string(file_path)
+        .map_err(|e| format!("Failed to read file: {}", e))?;
+    
+    let kanji_map: serde_json::Map<String, serde_json::Value> = 
+        serde_json::from_str(&file_content)
+        .map_err(|e| format!("Failed to parse JSON: {}", e))?;
+    
+    let mut practice_pool: Vec<KanjiDetail> = kanji_map
+        .values()
+        .filter_map(|value| {
+            if value.get("practice").and_then(|p| p.as_bool()).unwrap_or(false) {
+                // Extract and clean onyomi readings
+                let onyomi = value.get("onyomi")
+                    .and_then(|o| o.as_array())
+                    .map(|arr| {
+                        arr.iter()
+                            .filter_map(|entry| {
+                                entry.as_array().and_then(|pair| {
+                                    pair.get(0).and_then(|reading| {
+                                        let html_str = reading.as_str()?;
+                                        let fragment = Html::parse_fragment(html_str);
+                                        let selector = Selector::parse("span.onyomi").ok()?;
+                                        fragment.select(&selector)
+                                            .next()
+                                            .map(|element| {
+                                                (element.text().collect::<String>(), "".to_string())
+                                            })
+                                    })
+                                })
+                            })
+                            .collect::<Vec<_>>()
+                    })
+                    .unwrap_or_default();
+
+                // Parse the full KanjiDetail structure
+                Some(KanjiDetail {
+                    index: value.get("index").and_then(|i| i.as_u64()).unwrap_or(0) as u32,
+                    kanji: value.get("kanji").and_then(|k| k.as_str()).unwrap_or("").to_string(),
+                    link: value.get("link").and_then(|l| l.as_str()).unwrap_or("").to_string(), 
+                    meaning: value.get("meaning").and_then(|m| m.as_str()).unwrap_or("").to_string(),
+                    tags: value.get("tags")
+                        .and_then(|t| serde_json::from_value(t.clone()).ok())
+                        .unwrap_or_default(),
+                    description: value.get("description")
+                        .and_then(|d| d.as_str())
+                        .map(|s| s.to_string()),
+                    onyomi,
+                    kunyomi: value.get("kunyomi")
+                        .and_then(|k| serde_json::from_value(k.clone()).ok())
+                        .unwrap_or_default(),
+                    jukugo: value.get("jukugo")
+                        .and_then(|j| serde_json::from_value(j.clone()).ok())
+                        .unwrap_or_default(),
+                    mnemonic: value.get("mnemonic")
+                        .and_then(|m| m.as_str())
+                        .map(|s| s.to_string()),
+                    usefulness: value.get("usefulness")
+                        .and_then(|u| u.as_u64())
+                        .unwrap_or(0) as u8,
+                    used_in: value.get("used_in")
+                        .and_then(|u| serde_json::from_value(u.clone()).ok())
+                        .unwrap_or_default(),
+                    synonyms: value.get("synonyms")
+                        .and_then(|s| serde_json::from_value(s.clone()).ok())
+                        .unwrap_or_default(),
+                    prev_link: value.get("prev_link")
+                        .and_then(|p| p.as_str())
+                        .map(|s| s.to_string()),
+                    next_link: value.get("next_link")
+                        .and_then(|n| n.as_str())
+                        .map(|s| s.to_string()),
+                    breakdown: value.get("breakdown")
+                        .and_then(|b| b.as_str())
+                        .unwrap_or("")
+                        .to_string(),
+                    lookalikes: value.get("lookalikes")
+                        .and_then(|l| serde_json::from_value(l.clone()).ok())
+                        .unwrap_or_default(),
+                    practice: value.get("practice")
+                        .and_then(|p| p.as_bool())
+                        .unwrap_or(false),
+                })
+            } else {
+                None
+            }
+        })
+        .collect();
+    
+    if practice_pool.is_empty() {
+        return Err("No kanji available for practice".to_string());
+    }
+    
+    practice_pool.shuffle(&mut rand::thread_rng());
+    Ok(practice_pool)
+}
+

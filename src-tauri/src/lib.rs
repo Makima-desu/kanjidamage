@@ -30,6 +30,9 @@ pub fn run() {
             parser::get_kanji,
             parser::fetch_and_save_kanji_list,
             parser::search_kanji,
+            parser::update_kanji_practice,
+            parser::initialize_practice_pool,
+            
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

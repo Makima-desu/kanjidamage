@@ -4,38 +4,7 @@ import { createEffect, createSignal, onMount } from "solid-js";
 import Navbar from "../../navbar/Navbar"
 import { useParams } from "@solidjs/router";
 import { invoke } from "@tauri-apps/api/core";
-
-interface KanjiDetail {
-    index: number,
-    kanji: string;
-    meaning: string;
-    tags: any[],
-    description: string,
-    onyomi: string[];
-    kunyomi: {
-        reading: string;
-        meaning: string;
-        usefulness: number;
-    }[];
-    jukugo: {
-        japanese: string;
-        reading: string;
-        english: string;
-        usefulness: number;
-        components: any[];
-    }[];
-    mnemonic: string | null;
-    usefulness: number;
-    used_in: string[];
-    synonyms: {
-        japanese: string;
-        english: string;
-    }[];
-    prev_link: string | null;
-    next_link: string | null;
-    breakdown: string;
-    lookalikes: any[];
-}
+import { handle_navigation, KanjiDetail }  from "../../utils";
 
 interface RouteParams {
     url: string;
@@ -47,6 +16,27 @@ function Kanji() {
     const [kanji, setKanji] = createSignal<KanjiDetail>();
     const [loading, setLoading] = createSignal(true);
     const [error, setError] = createSignal<string>();
+    const [isPractice, setIsPractice] = createSignal(false);
+
+
+    // Add this function to handle practice status updates
+    const togglePractice = async () => {
+        const currentPractice = kanji()?.practice || false;
+        try {
+            // Update backend first
+            await invoke("update_kanji_practice", { 
+                index: kanji()?.index,
+                practice: !currentPractice
+            });
+            
+            // Only update states after successful backend update
+            setIsPractice(!currentPractice);
+            setKanji(prev => prev ? {...prev, practice: !currentPractice} : prev);
+        } catch (err) {
+            console.error("Failed to update practice status:", err);
+            // No need to revert since we haven't updated local state yet
+        }
+    };
 
     function on_kanji_click(url: any) 
     {
@@ -120,8 +110,9 @@ function Kanji() {
             if (!params.url) {
                 throw new Error("No URL provided");
             }
-            const data = await invoke("get_kanji", { url: decodeURIComponent(params.url) });
+            const data: KanjiDetail = await invoke("get_kanji", { url: decodeURIComponent(params.url) });
             setKanji(data as KanjiDetail);
+            setIsPractice(data.practice)
         } catch (err) {
             setError(err as string);
         } finally {
@@ -138,20 +129,16 @@ function Kanji() {
                 url: decodeURIComponent(params.url) 
             });
             setKanji(data as KanjiDetail);
+            if (kanji()) {
+                setIsPractice(kanji()?.practice || false);
+            }
+            console.log(data)
         } catch (err) {
             setError(err as string);
         } finally {
             setLoading(false);
         }
     });
-
-    const handleNavigation = (link: string | null | undefined) => {
-        if (!link) return;
-        const absoluteUrl = link.startsWith('http') 
-            ? link 
-            : `https://www.kanjidamage.com${link}`;
-        navigate(`/kanji/${encodeURIComponent(absoluteUrl)}`);
-    };
 
     return (
         <div class="flex w-full flex-col h-full bg-gray-50">
@@ -166,7 +153,7 @@ function Kanji() {
                                     : 'bg-gray-50 text-gray-400 cursor-not-allowed'
                             }`}
                             disabled={!kanji()?.prev_link}
-                            onClick={() => handleNavigation(kanji()?.prev_link)}
+                            onClick={() => handle_navigation(kanji()?.prev_link, navigate)}
                         >
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -181,7 +168,7 @@ function Kanji() {
                                     : 'bg-gray-50 text-gray-400 cursor-not-allowed'
                             }`}
                             disabled={!kanji()?.next_link}
-                            onClick={() => handleNavigation(kanji()?.next_link)}
+                            onClick={() => handle_navigation(kanji()?.next_link, navigate)}
                         >
                             Next
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,9 +190,9 @@ function Kanji() {
                         </div>
                     ) : kanji() && (
                         <div class="space-y-6">
-                            <div class="flex items-center justify-between border-b border-gray-100 pb-6">
-                                <div class="flex items-center gap-8">
-                                <span class="text-8xl font-bold text-gray-800 font-japanese">
+                            <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-gray-100 pb-6 gap-4 md:gap-8">
+                                <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 w-full">
+                                    <span class="text-6xl md:text-8xl font-bold text-gray-800 font-japanese">
                                         {kanji()?.kanji.startsWith('/') ? (
                                             <img 
                                                 src={`https://www.kanjidamage.com/${kanji()?.kanji}`} 
@@ -217,17 +204,20 @@ function Kanji() {
                                             kanji()?.kanji
                                         )}
                                     </span>
-                                    <div>
-                                        <h1 class="text-3xl text-green-600 font-medium tracking-wide">
+                                    
+                                    <div class="flex-1">
+                                        <h1 class="text-2xl md:text-3xl text-green-600 font-medium tracking-wide">
                                             {kanji()?.meaning}
                                         </h1>
-                                        <div class="text-yellow-500 text-2xl mt-3">
+                                        
+                                        <div class="text-yellow-500 text-xl md:text-2xl mt-2">
                                             {'★'.repeat(kanji()?.usefulness || 0)}
                                             <span class="text-gray-300">
                                                 {'☆'.repeat(5 - (kanji()?.usefulness || 0))}
                                             </span>
                                         </div>
-                                        <div class="flex gap-2 mt-2">
+                                        
+                                        <div class="flex flex-wrap gap-2 mt-2">
                                             {kanji()?.tags.map(tag => (
                                                 <a
                                                     href={`https://www.kanjidamage.com/${tag.link}`}
@@ -237,6 +227,7 @@ function Kanji() {
                                                 </a>
                                             ))}
                                         </div>
+                                        
                                         <div
                                             class="text-gray-600 text-sm mt-2"
                                             innerHTML={processBreakdown(kanji()?.breakdown!)}
@@ -245,12 +236,45 @@ function Kanji() {
                                                 if (target.classList.contains('component')) {
                                                     e.preventDefault();
                                                     const link = target.getAttribute('href');
-                                                    handleNavigation(link);
+                                                    handle_navigation(link, navigate);
                                                 }
                                             }}
                                         />
                                     </div>
                                 </div>
+                                
+                                <button 
+                                    onClick={togglePractice}
+                                    class={`
+                                        w-full md:w-auto
+                                        px-4 py-2 md:px-6 md:py-3
+                                        rounded-lg
+                                        flex items-center justify-center gap-2
+                                        transition-all duration-300
+                                        shadow-sm hover:shadow-md
+                                        ${isPractice() 
+                                            ? 'bg-green-500 text-white hover:bg-green-600' 
+                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                        }
+                                    `}
+                                >
+                                    <svg 
+                                        class="w-5 h-5" 
+                                        fill={isPractice() ? "currentColor" : "none"} 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            stroke-width="2" 
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
+                                        />
+                                    </svg>
+                                    <span class="whitespace-nowrap font-medium">
+                                        {isPractice() ? 'Remove from Practice' : 'Add to Practice'}
+                                    </span>
+                                </button>
                             </div>
 
                             {kanji()?.description && (
@@ -274,7 +298,7 @@ function Kanji() {
                                             if (target.classList.contains('component')) {
                                                 e.preventDefault();
                                                 const link = target.getAttribute('href');
-                                                handleNavigation(link);
+                                                handle_navigation(link, navigate);
                                             }
                                         }}
                                     />
@@ -409,7 +433,7 @@ function Kanji() {
                                         {kanji()?.used_in.map((term: any) => (
                                             <button
                                                 // onClick={() => on_kanji_click(term.link)} 
-                                                onClick = { () => handleNavigation(term.link)}
+                                                onClick = { () => handle_navigation(term.link, navigate)}
                                                 class="p-3 bg-gray-50 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center"
                                             >
                                                 {term.kanji.startsWith('https') ? (
@@ -460,7 +484,7 @@ function Kanji() {
                                                     <tr class="hover:bg-gray-50">
                                                         <td class="py-4 px-4">
                                                             <button
-                                                                onClick={() => handleNavigation(lookalike.kanji_link)}
+                                                                onClick={() => handle_navigation(lookalike.kanji_link, navigate)}
                                                                 class="text-2xl font-medium text-gray-900 hover:text-blue-600 transition-colors"
                                                             >
                                                                 {lookalike.kanji.startsWith('http') ? (
@@ -479,7 +503,7 @@ function Kanji() {
                                                         <td class="py-4 px-4 text-gray-700">{lookalike.hint}</td>
                                                         <td class="py-4 px-4">
                                                         <button
-                                                            onClick={() => handleNavigation(lookalike.radical_link)}
+                                                            onClick={() => handle_navigation(lookalike.radical_link, navigate)}
                                                             class="text-gray-700 hover:text-blue-600 transition-colors flex items-center"
                                                         >
                                                             {lookalike.radical.startsWith('http') ? (

@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use serde_json::{Map, Value};
 use std::{collections::HashSet, sync::Mutex};
 
 use super::get_kanji_list;
@@ -82,6 +83,7 @@ impl KanjiListing {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct KanjiDetail {
     pub index: u32,
+    pub link: String,
     pub kanji: String,
     pub meaning: String,
     pub tags: Vec<Tag>,
@@ -97,6 +99,30 @@ pub struct KanjiDetail {
     pub next_link: Option<String>,
     pub breakdown: String,
     pub lookalikes: Vec<Lookalike>,
+    pub practice: bool,
+}
+
+impl KanjiDetail
+{
+    pub fn update_kanji_list(input_path: &str, output_path: &str) -> Result<(), Box<dyn std::error::Error>> {
+        use std::fs;
+        // Read the JSON file
+        let json_str = fs::read_to_string(input_path)?;
+        let mut json: Map<String, Value> = serde_json::from_str(&json_str)?;
+        
+        // Add practice field to each entry
+        for (_key, value) in json.iter_mut() {
+            if let Value::Object(obj) = value {
+                obj.insert("practice".to_string(), Value::Bool(false));
+            }
+        }
+        
+        // Write back to file
+        let updated_json = serde_json::to_string_pretty(&json)?;
+        fs::write(output_path, updated_json)?;
+        
+        Ok(())
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -153,6 +179,21 @@ pub struct Lookalike {
     pub hint: String,
     pub radical: String,
     pub radical_link: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct PracticeItem {
+    pub kanji: String,
+    pub onyomi: Vec<(String, String)>,
+    pub kunyomi: Vec<KunyomiEntry>,
+    pub meaning: String,
+}
+
+#[derive(Debug)]
+pub enum PracticeType {
+    Meaning,
+    Onyomi,
+    Kunyomi,
 }
 
 pub struct KanjiDatabase {
