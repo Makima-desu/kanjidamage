@@ -1118,6 +1118,129 @@
     ],
     "usefulness": 5
   },
+  "3-three-%E4%B8%89": {
+    "breakdown": "\n\n",
+    "description": null,
+    "index": 3,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/3-three-%E4%B8%89",
+            "image_src": null,
+            "kanji": "三",
+            "meaning": "three"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/61-person-%E4%BA%BA",
+            "image_src": null,
+            "kanji": "人",
+            "meaning": "person"
+          }
+        ],
+        "english": "can you guess?!???",
+        "japanese": "三人(さんにん)",
+        "reading": "さんにん",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/3-three-%E4%B8%89",
+            "image_src": null,
+            "kanji": "三",
+            "meaning": "three"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/41-moon-organ-%E6%9C%88",
+            "image_src": null,
+            "kanji": "月",
+            "meaning": "moon"
+          }
+        ],
+        "english": "March",
+        "japanese": "三月(さんがつ)",
+        "reading": "さんがつ",
+        "tags": [
+          {
+            "link": "/tags/12",
+            "name": "KANA"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/3-three-%E4%B8%89",
+            "image_src": null,
+            "kanji": "三",
+            "meaning": "three"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/561-horncorner-%E8%A7%92",
+            "image_src": null,
+            "kanji": "角",
+            "meaning": "horn/corner"
+          }
+        ],
+        "english": "triangle",
+        "japanese": "三角(さんかく)",
+        "reading": "さんかく",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "三",
+    "kunyomi": [
+      {
+        "meaning": "(also sometimes pronounced み＊っつ) three things. Yes, it's got 2 pronunciations",
+        "reading": "みつ",
+        "tags": [],
+        "usefulness": 4
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/3-three-%E4%B8%89",
+    "lookalikes": [],
+    "meaning": "three",
+    "mnemonic": null,
+    "next_link": "/kanji/4-total-%E4%BA%86",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">SAN</span>\n</td>",
+        "<td>\n<p>as in,  \"<span class=\"onyomi\">SANTA</span> Claus has  <span class=\"translation\">three</span> wives.\"</p>\n</td>"
+      ]
+    ],
+    "practice": false,
+    "prev_link": "/kanji/2-two-%E4%BA%8C",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      },
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "言",
+        "link": "/kanji/11-say-%E8%A8%80"
+      },
+      {
+        "kanji": "寿",
+        "link": "/kanji/995-lifespansushi-%E5%AF%BF"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/3-stooges-f6130bf7251120fb97cf6ba893322c45f9c5cc7990a439b8e4e060bf45604273.jpg",
+        "link": "/kanji/959-three-stooges"
+      }
+    ],
+    "usefulness": 5
+  },
   "4-total-%E4%BA%86": {
     "breakdown": "\n\n",
     "description": null,
@@ -1264,6 +1387,293 @@
       }
     ],
     "usefulness": 4
+  },
+  "5-child-%E5%AD%90": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/1-one-line-radical-%E4%B8%80\">一</a>\n(one/line radical)\n + <a href=\"/kanji/4-total-%E4%BA%86\" class=\"component\">了</a>\n(total)\n\n",
+    "description": "<div class=\"description\">\nFrom now on, when you see a kanji with the onyomi of \"KO\", please use 子供 (KOdomo) for the English keyword.\n</div>",
+    "index": 5,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+            "image_src": null,
+            "kanji": "子",
+            "meaning": "child"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1551-follower-%E4%BE%9B",
+            "image_src": null,
+            "kanji": "供",
+            "meaning": "follower"
+          }
+        ],
+        "english": "child",
+        "japanese": "子供(こども)",
+        "reading": "こども",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/525-parentskindness-%E8%A6%AA",
+            "image_src": null,
+            "kanji": "親",
+            "meaning": "parents/kindness"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+            "image_src": null,
+            "kanji": "子",
+            "meaning": "child"
+          }
+        ],
+        "english": "meat and eggs",
+        "japanese": "親子(おやこ)",
+        "reading": "おやこ",
+        "tags": [
+          {
+            "link": "/tags/20",
+            "name": "SARC"
+          },
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1636-check-out-%E8%AA%BF",
+            "image_src": null,
+            "kanji": "調",
+            "meaning": "check out"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+            "image_src": null,
+            "kanji": "子",
+            "meaning": "child"
+          }
+        ],
+        "english": "condition",
+        "japanese": "調子(ちょうし)",
+        "reading": "ちょうし",
+        "tags": [],
+        "usefulness": 4
+      },
+      {
+        "components": [],
+        "english": "chair",
+        "japanese": "椅子(いす)",
+        "reading": "いす",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          },
+          {
+            "link": "/tags/31",
+            "name": "1/2 KANA"
+          }
+        ],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1058-car-%E8%BB%8A",
+            "image_src": null,
+            "kanji": "車",
+            "meaning": "car"
+          }
+        ],
+        "english": "wheelchair",
+        "japanese": "車椅子(くるまいす)",
+        "reading": "くるまいす",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          },
+          {
+            "link": "/tags/15",
+            "name": "NEO"
+          }
+        ],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "子",
+    "kunyomi": [
+      {
+        "meaning": "child",
+        "reading": "こ",
+        "tags": [],
+        "usefulness": 5
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+    "lookalikes": [
+      {
+        "hint": "the 'one' radical ",
+        "kanji": "子",
+        "kanji_link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+        "meaning": "child",
+        "radical": "一",
+        "radical_link": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80"
+      },
+      {
+        "hint": "NO  'one' radical",
+        "kanji": "了",
+        "kanji_link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+        "meaning": "total",
+        "radical": "",
+        "radical_link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90"
+      },
+      {
+        "hint": "katakana MA ",
+        "kanji": "予",
+        "kanji_link": "https://www.kanjidamage.com/kanji/1329-beforehand-%E4%BA%88",
+        "meaning": "beforehand",
+        "radical": "マ",
+        "radical_link": "https://www.kanjidamage.com/kanji/1327-mama-%E3%83%9E"
+      }
+    ],
+    "meaning": "child",
+    "mnemonic": "<p>That poor <span class=\"translation\">child</span>  ーSHE has lived a <span class=\"component\">total</span> of <span class=\"component\">one</span> year!</p>",
+    "next_link": "/kanji/6-woman-%E5%A5%B3",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">SHI</span>\n</td>",
+        "<td>\n</td>"
+      ]
+    ],
+    "practice": true,
+    "prev_link": "/kanji/4-total-%E4%BA%86",
+    "synonyms": [
+      {
+        "english": "condition or context",
+        "japanese": "状況\n  \n事態\n  \n事情\n  \n状態\n  \n様子\n  \n調子\n  \n具合"
+      },
+      {
+        "english": "egg",
+        "japanese": "玉子\n  \n卵"
+      },
+      {
+        "english": "family",
+        "japanese": "家族\n  \n家庭\n  \n親戚\n  \n妻子"
+      },
+      {
+        "english": "girl, woman, female",
+        "japanese": "女性\n  \n女の人\n  \n嬢\n  \n乙女\n  \n女の子\n  \n女子"
+      },
+      {
+        "english": "go too far, jump the gun, press your luck",
+        "japanese": "先走り\n  \n席を越す\n  \n調子に乗る\n  \nあんまり"
+      },
+      {
+        "english": "kid",
+        "japanese": "子供\n  \n童\n  \n児童\n  \n児\n  \n小児科"
+      },
+      {
+        "english": "plurals",
+        "japanese": "~等\n  \nあいつ等\n  \n彼等\n  \n奴等\n  \n達\n  \n仲間達\n  \n人達\n  \n子供達"
+      },
+      {
+        "english": "small corporations",
+        "japanese": "傘下\n  \n子会社"
+      },
+      {
+        "english": "student",
+        "japanese": "弟子\n  \n学生\n  \n生徒\n  \n教徒"
+      },
+      {
+        "english": "tone of voice",
+        "japanese": "調子\n  \n口調\n  \n喋り方"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "好",
+        "link": "/kanji/7-like-%E5%A5%BD"
+      },
+      {
+        "kanji": "孫",
+        "link": "/kanji/220-grandchild-%E5%AD%AB"
+      },
+      {
+        "kanji": "承",
+        "link": "/kanji/1723-to-be-told-consent-%E6%89%BF"
+      },
+      {
+        "kanji": "字",
+        "link": "/kanji/129-letter-%E5%AD%97"
+      },
+      {
+        "kanji": "熟",
+        "link": "/kanji/184-get-good-at-%E7%86%9F"
+      },
+      {
+        "kanji": "塾",
+        "link": "/kanji/244-cram-school-%E5%A1%BE"
+      },
+      {
+        "kanji": "孝",
+        "link": "/kanji/254-filial-piety-%E5%AD%9D"
+      },
+      {
+        "kanji": "季",
+        "link": "/kanji/375-season-%E5%AD%A3"
+      },
+      {
+        "kanji": "遊",
+        "link": "/kanji/1753-play-around-%E9%81%8A"
+      },
+      {
+        "kanji": "浮",
+        "link": "/kanji/603-float-%E6%B5%AE"
+      },
+      {
+        "kanji": "厚",
+        "link": "/kanji/732-thick-%E5%8E%9A"
+      },
+      {
+        "kanji": "存",
+        "link": "/kanji/1104-be-aware-of-%E5%AD%98"
+      },
+      {
+        "kanji": "猛",
+        "link": "/kanji/1454-fierce-%E7%8C%9B"
+      },
+      {
+        "kanji": "乳",
+        "link": "/kanji/1507-milk-%E4%B9%B3"
+      },
+      {
+        "kanji": "学",
+        "link": "/kanji/1624-knowledge-%E5%AD%A6"
+      },
+      {
+        "kanji": "孤",
+        "link": "/kanji/1738-isolation-%E5%AD%A4"
+      }
+    ],
+    "usefulness": 5
   },
   "6-woman-%E5%A5%B3": {
     "breakdown": "\n\n",

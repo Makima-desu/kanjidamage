@@ -5,6 +5,7 @@ import Navbar from "../../navbar/Navbar"
 import { useParams } from "@solidjs/router";
 import { invoke } from "@tauri-apps/api/core";
 import { handle_navigation, KanjiDetail }  from "../../utils";
+import Tooltip from "../../tooltip/Tooltip";
 
 interface RouteParams {
     url: string;
@@ -162,38 +163,51 @@ function Kanji() {
         <div class="flex w-full flex-col h-full bg-gray-50">
             <Navbar />
             {!loading() && !error() && kanji() && (
-                <div class="bg-white border-b border-gray-200 px-4 py-3">
-                    <div class="max-w-7xl mx-auto flex justify-between items-center">
-                        <button 
-                            class={`px-4 py-2 rounded-lg flex items-center gap-2 ${
-                                kanji()?.prev_link 
-                                    ? 'bg-blue-50 text-blue-600 hover:bg-blue-100' 
-                                    : 'bg-gray-50 text-gray-400 cursor-not-allowed'
-                            }`}
-                            disabled={!kanji()?.prev_link}
-                            onClick={() => handle_navigation(kanji()?.prev_link, navigate)}
+                <div class="bg-white border-b border-gray-200 px-4 py-3 flex w-full">
+                    <div class="max-w-7xl flex mx-auto justify-between items-center w-full">
+                        <Tooltip
+                            text={kanji()?.prev_link ? "Go to previous kanji" : "No previous kanji available"}
+                            position="bottom"
                         >
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                            </svg>
-                            Previous
-                        </button>
+                            <button 
+                                class={`px-4 py-2 rounded-lg flex items-center gap-2 ${
+                                    kanji()?.prev_link 
+                                        ? 'bg-blue-50 text-blue-600 hover:bg-blue-100' 
+                                        : 'bg-gray-50 text-gray-400 cursor-not-allowed'
+                                }`}
+                                disabled={!kanji()?.prev_link}
+                                onClick={() => handle_navigation(kanji()?.prev_link, navigate)}
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                                Previous
+                            </button>
+                        </Tooltip>
+
                         <span class="font-bold">Number {kanji()?.index}</span>
-                        <button 
-                            class={`px-4 py-2 rounded-lg flex items-center gap-2 ${
-                                kanji()?.next_link 
-                                    ? 'bg-blue-50 text-blue-600 hover:bg-blue-100' 
-                                    : 'bg-gray-50 text-gray-400 cursor-not-allowed'
-                            }`}
-                            disabled={!kanji()?.next_link}
-                            onClick={() => handle_navigation(kanji()?.next_link, navigate)}
+
+                        <Tooltip
+                            text={kanji()?.next_link ? "Go to next kanji" : "No next kanji available"}
+                            position="bottom"
                         >
-                            Next
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
+                            <button 
+                                class={`px-4 py-2 rounded-lg flex items-center gap-2 ${
+                                    kanji()?.next_link 
+                                        ? 'bg-blue-50 text-blue-600 hover:bg-blue-100' 
+                                        : 'bg-gray-50 text-gray-400 cursor-not-allowed'
+                                }`}
+                                disabled={!kanji()?.next_link}
+                                onClick={() => handle_navigation(kanji()?.next_link, navigate)}
+                            >
+                                Next
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </Tooltip>
                     </div>
+
                 </div>
             )}
             <div class="relative w-full h-full">
@@ -208,22 +222,27 @@ function Kanji() {
                         </div>
                     ) : kanji() && (
                         <div class="space-y-6">
-                            <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-gray-100 pb-6 gap-4 md:gap-8">
-                                <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 w-full">
-                                    <span class="text-6xl md:text-8xl font-bold text-gray-800 font-japanese">
-                                        {kanji()?.kanji.startsWith('/') ? (
-                                            <img 
-                                                src={`https://www.kanjidamage.com/${kanji()?.kanji}`} 
-                                                alt="Kanji character"
-                                                class="h-[1em] w-auto inline-block"
-                                                style="object-fit: contain"
-                                            />
-                                        ) : (
-                                            kanji()?.kanji
-                                        )}
-                                    </span>
-                                    
-                                    <div class="flex-1">
+                            <div class="flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto p-6 border-b border-gray-100">
+                                {/* Left section with Kanji and details */}
+                                <div class="flex flex-col md:flex-row items-center gap-8 flex-1">
+                                    {/* Kanji character */}
+                                    <div class="shrink-0">
+                                        <span class="text-6xl md:text-8xl font-bold text-gray-800 font-japanese block">
+                                            {kanji()?.kanji.startsWith('/') ? (
+                                                <img 
+                                                    src={`https://www.kanjidamage.com/${kanji()?.kanji}`} 
+                                                    alt="Kanji character"
+                                                    class="h-[1.5em] w-auto"
+                                                    style="object-fit: contain"
+                                                />
+                                            ) : (
+                                                kanji()?.kanji
+                                            )}
+                                        </span>
+                                    </div>
+
+                                    {/* Meaning and details */}
+                                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
                                         <h1 class="text-2xl md:text-3xl text-green-600 font-medium tracking-wide">
                                             {kanji()?.meaning}
                                         </h1>
@@ -235,12 +254,9 @@ function Kanji() {
                                             </span>
                                         </div>
                                         
-                                        <div class="flex flex-wrap gap-2 mt-2">
+                                        <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-2">
                                             {kanji()?.tags.map(tag => (
-                                                <span
-                                                    // href={`https://www.kanjidamage.com/${tag.link}`}
-                                                    class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200"
-                                                >
+                                                <span class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200">
                                                     {tag.name}
                                                 </span>
                                             ))}
@@ -260,74 +276,86 @@ function Kanji() {
                                         />
                                     </div>
                                 </div>
-                                <div class="flex flex-col items-center gap-2 w-full md:w-auto"> 
-                                    <button 
-                                        onClick={refreshKanjiData}
-                                        disabled={isRefreshing()}
-                                        class={`
-                                            px-4 py-2 md:px-6 md:py-3
-                                            w-full
-                                            rounded-lg
-                                            flex items-center justify-center gap-2
-                                            transition-all duration-300
-                                            shadow-sm hover:shadow-md
-                                            ${isRefreshing() 
-                                                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                                                : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
-                                            }
-                                        `}
-                                    >
-                                        <svg 
-                                            class={`w-5 h-5 ${isRefreshing() ? 'animate-spin' : ''}`} 
-                                            fill="none" 
-                                            stroke="currentColor" 
-                                            viewBox="0 0 24 24"
+
+                                {/* Right section with buttons */}
+                                <div class="flex flex-col gap-3 w-full md:w-auto"> 
+                                    <Tooltip text="Fetch fresh data from KanjiDamage website" position="bottom">
+                                        <button 
+                                            onClick={refreshKanjiData}
+                                            disabled={isRefreshing()}
+                                            class={`
+                                                w-full md:w-[200px]
+                                                px-4 py-2
+                                                rounded-lg
+                                                flex items-center justify-center gap-2
+                                                transition-all duration-300
+                                                shadow-sm hover:shadow-md
+                                                ${isRefreshing() 
+                                                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                                                    : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                                                }
+                                            `}
                                         >
-                                            <path 
-                                                stroke-linecap="round" 
-                                                stroke-linejoin="round" 
-                                                stroke-width="2" 
-                                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
-                                            />
-                                        </svg>
-                                        <span class="whitespace-nowrap font-medium">
-                                            {isRefreshing() ? 'Refreshing...' : 'Refresh Data'}
-                                        </span>
-                                    </button>
-                                    <button 
-                                        onClick={togglePractice}
-                                        class={`
-                                            w-full
-                                            px-4 py-2 md:px-6 md:py-3
-                                            rounded-lg
-                                            flex items-center justify-center gap-2
-                                            transition-all duration-300
-                                            shadow-sm hover:shadow-md
-                                            ${isPractice() 
-                                                ? 'bg-green-500 text-white hover:bg-green-600' 
-                                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                            }
-                                        `}
+                                            <svg 
+                                                class={`w-5 h-5 ${isRefreshing() ? 'animate-spin' : ''}`} 
+                                                fill="none" 
+                                                stroke="currentColor" 
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path 
+                                                    stroke-linecap="round" 
+                                                    stroke-linejoin="round" 
+                                                    stroke-width="2" 
+                                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
+                                                />
+                                            </svg>
+                                            <span class="whitespace-nowrap font-medium">
+                                                {isRefreshing() ? 'Refreshing...' : 'Refresh Data'}
+                                            </span>
+                                        </button>
+                                    </Tooltip>
+
+                                    <Tooltip 
+                                        text={isPractice() ? "Remove this kanji from your practice list" : "Add this kanji to your practice list"}
+                                        position="bottom"
                                     >
-                                        <svg 
-                                            class="w-5 h-5" 
-                                            fill={isPractice() ? "currentColor" : "none"} 
-                                            stroke="currentColor" 
-                                            viewBox="0 0 24 24"
+                                        <button 
+                                            onClick={togglePractice}
+                                            class={`
+                                                w-full md:w-[200px]
+                                                px-4 py-2
+                                                rounded-lg
+                                                flex items-center justify-center gap-2
+                                                transition-all duration-300
+                                                shadow-sm hover:shadow-md
+                                                ${isPractice() 
+                                                    ? 'bg-green-500 text-white hover:bg-green-600' 
+                                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                                }
+                                            `}
                                         >
-                                            <path 
-                                                stroke-linecap="round" 
-                                                stroke-linejoin="round" 
-                                                stroke-width="2" 
-                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
-                                            />
-                                        </svg>
-                                        <span class="whitespace-nowrap font-medium">
-                                            {isPractice() ? 'Remove from Practice' : 'Add to Practice'}
-                                        </span>
-                                    </button>
+                                            <svg 
+                                                class="w-5 h-5" 
+                                                fill={isPractice() ? "currentColor" : "none"} 
+                                                stroke="currentColor" 
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path 
+                                                    stroke-linecap="round" 
+                                                    stroke-linejoin="round" 
+                                                    stroke-width="2" 
+                                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
+                                                />
+                                            </svg>
+                                            <span class="whitespace-nowrap font-medium">
+                                                {isPractice() ? 'Remove from Practice' : 'Add to Practice'}
+                                            </span>
+                                        </button>
+                                    </Tooltip>
                                 </div>
                             </div>
+
+
 
                             {kanji()?.description && (
                                 <div class="mt-6 bg-white rounded-xl shadow-sm p-6">
