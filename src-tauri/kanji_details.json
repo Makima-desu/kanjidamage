@@ -458,6 +458,193 @@
     ],
     "usefulness": 5
   },
+  "1498-god-kanji-%E7%A5%9E": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/1491-necrophilia-%E3%83%8D\">ネ</a>\n(NEcrophilia)\n + <a class=\"component\" href=\"/kanji/1367-humbly-say-god-radical-%E7%94%B3\">申</a>\n(humbly say/god radical)\n\n",
+    "description": null,
+    "index": 1501,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1498-god-kanji-%E7%A5%9E",
+            "image_src": null,
+            "kanji": "神",
+            "meaning": "GOD kanji"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/879-important-person-%E6%A7%98",
+            "image_src": null,
+            "kanji": "様",
+            "meaning": "important person"
+          }
+        ],
+        "english": "god",
+        "japanese": "神様(かみさま)",
+        "reading": "かみさま",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1498-god-kanji-%E7%A5%9E",
+            "image_src": null,
+            "kanji": "神",
+            "meaning": "GOD kanji"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/861-street-%E9%81%93",
+            "image_src": null,
+            "kanji": "道",
+            "meaning": "street"
+          }
+        ],
+        "english": "shinto",
+        "japanese": "神道(しんとう)",
+        "reading": "しんとう",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1498-god-kanji-%E7%A5%9E",
+            "image_src": null,
+            "kanji": "神",
+            "meaning": "GOD kanji"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1495-company-%E7%A4%BE",
+            "image_src": null,
+            "kanji": "社",
+            "meaning": "company"
+          }
+        ],
+        "english": "shinto shrine",
+        "japanese": "神社(じんじゃ)",
+        "reading": "じんじゃ",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1498-god-kanji-%E7%A5%9E",
+            "image_src": null,
+            "kanji": "神",
+            "meaning": "GOD kanji"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/370-secret-%E7%A7%98",
+            "image_src": null,
+            "kanji": "秘",
+            "meaning": "secret"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1430-motivation-al-%E7%9A%84",
+            "image_src": null,
+            "kanji": "的",
+            "meaning": "motivation / '-al'"
+          }
+        ],
+        "english": "occult, mystical,",
+        "japanese": "神秘的(しんぴてき)",
+        "reading": "しんぴてき",
+        "tags": [],
+        "usefulness": 1
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1498-god-kanji-%E7%A5%9E",
+            "image_src": null,
+            "kanji": "神",
+            "meaning": "GOD kanji"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1089-experience-%E7%B5%8C",
+            "image_src": null,
+            "kanji": "経",
+            "meaning": "experience"
+          }
+        ],
+        "english": "nerve cell",
+        "japanese": "神経(しんけい)",
+        "reading": "しんけい",
+        "tags": [],
+        "usefulness": 1
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1498-god-kanji-%E7%A5%9E",
+            "image_src": null,
+            "kanji": "神",
+            "meaning": "GOD kanji"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/450-holy-%E8%81%96",
+            "image_src": null,
+            "kanji": "聖",
+            "meaning": "holy"
+          }
+        ],
+        "english": "holy",
+        "japanese": "神聖(しんせい)",
+        "reading": "しんせい",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "神",
+    "kunyomi": [
+      {
+        "meaning": "god or gods - almost never used by itself.",
+        "reading": "かみ",
+        "tags": [
+          "NUBI"
+        ],
+        "usefulness": 3
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/1498-god-kanji-%E7%A5%9E",
+    "lookalikes": [],
+    "meaning": "GOD kanji",
+    "mnemonic": "<p>The <span class=\"component\">necrophiliac</span> <span class=\"component\">humbly said</span> to the <span class=\"translation\">gods</span>, `Please let Eminem die, so I can do the autopsy.'</p>",
+    "next_link": "/kanji/1499-wine-bottle",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">SHIN</span>\n</td>",
+        "<td>\n<p>Worship the <span class=\"translation\">gods</span> at a <span class=\"onyomi\">SHINY</span> altar.</p>\n</td>"
+      ]
+    ],
+    "practice": false,
+    "prev_link": "/kanji/1497-welfare-%E7%A5%89",
+    "synonyms": [
+      {
+        "english": "story, legend",
+        "japanese": "逸話\n  \n昔話\n  \n物語\n  \n童話\n  \n伝説\n  \n神話\n  \n小説\n  \n語り\n  \nメルヘン"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 5
+  },
   "4-total-%E4%BA%86": {
     "breakdown": "\n\n",
     "description": null,

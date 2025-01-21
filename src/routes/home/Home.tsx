@@ -141,9 +141,10 @@ function Home() {
                                 </p>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Other</h3>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Search</h3>
                                 <p class="text-gray-600">
-                                    Will probably add more stuff
+                                    Use the search bar to search for kanjis, either by the kanji, meaning or the index. 
+                                    There are a total of 2023 kanjis, unless the kanjidamage gets updated, so search between 1/2023
                                 </p>
                             </div>
                         </div>
