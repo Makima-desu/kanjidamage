@@ -18,6 +18,24 @@ function Kanji() {
     const [error, setError] = createSignal<string>();
     const [isPractice, setIsPractice] = createSignal(false);
 
+    const [isRefreshing, setIsRefreshing] = createSignal(false);
+
+    // Add refresh function
+    const refreshKanjiData = async () => {
+        try {
+            setIsRefreshing(true);
+            // Invoke new backend function to fetch and update JSON
+            const freshData: any = await invoke("refresh_kanji_data", { 
+                url: decodeURIComponent(params.url) 
+            });
+            setKanji(freshData as KanjiDetail);
+            setIsPractice(freshData.practice);
+        } catch (err) {
+            console.error("Failed to refresh kanji data:", err);
+        } finally {
+            setIsRefreshing(false);
+        }
+    };
 
     // Add this function to handle practice status updates
     const togglePractice = async () => {
@@ -219,12 +237,12 @@ function Kanji() {
                                         
                                         <div class="flex flex-wrap gap-2 mt-2">
                                             {kanji()?.tags.map(tag => (
-                                                <a
-                                                    href={`https://www.kanjidamage.com/${tag.link}`}
+                                                <span
+                                                    // href={`https://www.kanjidamage.com/${tag.link}`}
                                                     class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200"
                                                 >
                                                     {tag.name}
-                                                </a>
+                                                </span>
                                             ))}
                                         </div>
                                         
@@ -242,39 +260,73 @@ function Kanji() {
                                         />
                                     </div>
                                 </div>
-                                
-                                <button 
-                                    onClick={togglePractice}
-                                    class={`
-                                        w-full md:w-auto
-                                        px-4 py-2 md:px-6 md:py-3
-                                        rounded-lg
-                                        flex items-center justify-center gap-2
-                                        transition-all duration-300
-                                        shadow-sm hover:shadow-md
-                                        ${isPractice() 
-                                            ? 'bg-green-500 text-white hover:bg-green-600' 
-                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                        }
-                                    `}
-                                >
-                                    <svg 
-                                        class="w-5 h-5" 
-                                        fill={isPractice() ? "currentColor" : "none"} 
-                                        stroke="currentColor" 
-                                        viewBox="0 0 24 24"
+                                <div class="flex flex-col items-center gap-2 w-full md:w-auto"> 
+                                    <button 
+                                        onClick={refreshKanjiData}
+                                        disabled={isRefreshing()}
+                                        class={`
+                                            px-4 py-2 md:px-6 md:py-3
+                                            w-full
+                                            rounded-lg
+                                            flex items-center justify-center gap-2
+                                            transition-all duration-300
+                                            shadow-sm hover:shadow-md
+                                            ${isRefreshing() 
+                                                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                                                : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                                            }
+                                        `}
                                     >
-                                        <path 
-                                            stroke-linecap="round" 
-                                            stroke-linejoin="round" 
-                                            stroke-width="2" 
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
-                                        />
-                                    </svg>
-                                    <span class="whitespace-nowrap font-medium">
-                                        {isPractice() ? 'Remove from Practice' : 'Add to Practice'}
-                                    </span>
-                                </button>
+                                        <svg 
+                                            class={`w-5 h-5 ${isRefreshing() ? 'animate-spin' : ''}`} 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path 
+                                                stroke-linecap="round" 
+                                                stroke-linejoin="round" 
+                                                stroke-width="2" 
+                                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
+                                            />
+                                        </svg>
+                                        <span class="whitespace-nowrap font-medium">
+                                            {isRefreshing() ? 'Refreshing...' : 'Refresh Data'}
+                                        </span>
+                                    </button>
+                                    <button 
+                                        onClick={togglePractice}
+                                        class={`
+                                            w-full
+                                            px-4 py-2 md:px-6 md:py-3
+                                            rounded-lg
+                                            flex items-center justify-center gap-2
+                                            transition-all duration-300
+                                            shadow-sm hover:shadow-md
+                                            ${isPractice() 
+                                                ? 'bg-green-500 text-white hover:bg-green-600' 
+                                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                            }
+                                        `}
+                                    >
+                                        <svg 
+                                            class="w-5 h-5" 
+                                            fill={isPractice() ? "currentColor" : "none"} 
+                                            stroke="currentColor" 
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path 
+                                                stroke-linecap="round" 
+                                                stroke-linejoin="round" 
+                                                stroke-width="2" 
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
+                                            />
+                                        </svg>
+                                        <span class="whitespace-nowrap font-medium">
+                                            {isPractice() ? 'Remove from Practice' : 'Add to Practice'}
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
 
                             {kanji()?.description && (
@@ -346,12 +398,12 @@ function Kanji() {
                                                                     <div class="text-lg font-medium text-gray-800 flex items-center gap-2">
                                                                         {kun.reading}
                                                                         {kun.tags && kun.tags.map((tag: any) => (
-                                                                            <a
-                                                                                href={`https://www.kanjidamage.com/${tag.link}`}
+                                                                            <span
+                                                                                // href={`https://www.kanjidamage.com/${tag.link}`}
                                                                                 class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200"
                                                                             >
                                                                                 {tag.name}
-                                                                            </a>
+                                                                            </span>
                                                                         ))}
                                                                     </div>
                                                                     <div class="text-gray-600">{kun.meaning}</div>
@@ -383,12 +435,12 @@ function Kanji() {
                                                             </div>
                                                             <div class="flex gap-2">
                                                                 {jukugo.tags && jukugo.tags.map((tag: any) => (
-                                                                    <a
-                                                                        href={`https://www.kanjidamage.com/${tag.link}`}
+                                                                    <span
+                                                                        // href={`https://www.kanjidamage.com/${tag.link}`}
                                                                         class="px-2 py-1 text-xs font-medium text-gray-600 bg-blue-100 rounded hover:bg-blue-200 transition-all duration-200"
                                                                     >
                                                                         {tag.name}
-                                                                    </a>
+                                                                    </span>
                                                                 ))}
                                                             </div>
                                                         </div>

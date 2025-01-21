@@ -160,7 +160,7 @@
         "<td>\n<p>\"<span class=\"onyomi\">Eazy</span>-e's debut album \"<span class=\"onyomi\">EAZY</span> duz it\" was so good, <span class=\"onyomi\">IT'S</span> going to go to number <span class=\"translation\">one</span> on the charts.\"</p>\n</td>"
       ]
     ],
-    "practice": true,
+    "practice": false,
     "prev_link": "/kanji/2-two-%E4%BA%8C",
     "synonyms": [
       {
@@ -458,6 +458,111 @@
     ],
     "usefulness": 5
   },
+  "14-no-%E5%90%A6": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/13-un-%E4%B8%8D\">不</a>\n(un)\n<a href=\"/tags/63\" class=\"label label-info\">Same-ON</a>\n + <a href=\"/kanji/9-mouth-small-box-radical-%E5%8F%A3\" class=\"component\">口</a>\n(mouth/small box radical)\n\n",
+    "description": null,
+    "index": 14,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1188-form-%E5%BD%A2",
+            "image_src": null,
+            "kanji": "形",
+            "meaning": "form"
+          }
+        ],
+        "english": "a negative sentence",
+        "japanese": "否定形(ひていけい)",
+        "reading": "ひていけい",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/14-no-%E5%90%A6",
+            "image_src": null,
+            "kanji": "否",
+            "meaning": "no"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/282-plan-%E5%AE%9A",
+            "image_src": null,
+            "kanji": "定",
+            "meaning": "plan"
+          }
+        ],
+        "english": "a formal word for 'to deny' (the politician denied the allegations)",
+        "japanese": "否定(ひてい)",
+        "reading": "ひてい",
+        "tags": [
+          {
+            "link": "/tags/16",
+            "name": "NP"
+          }
+        ],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/683-repel-%E6%8B%92",
+            "image_src": null,
+            "kanji": "拒",
+            "meaning": "repel"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/14-no-%E5%90%A6",
+            "image_src": null,
+            "kanji": "否",
+            "meaning": "no"
+          }
+        ],
+        "english": "refuse!!!!",
+        "japanese": "拒否(きょひ)",
+        "reading": "きょひ",
+        "tags": [
+          {
+            "link": "/tags/1",
+            "name": "ABU"
+          }
+        ],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "否",
+    "kunyomi": [
+      {
+        "meaning": "'No'. Usually used by older people. Or pretentious authors, who contradict themselves for rhetorical effect: 'She was a proper woman, No, wait, perhaps I should rather say she was the kind of woman who wanted to be seen as proper, A-ha-ha, I am so clever.'",
+        "reading": "いな",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/14-no-%E5%90%A6",
+    "lookalikes": [],
+    "meaning": "no",
+    "mnemonic": "<p>The <span class=\"component\">mouth</span> is <span class=\"component\">un</span>-happy so it says <span class=\"translation\">no</span>. </p>",
+    "next_link": "/kanji/15-ten-%E5%8D%81",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">HI</span>\n</td>",
+        "<td>\n<p>HE said <span class=\"translation\">no</span>, when I asked if he'd get a tattoo of me and him holding hands naked.</p>\n</td>"
+      ]
+    ],
+    "practice": false,
+    "prev_link": "/kanji/13-un-%E4%B8%8D",
+    "synonyms": [
+      {
+        "english": "deny, reject",
+        "japanese": "断る\n  \n否定\n  \n拒否\n  \n拒む\n  \nボツにする\n却下"
+      }
+    ],
+    "tags": [],
+    "used_in": [],
+    "usefulness": 2
+  },
   "1498-god-kanji-%E7%A5%9E": {
     "breakdown": "\n<a class=\"component\" href=\"/kanji/1491-necrophilia-%E3%83%8D\">ネ</a>\n(NEcrophilia)\n + <a class=\"component\" href=\"/kanji/1367-humbly-say-god-radical-%E7%94%B3\">申</a>\n(humbly say/god radical)\n\n",
     "description": null,
@@ -645,6 +750,374 @@
     "used_in": [],
     "usefulness": 5
   },
+  "18-measure-%E8%A8%88": {
+    "breakdown": "\n<a class=\"component\" href=\"/kanji/11-say-%E8%A8%80\">言</a>\n(say)\n + <a class=\"component\" href=\"/kanji/15-ten-%E5%8D%81\">十</a>\n(ten)\n\n",
+    "description": null,
+    "index": 18,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1002-time-%E6%99%82",
+            "image_src": null,
+            "kanji": "時",
+            "meaning": "time"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/18-measure-%E8%A8%88",
+            "image_src": null,
+            "kanji": "計",
+            "meaning": "measure"
+          }
+        ],
+        "english": "watch or clock",
+        "japanese": "時計(とけい)",
+        "reading": "とけい",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/936-to-suit-%E5%90%88",
+            "image_src": null,
+            "kanji": "合",
+            "meaning": "to suit"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/18-measure-%E8%A8%88",
+            "image_src": null,
+            "kanji": "計",
+            "meaning": "measure"
+          }
+        ],
+        "english": "total",
+        "japanese": "合計(ごうけい)",
+        "reading": "ごうけい",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/18-measure-%E8%A8%88",
+            "image_src": null,
+            "kanji": "計",
+            "meaning": "measure"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1039-a-drawing-%E7%94%BB",
+            "image_src": null,
+            "kanji": "画",
+            "meaning": "a drawing"
+          }
+        ],
+        "english": "plan",
+        "japanese": "計画(けいかく)",
+        "reading": "けいかく",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/928-excess-%E4%BD%99",
+            "image_src": null,
+            "kanji": "余",
+            "meaning": "excess"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/18-measure-%E8%A8%88",
+            "image_src": null,
+            "kanji": "計",
+            "meaning": "measure"
+          }
+        ],
+        "english": "uncalled-for",
+        "japanese": "余計(よけい)",
+        "reading": "よけい",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/18-measure-%E8%A8%88",
+            "image_src": null,
+            "kanji": "計",
+            "meaning": "measure"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1527-calculate-%E7%AE%97",
+            "image_src": null,
+            "kanji": "算",
+            "meaning": "calculate"
+          }
+        ],
+        "english": "to calculate",
+        "japanese": "計算(けいさん)",
+        "reading": "けいさん",
+        "tags": [],
+        "usefulness": 2
+      }
+    ],
+    "kanji": "計",
+    "kunyomi": [
+      {
+        "meaning": "suffix meaning, the total xxx. Total hours, total pounds, total hogs-heads, etc.",
+        "reading": "けい",
+        "tags": [
+          "SUFFIX"
+        ],
+        "usefulness": 1
+      },
+      {
+        "meaning": "measure temprature, height, depth. If you're measuring a chair or your mom's stretch marks, use this one.",
+        "reading": "はかる",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/18-measure-%E8%A8%88",
+    "lookalikes": [],
+    "meaning": "measure",
+    "mnemonic": "<p><span class=\"translation\">Measure</span> <span class=\"component\">SATAN</span>!!!!! (<span class=\"component\">say</span> + <span class=\"component\">ten</span>) <em>He's just huge, dude!! </em>\n</p>",
+    "next_link": "/kanji/19-heel",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">KEI</span>\n</td>",
+        "<td>\n<p>it's <span id=\"Onyomi\"><span class=\"onyomi\">OKAYYY</span></span> to <span class=\"translation\">measure</span> your pubic hair.</p>\n</td>"
+      ]
+    ],
+    "practice": false,
+    "prev_link": "/kanji/17-dream-come-true-%E5%8F%B6",
+    "synonyms": [
+      {
+        "english": "measure",
+        "japanese": "計る\n  \n測る\n  \n量る"
+      },
+      {
+        "english": "meddle",
+        "japanese": "余計なお世話だよ！\n  \n干渉"
+      },
+      {
+        "english": "plan",
+        "japanese": "予定\n  \n計画\n  \n案\n  \n企画\n  \n策"
+      },
+      {
+        "english": "remaining surplus",
+        "japanese": "残り\n  \n余り\n  \n余計\n  \n過剰"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/6",
+        "name": "DUPE"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 4
+  },
+  "2-two-%E4%BA%8C": {
+    "breakdown": "\n\n",
+    "description": null,
+    "index": 2,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/61-person-%E4%BA%BA",
+            "image_src": null,
+            "kanji": "人",
+            "meaning": "person"
+          }
+        ],
+        "english": "two people",
+        "japanese": "二人(ふたり)",
+        "reading": "ふたり",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/41-moon-organ-%E6%9C%88",
+            "image_src": null,
+            "kanji": "月",
+            "meaning": "moon"
+          }
+        ],
+        "english": "February",
+        "japanese": "二月(にがつ)",
+        "reading": "にがつ",
+        "tags": [
+          {
+            "link": "/tags/12",
+            "name": "KANA"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/23-sun-day-%E6%97%A5",
+            "image_src": null,
+            "kanji": "日",
+            "meaning": "sun, day"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/579-drunk-%E9%85%94",
+            "image_src": null,
+            "kanji": "酔",
+            "meaning": "drunk"
+          }
+        ],
+        "english": "hangover",
+        "japanese": "二日酔い(ふつかよい)",
+        "reading": "ふつかよい",
+        "tags": [
+          {
+            "link": "/tags/20",
+            "name": "SARC"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/23-sun-day-%E6%97%A5",
+            "image_src": null,
+            "kanji": "日",
+            "meaning": "sun, day"
+          }
+        ],
+        "english": "second day of the month",
+        "japanese": "二日(ふつか)",
+        "reading": "ふつか",
+        "tags": [],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+            "image_src": null,
+            "kanji": "二",
+            "meaning": "two"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1059-heavy-overlap-%E9%87%8D",
+            "image_src": null,
+            "kanji": "重",
+            "meaning": "heavy / overlap"
+          }
+        ],
+        "english": "double-xxx",
+        "japanese": "二重(にじゅう)",
+        "reading": "にじゅう",
+        "tags": [
+          {
+            "link": "/tags/35",
+            "name": "PRE"
+          }
+        ],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "二",
+    "kunyomi": [
+      {
+        "meaning": "two things",
+        "reading": "ふたつ",
+        "tags": [],
+        "usefulness": 4
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
+    "lookalikes": [],
+    "meaning": "two",
+    "mnemonic": null,
+    "next_link": "/kanji/3-three-%E4%B8%89",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">NI</span>\n</td>",
+        "<td>\n<p>as in, \"Vince <span class=\"onyomi\">NEIL</span> has <span class=\"translation\">two</span> chins.\"</p>\n</td>"
+      ]
+    ],
+    "practice": true,
+    "prev_link": "/kanji/1-one-line-radical-%E4%B8%80",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "示",
+        "link": "/kanji/200-show-altar-radical-%E7%A4%BA"
+      },
+      {
+        "kanji": "重",
+        "link": "/kanji/1059-heavy-overlap-%E9%87%8D"
+      },
+      {
+        "kanji": "霊",
+        "link": "/kanji/1395-ghost-%E9%9C%8A"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/payback-66dfafac87810e3d8a87ed5e8294a1752a622ff197275a59230b5b472ab11438.jpg",
+        "link": "/kanji/1171-payback"
+      },
+      {
+        "kanji": "云",
+        "link": "/kanji/1265-twin-decapited-cows-%E4%BA%91"
+      }
+    ],
+    "usefulness": 5
+  },
   "4-total-%E4%BA%86": {
     "breakdown": "\n\n",
     "description": null,
@@ -762,7 +1235,7 @@
         "<td>\n<p>as in, \"We don't have the <span class=\"translation\">total</span> number of parts, so we need to <span class=\"onyomi\">REORDER</span> more.\"</p>\n</td>"
       ]
     ],
-    "practice": true,
+    "practice": false,
     "prev_link": "/kanji/3-three-%E4%B8%89",
     "synonyms": [
       {
@@ -970,7 +1443,7 @@
         "<td>\n<p>as in, \"<span class=\"onyomi\">Jack</span> <span class=\"onyomi\">Off</span>.\"</p>\n</td>"
       ]
     ],
-    "practice": true,
+    "practice": false,
     "prev_link": "/kanji/5-child-%E5%AD%90",
     "synonyms": [
       {
@@ -1285,7 +1758,7 @@
         "<td>\n<p>Genghis <span class=\"onyomi\">KHAN</span> raped three <span class=\"component\">women</span>.</p>\n</td>"
       ]
     ],
-    "practice": true,
+    "practice": false,
     "prev_link": "/kanji/7-like-%E5%A5%BD",
     "synonyms": [],
     "tags": [
@@ -1519,7 +1992,7 @@
         "<td>\n<p>- as in, \"My KUchi on your <span class=\"onyomi\">COLON</span> . \" Disgusting? Yes!. . . but try forgetting this ON-yomi now. </p>\n</td>"
       ]
     ],
-    "practice": true,
+    "practice": false,
     "prev_link": "/kanji/8-rape-%E5%A7%A6",
     "synonyms": [
       {

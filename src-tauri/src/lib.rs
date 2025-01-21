@@ -32,6 +32,8 @@ pub fn run() {
             parser::search_kanji,
             parser::update_kanji_practice,
             parser::initialize_practice_pool,
+            parser::refresh_kanji_data,
+            
             
         ])
         .run(tauri::generate_context!())

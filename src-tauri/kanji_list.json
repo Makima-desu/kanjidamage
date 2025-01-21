@@ -6,7 +6,7 @@
     "kanji": "一",
     "link": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
     "meaning": "one (line radical)",
-    "practice": true
+    "practice": false
   },
   {
     "has_image": false,
@@ -15,7 +15,7 @@
     "kanji": "二",
     "link": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
     "meaning": "two",
-    "practice": false
+    "practice": true
   },
   {
     "has_image": false,
@@ -33,7 +33,7 @@
     "kanji": "了",
     "link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
     "meaning": "total",
-    "practice": true
+    "practice": false
   },
   {
     "has_image": false,
@@ -51,7 +51,7 @@
     "kanji": "女",
     "link": "https://www.kanjidamage.com/kanji/6-woman-%E5%A5%B3",
     "meaning": "woman",
-    "practice": true
+    "practice": false
   },
   {
     "has_image": false,
@@ -69,7 +69,7 @@
     "kanji": "姦",
     "link": "https://www.kanjidamage.com/kanji/8-rape-%E5%A7%A6",
     "meaning": "rape",
-    "practice": true
+    "practice": false
   },
   {
     "has_image": false,
@@ -78,7 +78,7 @@
     "kanji": "口",
     "link": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
     "meaning": "mouth (small box radical)",
-    "practice": true
+    "practice": false
   },
   {
     "has_image": false,

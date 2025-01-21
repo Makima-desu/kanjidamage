@@ -187,11 +187,36 @@ pub async fn get_kanji_list_v1() -> Result<Vec<KanjiListing>, String> {
     Ok(entries)
 }
 
+pub fn save_kanji_data(kanji_id: &str, kanji_detail: &KanjiDetail) -> Result<(), String> {
+    let file_path = "kanji_details.json";
+    let mut kanji_map = if Path::new(file_path).exists() {
+        let content = fs::read_to_string(file_path)
+            .map_err(|e| format!("Failed to read file: {}", e))?;
+        serde_json::from_str(&content)
+            .map_err(|e| format!("Failed to parse JSON: {}", e))?
+    } else {
+        serde_json::Map::new()
+    };
+    
+    kanji_map.insert(
+        kanji_id.to_string(),
+        serde_json::to_value(kanji_detail)
+            .map_err(|e| format!("Failed to serialize kanji: {}", e))?
+    );
+    
+    let json = serde_json::to_string_pretty(&kanji_map)
+        .map_err(|e| format!("Failed to serialize JSON: {}", e))?;
+        
+    fs::write(file_path, json)
+        .map_err(|e| format!("Failed to write file: {}", e))?;
+    
+    Ok(())
+}
 
 #[tauri::command]
 pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
     let file_path = "kanji_details.json";
-    let kanji_id = url.split('/').last().unwrap_or_default();
+    let kanji_id = &url.split('/').last().unwrap_or_default();
     
     // Try to read from local file first
     if Path::new(file_path).exists() {
@@ -203,11 +228,49 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
             .map_err(|e| format!("Failed to parse JSON: {}", e))?;
             
         // Check if kanji exists in the map
-        if let Some(kanji_value) = kanji_map.get(kanji_id) {
+        if let Some(kanji_value) = kanji_map.get(kanji_id.clone()) {
             return serde_json::from_value(kanji_value.clone())
                 .map_err(|e| format!("Failed to parse kanji data: {}", e));
         }
     }
+
+    // If not found in cache, scrape and save
+    let kanji_detail = fetch_kanji(url.clone()).await?;
+    save_kanji_data(kanji_id, &kanji_detail)?;
+    
+    Ok(kanji_detail)
+}
+
+// New function for manual refresh
+#[tauri::command]
+pub async fn refresh_kanji_data(url: String) -> Result<KanjiDetail, String> {
+    let kanji_id = url.split('/').last().unwrap_or_default();
+    let kanji_detail = fetch_kanji(url.clone()).await?;
+    save_kanji_data(kanji_id, &kanji_detail)?;
+    Ok(kanji_detail)
+}
+
+#[tauri::command]
+pub async fn fetch_kanji(url: String) -> Result<KanjiDetail, String> {
+    let file_path = "kanji_details.json";
+    let kanji_id = url.split('/').last().unwrap_or_default();
+    
+    // Get existing practice status if available
+    let existing_practice = if Path::new(file_path).exists() {
+        let file_content = fs::read_to_string(file_path)
+            .map_err(|e| format!("Failed to read file: {}", e))?;
+            
+        let kanji_map: serde_json::Map<String, serde_json::Value> = 
+            serde_json::from_str(&file_content)
+            .map_err(|e| format!("Failed to parse JSON: {}", e))?;
+            
+        kanji_map.get(kanji_id)
+            .and_then(|value| value.get("practice"))
+            .and_then(|practice| practice.as_bool())
+            .unwrap_or(false)
+    } else {
+        false
+    };
 
     let client = reqwest::Client::new();
     let response = client.get(&url)
@@ -354,7 +417,7 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
         // Only process table rows when in Kunyomi section
         if in_kunyomi_section && element.value().name() == "tr" {
             if let Some(kun) = element.select(&Selector::parse("span.kanji_character").unwrap()).next() {
-                let reading = kun.text().collect::<String>();
+                let reading = kun.text().collect::<String>().replace("*", "");
                 
                 let meaning = element.select(&Selector::parse("td").unwrap())
                 .nth(1)
@@ -651,32 +714,11 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
             next_link,
             breakdown,
             lookalikes,
-            practice: false
+            practice: existing_practice
         };
         
-        // Save to local file
-        let mut kanji_map = if Path::new(file_path).exists() {
-            let content = fs::read_to_string(file_path)
-                .map_err(|e| format!("Failed to read file: {}", e))?;
-            serde_json::from_str(&content)
-                .map_err(|e| format!("Failed to parse JSON: {}", e))?
-        } else {
-            serde_json::Map::new()
-        };
         
-        kanji_map.insert(
-            kanji_id.to_string(),
-            serde_json::to_value(&kanji_detail)
-                .map_err(|e| format!("Failed to serialize kanji: {}", e))?
-        );
-        
-        let json = serde_json::to_string_pretty(&kanji_map)
-            .map_err(|e| format!("Failed to serialize JSON: {}", e))?;
-            
-        fs::write(file_path, json)
-            .map_err(|e| format!("Failed to write file: {}", e))?;
-        
-        Ok(kanji_detail)
+    Ok(kanji_detail)
 }
 
 #[tauri::command]
