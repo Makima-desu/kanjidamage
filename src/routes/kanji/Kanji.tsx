@@ -279,7 +279,7 @@ function Kanji() {
 
                                 {/* Right section with buttons */}
                                 <div class="flex flex-col gap-3 w-full md:w-auto"> 
-                                    <Tooltip text="Fetch fresh data from KanjiDamage website" position="bottom">
+                                    <Tooltip text="Refetch kanji data from kanjidamage" position="bottom">
                                         <button 
                                             onClick={refreshKanjiData}
                                             disabled={isRefreshing()}
@@ -316,7 +316,7 @@ function Kanji() {
                                     </Tooltip>
 
                                     <Tooltip 
-                                        text={isPractice() ? "Remove this kanji from your practice list" : "Add this kanji to your practice list"}
+                                        text={isPractice() ? "Remove kanji from practice list" : "Add kanji to practice list"}
                                         position="bottom"
                                     >
                                         <button 
