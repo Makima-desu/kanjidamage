@@ -93,7 +93,8 @@ pub async fn fetch_and_save_kanji_list() -> Result<Vec<KanjiListing>, String> {
                     meaning,
                     is_radical,
                     link,
-                    has_image
+                    has_image,
+                    practice: false
                 });
             }
         }
@@ -176,7 +177,8 @@ pub async fn get_kanji_list_v1() -> Result<Vec<KanjiListing>, String> {
                     meaning,
                     is_radical,
                     link,
-                    has_image
+                    has_image,
+                    practice: false,
                 });
             }
         }
@@ -202,7 +204,6 @@ pub async fn get_kanji(url: String) -> Result<KanjiDetail, String> {
             
         // Check if kanji exists in the map
         if let Some(kanji_value) = kanji_map.get(kanji_id) {
-            println!("{:#?}", kanji_value);
             return serde_json::from_value(kanji_value.clone())
                 .map_err(|e| format!("Failed to parse kanji data: {}", e));
         }
@@ -697,48 +698,70 @@ pub async fn search_kanji(
 
 #[tauri::command]
 pub fn update_kanji_practice(index: u32, practice: bool) -> Result<(), String> {
-    let file_path = "kanji_details.json";
-    
-    // Read the existing JSON file
-    let file_content = fs::read_to_string(file_path)
-        .map_err(|e| format!("Failed to read file: {}", e))?;
-        
-    let mut kanji_map: serde_json::Map<String, serde_json::Value> = 
-        serde_json::from_str(&file_content)
-        .map_err(|e| format!("Failed to parse JSON: {}", e))?;
-    
-    // Find the kanji entry with matching index
-    let kanji_key = kanji_map.iter()
-        .find(|(_, value)| {
-            value.get("index")
-                .and_then(|i| i.as_u64())
-                .map_or(false, |i| i as u32 == index)
-        })
-        .map(|(key, _)| key.clone())
-        .ok_or_else(|| format!("Kanji with index {} not found", index))?;
-    
-    // Update the practice value
-    if let Some(kanji_value) = kanji_map.get_mut(&kanji_key) {
-        if let Some(obj) = kanji_value.as_object_mut() {
-            obj.insert(
-                "practice".to_string(), 
-                serde_json::Value::Bool(practice)
-            );
-            
-            // Write the updated map back to file
-            let updated_content = serde_json::to_string_pretty(&kanji_map)
-                .map_err(|e| format!("Failed to serialize JSON: {}", e))?;
-                
-            fs::write(file_path, updated_content)
-                .map_err(|e| format!("Failed to write file: {}", e))?;
-                
-            Ok(())
+    let file_paths = ["kanji_details.json", "kanji_list.json"];
+
+    for file_path in file_paths.iter() {
+        let file_content = fs::read_to_string(file_path)
+            .map_err(|e| format!("Failed to read file {}: {}", file_path, e))?;
+
+        if *file_path == "kanji_list.json" {
+            // Handle array structure
+            let mut kanji_list: Vec<serde_json::Value> = 
+                serde_json::from_str(&file_content)
+                .map_err(|e| format!("Failed to parse JSON in {}: {}", file_path, e))?;
+
+            // Find and update the kanji in the array
+            if let Some(kanji) = kanji_list.iter_mut().find(|k| {
+                k.get("index")
+                    .and_then(|i| i.as_u64())
+                    .map_or(false, |i| i as u32 == index)
+            }) {
+                if let Some(obj) = kanji.as_object_mut() {
+                    obj.insert(
+                        "practice".to_string(),
+                        serde_json::Value::Bool(practice)
+                    );
+
+                    let updated_content = serde_json::to_string_pretty(&kanji_list)
+                        .map_err(|e| format!("Failed to serialize JSON in {}: {}", file_path, e))?;
+
+                    fs::write(file_path, updated_content)
+                        .map_err(|e| format!("Failed to write file {}: {}", file_path, e))?;
+                }
+            }
         } else {
-            Err("Invalid kanji data structure".to_string())
+            // Handle object map structure (original logic)
+            let mut kanji_map: serde_json::Map<String, serde_json::Value> = 
+                serde_json::from_str(&file_content)
+                .map_err(|e| format!("Failed to parse JSON in {}: {}", file_path, e))?;
+
+            let kanji_key = kanji_map.iter()
+                .find(|(_, value)| {
+                    value.get("index")
+                        .and_then(|i| i.as_u64())
+                        .map_or(false, |i| i as u32 == index)
+                })
+                .map(|(key, _)| key.clone())
+                .ok_or_else(|| format!("Kanji with index {} not found in {}", index, file_path))?;
+
+            if let Some(kanji_value) = kanji_map.get_mut(&kanji_key) {
+                if let Some(obj) = kanji_value.as_object_mut() {
+                    obj.insert(
+                        "practice".to_string(),
+                        serde_json::Value::Bool(practice)
+                    );
+
+                    let updated_content = serde_json::to_string_pretty(&kanji_map)
+                        .map_err(|e| format!("Failed to serialize JSON in {}: {}", file_path, e))?;
+
+                    fs::write(file_path, updated_content)
+                        .map_err(|e| format!("Failed to write file {}: {}", file_path, e))?;
+                }
+            }
         }
-    } else {
-        Err(format!("Failed to update kanji with index {}", index))
     }
+
+    Ok(())
 }
 
 #[tauri::command]
@@ -833,11 +856,10 @@ pub fn initialize_practice_pool() -> Result<Vec<KanjiDetail>, String> {
         })
         .collect();
     
-    if practice_pool.is_empty() {
-        return Err("No kanji available for practice".to_string());
+    if !practice_pool.is_empty() {
+        practice_pool.shuffle(&mut rand::thread_rng());
     }
     
-    practice_pool.shuffle(&mut rand::thread_rng());
     Ok(practice_pool)
 }
 

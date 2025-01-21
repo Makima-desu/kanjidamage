@@ -15,6 +15,7 @@ function Home() {
         try {
             const pool = await invoke<KanjiDetail[]>('initialize_practice_pool');
             setPracticePool(pool);
+            console.log(pool)
             setPracticeCount(pool.length);
         } catch (error) {
             console.error('Failed to load practice pool:', error);

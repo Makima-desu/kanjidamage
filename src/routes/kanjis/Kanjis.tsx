@@ -9,7 +9,8 @@ interface Entry {
     meaning: string,
     is_radical: boolean,
     link: string,
-    has_image: boolean
+    has_image: boolean,
+    practice: boolean
 }
 
 function Kanjis() {
@@ -18,6 +19,7 @@ function Kanjis() {
 
     invoke("get_kanji_list").then((kanji: any) => {
         set_entries(kanji)
+        console.log(kanji)
     })
 
     function on_kanji_click(entry: Entry) 
@@ -57,27 +59,50 @@ function Kanjis() {
             <div class="relative w-full h-full flex-1">
                 <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 absolute overflow-y-auto h-full p-2 sm:px-6 sm:pt-6 w-full pb-24">
                     {entries().map((entry: Entry) => (
-                        <div class={`bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ${entry.is_radical ? 'border-l-4 border-blue-400 sm:border-l-0' : ''}`}>
-                            <div class="p-3 sm:p-4 flex items-center justify-between">
+                        <div 
+                            onClick={() => on_kanji_click(entry)}
+                            class={`bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer 
+                                sm:${entry.is_radical ? 'border-l-4 border-blue-400' : ''}
+                                sm:${entry.practice ? 'border-r-4 border-green-400' : ''}`}
+                        >
+                            <div class="p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
                                 <div class="flex items-center gap-2 sm:gap-6">
                                     <span class="text-gray-400 font-medium text-sm sm:text-base w-6 sm:w-8">
                                         {entry.index}.
                                     </span>    
-                                    <button 
-                                        onClick={() => on_kanji_click(entry)}
-                                        class="text-xl sm:text-2xl font-semibold text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-center min-w-[1.5rem] sm:min-w-[2rem]"
-                                    >
+                                    <span class={`text-xl sm:text-2xl font-semibold flex items-center justify-center min-w-[1.5rem] sm:min-w-[2rem] 
+                                        ${entry.practice ? 'text-green-600' : 'text-gray-700'} 
+                                        hover:text-blue-600 transition-colors`}>
                                         {render_kanji_content(entry)}
-                                    </button>
-                                    <span class="text-gray-600 text-sm sm:text-base break-words">
+                                    </span>
+                                    <span class="text-gray-600 text-base sm:text-lg break-words">
                                         {entry.meaning}
                                     </span>
                                 </div>
-                                {entry.is_radical && 
-                                    <span class="hidden sm:inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded ml-2">
-                                        Radical
-                                    </span>
-                                }
+                                <div class="flex items-center gap-2 mt-2 sm:mt-0">
+                                    {entry.practice && 
+                                        <span class="inline-block sm:hidden px-2 py-1 text-xs font-medium bg-green-100 text-green-600 rounded">
+                                            Practice
+                                        </span>
+                                    }
+                                    {entry.is_radical && 
+                                        <span class="inline-block sm:hidden px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded">
+                                            Radical
+                                        </span>
+                                    }
+                                </div>
+                                <div class="hidden sm:flex items-center gap-2">
+                                    {entry.practice && 
+                                        <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-600 rounded">
+                                            Practice
+                                        </span>
+                                    }
+                                    {entry.is_radical && 
+                                        <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded">
+                                            Radical
+                                        </span>
+                                    }
+                                </div>
                             </div>
                         </div>
                     ))}

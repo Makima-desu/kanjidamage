@@ -26,6 +26,7 @@ pub struct KanjiListing {
     pub is_radical: bool,
     pub link: String,
     pub has_image: bool,
+    pub practice: bool,
 }
 
 impl KanjiListing {

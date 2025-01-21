@@ -1,4 +1,610 @@
 {
+  "1-one-line-radical-%E4%B8%80": {
+    "breakdown": "\n\n",
+    "description": "<div class=\"description\">\n<p><img src=\"/visualaids/1eazy.jpg\">\n</p></div>",
+    "index": 1,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1144-times-%E5%BA%A6",
+            "image_src": null,
+            "kanji": "度",
+            "meaning": "times"
+          }
+        ],
+        "english": "one more time!",
+        "japanese": "もう一度(もういちど)",
+        "reading": "もういちど",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/257-together-%E7%B7%92",
+            "image_src": null,
+            "kanji": "緒",
+            "meaning": "together"
+          }
+        ],
+        "english": "together",
+        "japanese": "一緒(いっしょ)",
+        "reading": "いっしょ",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/61-person-%E4%BA%BA",
+            "image_src": null,
+            "kanji": "人",
+            "meaning": "person"
+          }
+        ],
+        "english": "one person, alone",
+        "japanese": "一人(ひとり)",
+        "reading": "ひとり",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1430-motivation-al-%E7%9A%84",
+            "image_src": null,
+            "kanji": "的",
+            "meaning": "motivation / '-al'"
+          }
+        ],
+        "english": "ordinary",
+        "japanese": "一般的(いっぱんてき)",
+        "reading": "いっぱんてき",
+        "tags": [],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/23-sun-day-%E6%97%A5",
+            "image_src": null,
+            "kanji": "日",
+            "meaning": "sun, day"
+          }
+        ],
+        "english": "first day of the month",
+        "japanese": "一日(ついたち)",
+        "reading": "ついたち",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+            "image_src": null,
+            "kanji": "一",
+            "meaning": "one"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/395-number-%E7%95%AA",
+            "image_src": null,
+            "kanji": "番",
+            "meaning": "number"
+          }
+        ],
+        "english": "number one!",
+        "japanese": "一番(いちばん)",
+        "reading": "いちばん",
+        "tags": [
+          {
+            "link": "/tags/15",
+            "name": "NEO"
+          }
+        ],
+        "usefulness": 4
+      }
+    ],
+    "kanji": "一",
+    "kunyomi": [
+      {
+        "meaning": "one thing",
+        "reading": "ひと*つ",
+        "tags": [],
+        "usefulness": 4
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
+    "lookalikes": [],
+    "meaning": "one/line radical",
+    "mnemonic": null,
+    "next_link": "/kanji/2-two-%E4%BA%8C",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">ICHI, ITSU</span>\n</td>",
+        "<td>\n<p>\"<span class=\"onyomi\">Eazy</span>-e's debut album \"<span class=\"onyomi\">EAZY</span> duz it\" was so good, <span class=\"onyomi\">IT'S</span> going to go to number <span class=\"translation\">one</span> on the charts.\"</p>\n</td>"
+      ]
+    ],
+    "practice": false,
+    "prev_link": "/kanji/2-two-%E4%BA%8C",
+    "synonyms": [
+      {
+        "english": "all the more, furthermore",
+        "japanese": "一層\n  \n尚更"
+      },
+      {
+        "english": "correspond to",
+        "japanese": "一致\n  \n該当\n  \n当たる\n  \n適応\n  \n意味する"
+      },
+      {
+        "english": "instantly",
+        "japanese": "瞬間\n  \n一瞬"
+      },
+      {
+        "english": "normal",
+        "japanese": "普通な\n  \n並みの\n  \n普段\n  \n一般的な\n  \n尋常\n  \n典型的"
+      },
+      {
+        "english": "on the other hand",
+        "japanese": "その反面、xxx\n  \nxxx一方\n  \n他方で yyy"
+      },
+      {
+        "english": "once again",
+        "japanese": "また\n未だ\n  \nもう一度\n  \nもう一回\n  \nもういっぺん"
+      },
+      {
+        "english": "one person",
+        "japanese": "一人\n  \n独り"
+      },
+      {
+        "english": "perhaps",
+        "japanese": "たしか～\nひょっとして～\n万が一～"
+      },
+      {
+        "english": "to do your best, to try your hardest",
+        "japanese": "一生懸命\n  \n努力\n  \n必死\n  \n奮闘"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      },
+      {
+        "link": "/tags/18",
+        "name": "PK"
+      },
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "子",
+        "link": "/kanji/5-child-%E5%AD%90"
+      },
+      {
+        "kanji": "言",
+        "link": "/kanji/11-say-%E8%A8%80"
+      },
+      {
+        "kanji": "上",
+        "link": "/kanji/123-above-%E4%B8%8A"
+      },
+      {
+        "kanji": "宅",
+        "link": "/kanji/127-residence-%E5%AE%85"
+      },
+      {
+        "kanji": "丸",
+        "link": "/kanji/183-round-%E4%B8%B8"
+      },
+      {
+        "kanji": "系",
+        "link": "/kanji/219-group-tribe-%E7%B3%BB"
+      },
+      {
+        "kanji": "千",
+        "link": "/kanji/229-thousand-%E5%8D%83"
+      },
+      {
+        "kanji": "正",
+        "link": "/kanji/280-correct-%E6%AD%A3"
+      },
+      {
+        "kanji": "丘",
+        "link": "/kanji/317-hill-%E4%B8%98"
+      },
+      {
+        "kanji": "本",
+        "link": "/kanji/338-book-the-real-%E6%9C%AC"
+      },
+      {
+        "kanji": "末",
+        "link": "/kanji/380-the-tip-%E6%9C%AB"
+      },
+      {
+        "kanji": "未",
+        "link": "/kanji/381-not-yet-%E6%9C%AA"
+      },
+      {
+        "kanji": "来",
+        "link": "/kanji/394-comefuture-%E6%9D%A5"
+      },
+      {
+        "kanji": "王",
+        "link": "/kanji/444-king-%E7%8E%8B"
+      },
+      {
+        "kanji": "中",
+        "link": "/kanji/489-middle-%E4%B8%AD"
+      },
+      {
+        "kanji": "虫",
+        "link": "/kanji/493-insizzect-%E8%99%AB"
+      },
+      {
+        "kanji": "戸",
+        "link": "/kanji/505-door-%E6%88%B8"
+      },
+      {
+        "kanji": "革",
+        "link": "/kanji/514-leatherrevolution-%E9%9D%A9"
+      },
+      {
+        "kanji": "元",
+        "link": "/kanji/571-original-%E5%85%83"
+      },
+      {
+        "kanji": "酒",
+        "link": "/kanji/578-liquor-%E9%85%92"
+      },
+      {
+        "kanji": "夫",
+        "link": "/kanji/588-husband-%E5%A4%AB"
+      },
+      {
+        "kanji": "及",
+        "link": "/kanji/625-reach-amount-to-%E5%8F%8A"
+      },
+      {
+        "kanji": "与",
+        "link": "/kanji/651-bestow-%E4%B8%8E"
+      },
+      {
+        "kanji": "衰",
+        "link": "/kanji/774-declinewane-%E8%A1%B0"
+      },
+      {
+        "kanji": "帯",
+        "link": "/kanji/825-belt-%E5%B8%AF"
+      },
+      {
+        "kanji": "天",
+        "link": "/kanji/880-heaven-%E5%A4%A9"
+      },
+      {
+        "kanji": "世",
+        "link": "/kanji/1029-society-%E4%B8%96"
+      },
+      {
+        "kanji": "午",
+        "link": "/kanji/1192-noon-%E5%8D%88"
+      },
+      {
+        "kanji": "色",
+        "link": "/kanji/1210-color-%E8%89%B2"
+      },
+      {
+        "kanji": "申",
+        "link": "/kanji/1367-humbly-say-god-radical-%E7%94%B3"
+      },
+      {
+        "kanji": "監",
+        "link": "/kanji/1439-oversee-%E7%9B%A3"
+      },
+      {
+        "kanji": "更",
+        "link": "/kanji/1591-all-over-again-%E6%9B%B4"
+      },
+      {
+        "kanji": "使",
+        "link": "/kanji/1593-use-%E4%BD%BF"
+      },
+      {
+        "kanji": "妻",
+        "link": "/kanji/1667-wife-%E5%A6%BB"
+      },
+      {
+        "kanji": "乏",
+        "link": "/kanji/1701-shoddy-%E4%B9%8F"
+      },
+      {
+        "kanji": "旧",
+        "link": "/kanji/28-former-%E6%97%A7"
+      },
+      {
+        "kanji": "旦",
+        "link": "/kanji/30-danna-husband-%E6%97%A6"
+      },
+      {
+        "kanji": "不",
+        "link": "/kanji/13-un-%E4%B8%8D"
+      },
+      {
+        "kanji": "万",
+        "link": "/kanji/85-10000-%E4%B8%87"
+      },
+      {
+        "kanji": "必",
+        "link": "/kanji/99-surely-%E5%BF%85"
+      },
+      {
+        "kanji": "死",
+        "link": "/kanji/120-death-%E6%AD%BB"
+      },
+      {
+        "kanji": "武",
+        "link": "/kanji/662-military-%E6%AD%A6"
+      },
+      {
+        "kanji": "臣",
+        "link": "/kanji/685-vassal-%E8%87%A3"
+      },
+      {
+        "kanji": "引",
+        "link": "/kanji/898-pull-%E5%BC%95"
+      },
+      {
+        "kanji": "出",
+        "link": "/kanji/1024-pull-out-hand-over-%E5%87%BA"
+      },
+      {
+        "kanji": "修",
+        "link": "/kanji/1118-master-a-skill-%E4%BF%AE"
+      },
+      {
+        "kanji": "七",
+        "link": "/kanji/20-seven-%E4%B8%83"
+      },
+      {
+        "kanji": "少",
+        "link": "/kanji/193-a-little-amount-%E5%B0%91"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/dizzy-cac8f7fcc19378e40705516e2202e521af656f4b13a5e5e4bf8a08d4533772ba.jpg",
+        "link": "/kanji/252-dizzy"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/bamboo-key-b40e78c53b3336f9cf18bbedf57e4c1e25f6613a5e66498380eadf244939d36f.jpg",
+        "link": "/kanji/324-key"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/wheat-5c10238911c756f95569a39bc86184e3f08246b959af46f84bbb342305bedff0.jpg",
+        "link": "/kanji/367-wheat"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/kanji-no-kan-5fc45c2561c2d627790a493a80daf8d66f82033826d03cfb07a7de961fa1c267.jpg",
+        "link": "/kanji/420-from-china-radical"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/nest-c615192568fa8f2d0d4674ab27de4c1d86bf78524f9d8828a42ce9a510971982.jpg",
+        "link": "/kanji/602-nest"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/spearthree-1237d0259e43c07b511af51d7d4cd37e1f5a3af5c742c089bfde9e8b42c12b95.jpg",
+        "link": "/kanji/665-spear"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/hitler-4b76f0c76d4d8ea085e1e6cda3b7d25841272f4fad56777afc29dd5daa0ced51.jpg",
+        "link": "/kanji/1763-hitler"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/risk-72bcf8103577ba53a33af648a808df633422429f9145158ee2668a15d9a10a8e.jpg",
+        "link": "/kanji/415-risk"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/crows-d312a1500ced69aed1e944e99b93f96ce7649d411356f44d741f04018b503329.jpg",
+        "link": "/kanji/1108-crows"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/order-rule-f81bf6e19f39cc1dd21afd3385f9141dcb7c41215f6eb8adc9ac36cc2058231a.jpg",
+        "link": "/kanji/1244-decapitated-cow"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/dragon-0ebdc05bfc5929a3cf8da0b22f3924ea3252fc6758ae9c7eee03495eb97c0c2f.jpg",
+        "link": "/kanji/1400-dragon-radical"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/wine-bottle-326a630e521ebaa33b144ad5eb73e00f177f587df5f3151d71dc99b119e705f0.jpg",
+        "link": "/kanji/1499-wine-bottle"
+      }
+    ],
+    "usefulness": 5
+  },
+  "4-total-%E4%BA%86": {
+    "breakdown": "\n\n",
+    "description": null,
+    "index": 4,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/572-complete-%E5%AE%8C",
+            "image_src": null,
+            "kanji": "完",
+            "meaning": "complete"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+            "image_src": null,
+            "kanji": "了",
+            "meaning": "total"
+          }
+        ],
+        "english": "finish",
+        "japanese": "完了(かんりょう)",
+        "reading": "かんりょう",
+        "tags": [
+          {
+            "link": "/tags/16",
+            "name": "NP"
+          }
+        ],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+            "image_src": null,
+            "kanji": "了",
+            "meaning": "total"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1199-solve-untie-%E8%A7%A3",
+            "image_src": null,
+            "kanji": "解",
+            "meaning": "solve / untie"
+          }
+        ],
+        "english": "OK, got it.",
+        "japanese": "了解(りょうかい)",
+        "reading": "りょうかい",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/955-end-%E7%B5%82",
+            "image_src": null,
+            "kanji": "終",
+            "meaning": "end"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+            "image_src": null,
+            "kanji": "了",
+            "meaning": "total"
+          }
+        ],
+        "english": "expire\n☆☆☆☆☆\nNP\n\n終 (end) + 了 (total)\n = 終了 (expire)",
+        "japanese": "終了(しゅうりょう)",
+        "reading": "しゅうりょう",
+        "tags": [
+          {
+            "link": "/tags/16",
+            "name": "NP"
+          }
+        ],
+        "usefulness": 0
+      }
+    ],
+    "kanji": "了",
+    "kunyomi": [],
+    "link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+    "lookalikes": [
+      {
+        "hint": "the 'one' radical ",
+        "kanji": "子",
+        "kanji_link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
+        "meaning": "child",
+        "radical": "一",
+        "radical_link": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80"
+      },
+      {
+        "hint": "NO  'one' radical",
+        "kanji": "了",
+        "kanji_link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86",
+        "meaning": "total",
+        "radical": "",
+        "radical_link": "https://www.kanjidamage.com/kanji/4-total-%E4%BA%86"
+      },
+      {
+        "hint": "katakana MA ",
+        "kanji": "予",
+        "kanji_link": "https://www.kanjidamage.com/kanji/1329-beforehand-%E4%BA%88",
+        "meaning": "beforehand",
+        "radical": "マ",
+        "radical_link": "https://www.kanjidamage.com/kanji/1327-mama-%E3%83%9E"
+      }
+    ],
+    "meaning": "total",
+    "mnemonic": "<p>To me it just looks like a broken coat hanger, which is totally useless.</p>",
+    "next_link": "/kanji/5-child-%E5%AD%90",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">RYOU</span>\n</td>",
+        "<td>\n<p>as in, \"We don't have the <span class=\"translation\">total</span> number of parts, so we need to <span class=\"onyomi\">REORDER</span> more.\"</p>\n</td>"
+      ]
+    ],
+    "practice": true,
+    "prev_link": "/kanji/3-three-%E4%B8%89",
+    "synonyms": [
+      {
+        "english": "finish",
+        "japanese": "済ませる\n  \n完成\n  \n完了\n  \n終了　\n  \n結末\n  \n終わり\n  \n完全"
+      },
+      {
+        "english": "ok, fine",
+        "japanese": "了解\n  \n順調\n  \n平気"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/2",
+        "name": "BETA"
+      },
+      {
+        "link": "/tags/18",
+        "name": "PK"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "子",
+        "link": "/kanji/5-child-%E5%AD%90"
+      }
+    ],
+    "usefulness": 4
+  },
   "6-woman-%E5%A5%B3": {
     "breakdown": "\n\n",
     "description": null,
@@ -177,7 +783,7 @@
         "<td>\n<p>as in, \"<span class=\"onyomi\">Jack</span> <span class=\"onyomi\">Off</span>.\"</p>\n</td>"
       ]
     ],
-    "practice": false,
+    "practice": true,
     "prev_link": "/kanji/5-child-%E5%AD%90",
     "synonyms": [
       {
@@ -330,5 +936,681 @@
       }
     ],
     "usefulness": 1
+  },
+  "9-mouth-small-box-radical-%E5%8F%A3": {
+    "breakdown": "\n\n",
+    "description": "<div class=\"description\">\nJERK RADICAL ALERT- although the kanji means 'mouth' the radical sometimes means \"box\". Irritating but not totally a hassle when you consider that it looks more like a box than a mouth, anyway.\n<p>\nAlso, jukugo with 口 tend to be KUNKUN for some reason.\n</p></div>",
+    "index": 9,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1024-pull-out-hand-over-%E5%87%BA",
+            "image_src": null,
+            "kanji": "出",
+            "meaning": "pull out / hand over"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          }
+        ],
+        "english": "exit.",
+        "japanese": "出口(でぐち)",
+        "reading": "でぐち",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 5
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/60-putgo-in-%E5%85%A5",
+            "image_src": null,
+            "kanji": "入",
+            "meaning": "put/go in"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          }
+        ],
+        "english": "entrance",
+        "japanese": "入り口(いりぐち)",
+        "reading": "いりぐち",
+        "tags": [
+          {
+            "link": "/tags/43",
+            "name": "NOKURI"
+          }
+        ],
+        "usefulness": 4
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/113-bad-%E6%82%AA",
+            "image_src": null,
+            "kanji": "悪",
+            "meaning": "bad"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          }
+        ],
+        "english": "talking shit about someone.",
+        "japanese": "悪口(わるぐち)",
+        "reading": "わるぐち",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/1133-sit-%E5%BA%A7",
+            "image_src": null,
+            "kanji": "座",
+            "meaning": "sit"
+          }
+        ],
+        "english": "bank account",
+        "japanese": "銀行口座(ぎんこうこうざ)",
+        "reading": "ぎんこうこうざ",
+        "tags": [],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/863-explain-%E8%AA%AC",
+            "image_src": null,
+            "kanji": "説",
+            "meaning": "explain"
+          }
+        ],
+        "english": "pester",
+        "japanese": "口説く(くどく)",
+        "reading": "くどく",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/61-person-%E4%BA%BA",
+            "image_src": null,
+            "kanji": "人",
+            "meaning": "person"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          }
+        ],
+        "english": "population",
+        "japanese": "人口(じんこう)",
+        "reading": "じんこう",
+        "tags": [],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/567-window-%E7%AA%93",
+            "image_src": null,
+            "kanji": "窓",
+            "meaning": "window"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          }
+        ],
+        "english": "service window",
+        "japanese": "窓口(まどぐち)",
+        "reading": "まどぐち",
+        "tags": [
+          {
+            "link": "/tags/13",
+            "name": "KUNKUN"
+          }
+        ],
+        "usefulness": 2
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+            "image_src": null,
+            "kanji": "口",
+            "meaning": "mouth"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/964-truth-%E5%AE%9F",
+            "image_src": null,
+            "kanji": "実",
+            "meaning": "truth"
+          }
+        ],
+        "english": "pretext",
+        "japanese": "口実(こうじつ)",
+        "reading": "こうじつ",
+        "tags": [],
+        "usefulness": 1
+      }
+    ],
+    "kanji": "口",
+    "kunyomi": [
+      {
+        "meaning": "mouth",
+        "reading": "くち",
+        "tags": [],
+        "usefulness": 5
+      }
+    ],
+    "link": "https://www.kanjidamage.com/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+    "lookalikes": [],
+    "meaning": "mouth/small box radical",
+    "mnemonic": "<p>You can think of this as an open mouth, just yelling at you . Always yelling! Again with the yelling JESUS WOULD YOU SHUT UP ALREADY JUST SHUT UP. YEAH THAT'S RIGHT. JUST CALL THE COPS. GREAT!</p>",
+    "next_link": "/kanji/10-products-%E5%93%81",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">KOU, KU</span>\n</td>",
+        "<td>\n<p>- as in, \"My KUchi on your <span class=\"onyomi\">COLON</span> . \" Disgusting? Yes!. . . but try forgetting this ON-yomi now. </p>\n</td>"
+      ]
+    ],
+    "practice": true,
+    "prev_link": "/kanji/8-rape-%E5%A7%A6",
+    "synonyms": [
+      {
+        "english": "persuade",
+        "japanese": "説得\n  \n口説く"
+      },
+      {
+        "english": "spicy",
+        "japanese": "辛い\n  \n辛口"
+      },
+      {
+        "english": "tone of voice",
+        "japanese": "調子\n  \n口調\n  \n喋り方"
+      }
+    ],
+    "tags": [
+      {
+        "link": "/tags/19",
+        "name": "PN"
+      },
+      {
+        "link": "/tags/18",
+        "name": "PK"
+      },
+      {
+        "link": "/tags/28",
+        "name": "DUH"
+      },
+      {
+        "link": "/tags/29",
+        "name": "JERK RADICAL"
+      },
+      {
+        "link": "/tags/25",
+        "name": "SYMBOLIC"
+      }
+    ],
+    "used_in": [
+      {
+        "kanji": "品",
+        "link": "/kanji/10-products-%E5%93%81"
+      },
+      {
+        "kanji": "叶",
+        "link": "/kanji/17-dream-come-true-%E5%8F%B6"
+      },
+      {
+        "kanji": "日",
+        "link": "/kanji/23-sun-day-%E6%97%A5"
+      },
+      {
+        "kanji": "言",
+        "link": "/kanji/11-say-%E8%A8%80"
+      },
+      {
+        "kanji": "古",
+        "link": "/kanji/16-old-%E5%8F%A4"
+      },
+      {
+        "kanji": "可",
+        "link": "/kanji/55-possible-%E5%8F%AF"
+      },
+      {
+        "kanji": "亭",
+        "link": "/kanji/81-restaurant-%E4%BA%AD"
+      },
+      {
+        "kanji": "叫",
+        "link": "/kanji/97-shout-%E5%8F%AB"
+      },
+      {
+        "kanji": "名",
+        "link": "/kanji/119-name-famous-%E5%90%8D"
+      },
+      {
+        "kanji": "占",
+        "link": "/kanji/125-fortune-teller-occupy-%E5%8D%A0"
+      },
+      {
+        "kanji": "喧",
+        "link": "/kanji/131-fight-or-quarrel-%E5%96%A7"
+      },
+      {
+        "kanji": "沿",
+        "link": "/kanji/135-run-parallel-to-%E6%B2%BF"
+      },
+      {
+        "kanji": "問",
+        "link": "/kanji/163-question-problem-%E5%95%8F"
+      },
+      {
+        "kanji": "召",
+        "link": "/kanji/166-summon-%E5%8F%AC"
+      },
+      {
+        "kanji": "加",
+        "link": "/kanji/176-add-%E5%8A%A0"
+      },
+      {
+        "kanji": "熟",
+        "link": "/kanji/184-get-good-at-%E7%86%9F"
+      },
+      {
+        "kanji": "呼",
+        "link": "/kanji/191-call-to-someone-%E5%91%BC"
+      },
+      {
+        "kanji": "京",
+        "link": "/kanji/197-capital-%E4%BA%AC"
+      },
+      {
+        "kanji": "絹",
+        "link": "/kanji/218-silk-%E7%B5%B9"
+      },
+      {
+        "kanji": "舌",
+        "link": "/kanji/230-tongue-%E8%88%8C"
+      },
+      {
+        "kanji": "吐",
+        "link": "/kanji/243-puke-%E5%90%90"
+      },
+      {
+        "kanji": "塾",
+        "link": "/kanji/244-cram-school-%E5%A1%BE"
+      },
+      {
+        "kanji": "吉",
+        "link": "/kanji/248-good-omen-%E5%90%89"
+      },
+      {
+        "kanji": "唯",
+        "link": "/kanji/266-sole-or-only-%E5%94%AF"
+      },
+      {
+        "kanji": "足",
+        "link": "/kanji/277-foot-be-enough-%E8%B6%B3"
+      },
+      {
+        "kanji": "拐",
+        "link": "/kanji/303-kidnap-%E6%8B%90"
+      },
+      {
+        "kanji": "哲",
+        "link": "/kanji/318-philosophy-%E5%93%B2"
+      },
+      {
+        "kanji": "保",
+        "link": "/kanji/362-guaranteemaintain-%E4%BF%9D"
+      },
+      {
+        "kanji": "和",
+        "link": "/kanji/369-peace-japan-%E5%92%8C"
+      },
+      {
+        "kanji": "味",
+        "link": "/kanji/383-flavor-%E5%91%B3"
+      },
+      {
+        "kanji": "嘆",
+        "link": "/kanji/424-lament-sigh-%E5%98%86"
+      },
+      {
+        "kanji": "回",
+        "link": "/kanji/437-rotate-times-%E5%9B%9E"
+      },
+      {
+        "kanji": "聖",
+        "link": "/kanji/450-holy-%E8%81%96"
+      },
+      {
+        "kanji": "程",
+        "link": "/kanji/451-extent-%E7%A8%8B"
+      },
+      {
+        "kanji": "喫",
+        "link": "/kanji/456-enjoy-a-drink-and-a-smoke-%E5%96%AB"
+      },
+      {
+        "kanji": "害",
+        "link": "/kanji/462-damage-%E5%AE%B3"
+      },
+      {
+        "kanji": "中",
+        "link": "/kanji/489-middle-%E4%B8%AD"
+      },
+      {
+        "kanji": "兄",
+        "link": "/kanji/526-older-brother-%E5%85%84"
+      },
+      {
+        "kanji": "噴",
+        "link": "/kanji/535-spew-%E5%99%B4"
+      },
+      {
+        "kanji": "甘",
+        "link": "/kanji/516-sweet-%E7%94%98"
+      },
+      {
+        "kanji": "員",
+        "link": "/kanji/544-clerk-%E5%93%A1"
+      },
+      {
+        "kanji": "西",
+        "link": "/kanji/574-west-%E8%A5%BF"
+      },
+      {
+        "kanji": "吸",
+        "link": "/kanji/626-suck-%E5%90%B8"
+      },
+      {
+        "kanji": "極",
+        "link": "/kanji/654-extreme-%E6%A5%B5"
+      },
+      {
+        "kanji": "号",
+        "link": "/kanji/656-id-number-%E5%8F%B7"
+      },
+      {
+        "kanji": "惑",
+        "link": "/kanji/668-be-misguided-or-tempted-%E6%83%91"
+      },
+      {
+        "kanji": "域",
+        "link": "/kanji/671-region-%E5%9F%9F"
+      },
+      {
+        "kanji": "巨",
+        "link": "/kanji/682-giant-super-huge-%E5%B7%A8"
+      },
+      {
+        "kanji": "四",
+        "link": "/kanji/694-the-numeral-4-%E5%9B%9B"
+      },
+      {
+        "kanji": "喚",
+        "link": "/kanji/695-exclaim-%E5%96%9A"
+      },
+      {
+        "kanji": "吹",
+        "link": "/kanji/701-blow-%E5%90%B9"
+      },
+      {
+        "kanji": "哀",
+        "link": "/kanji/773-pitiful-%E5%93%80"
+      },
+      {
+        "kanji": "告",
+        "link": "/kanji/807-inform-%E5%91%8A"
+      },
+      {
+        "kanji": "石",
+        "link": "/kanji/819-rock-%E7%9F%B3"
+      },
+      {
+        "kanji": "鳴",
+        "link": "/kanji/836-animal-cry-%E9%B3%B4"
+      },
+      {
+        "kanji": "呑",
+        "link": "/kanji/883-chug-%E5%91%91"
+      },
+      {
+        "kanji": "咲",
+        "link": "/kanji/886-bloom-%E5%92%B2"
+      },
+      {
+        "kanji": "舎",
+        "link": "/kanji/926-stable-%E8%88%8E"
+      },
+      {
+        "kanji": "倉",
+        "link": "/kanji/932-storage-%E5%80%89"
+      },
+      {
+        "kanji": "合",
+        "link": "/kanji/936-to-suit-%E5%90%88"
+      },
+      {
+        "kanji": "含",
+        "link": "/kanji/944-include-%E5%90%AB"
+      },
+      {
+        "kanji": "命",
+        "link": "/kanji/949-life-%E5%91%BD"
+      },
+      {
+        "kanji": "尋",
+        "link": "/kanji/997-ask-%E5%B0%8B"
+      },
+      {
+        "kanji": "噂",
+        "link": "/kanji/1007-rumor-%E5%99%82"
+      },
+      {
+        "kanji": "喋",
+        "link": "/kanji/1031-speak-%E5%96%8B"
+      },
+      {
+        "kanji": "噛",
+        "link": "/kanji/1033-chew-bite-%E5%99%9B"
+      },
+      {
+        "kanji": "知",
+        "link": "/kanji/1050-know-%E7%9F%A5"
+      },
+      {
+        "kanji": "右",
+        "link": "/kanji/1097-right-%E5%8F%B3"
+      },
+      {
+        "kanji": "唐",
+        "link": "/kanji/1137-suddenly-%E5%94%90"
+      },
+      {
+        "kanji": "民",
+        "link": "/kanji/1165-folk-%E6%B0%91"
+      },
+      {
+        "kanji": "唇",
+        "link": "/kanji/1177-lips-%E5%94%87"
+      },
+      {
+        "kanji": "束",
+        "link": "/kanji/1336-bundle-of-sticks-%E6%9D%9F"
+      },
+      {
+        "kanji": "叱",
+        "link": "/kanji/22-scold-%E5%8F%B1"
+      },
+      {
+        "kanji": "塩",
+        "link": "/kanji/1438-salt-%E5%A1%A9"
+      },
+      {
+        "kanji": "船",
+        "link": "/kanji/1449-ship-%E8%88%B9"
+      },
+      {
+        "kanji": "叩",
+        "link": "/kanji/1466-beat-smack-%E5%8F%A9"
+      },
+      {
+        "kanji": "卵",
+        "link": "/kanji/1467-egg-%E5%8D%B5"
+      },
+      {
+        "kanji": "谷",
+        "link": "/kanji/1517-valley-swamp-thing-radical-%E8%B0%B7"
+      },
+      {
+        "kanji": "語",
+        "link": "/kanji/1574-language-%E8%AA%9E"
+      },
+      {
+        "kanji": "悟",
+        "link": "/kanji/1575-enlightenment-%E6%82%9F"
+      },
+      {
+        "kanji": "史",
+        "link": "/kanji/1590-history-%E5%8F%B2"
+      },
+      {
+        "kanji": "呂",
+        "link": "/kanji/1610-washtub-%E5%91%82"
+      },
+      {
+        "kanji": "尚",
+        "link": "/kanji/1627-all-the-more-%E5%B0%9A"
+      },
+      {
+        "kanji": "高",
+        "link": "/kanji/1639-tall-%E9%AB%98"
+      },
+      {
+        "kanji": "君",
+        "link": "/kanji/1665-buddy-%E5%90%9B"
+      },
+      {
+        "kanji": "嘘",
+        "link": "/kanji/1690-lie-%E5%98%98"
+      },
+      {
+        "kanji": "暇",
+        "link": "/kanji/1728-free-time-%E6%9A%87"
+      },
+      {
+        "kanji": "隔",
+        "link": "/kanji/1743-segregate-%E9%9A%94"
+      },
+      {
+        "kanji": "唱",
+        "link": "/kanji/26-chant-%E5%94%B1"
+      },
+      {
+        "kanji": "喜",
+        "link": "/kanji/838-rejoice-%E5%96%9C"
+      },
+      {
+        "kanji": "否",
+        "link": "/kanji/14-no-%E5%90%A6"
+      },
+      {
+        "kanji": "各",
+        "link": "/kanji/609-each-%E5%90%84"
+      },
+      {
+        "kanji": "別",
+        "link": "/kanji/1314-separate-%E5%88%A5"
+      },
+      {
+        "kanji": "句",
+        "link": "/kanji/1418-verse-of-a-poem-%E5%8F%A5"
+      },
+      {
+        "kanji": "事",
+        "link": "/kanji/1660-action-incident-%E4%BA%8B"
+      },
+      {
+        "kanji": "咳",
+        "link": "/kanji/1699-cough-%E5%92%B3"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/hitler-4b76f0c76d4d8ea085e1e6cda3b7d25841272f4fad56777afc29dd5daa0ced51.jpg",
+        "link": "/kanji/1763-hitler"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/far-6e5a6d9f07b7e286cb081a537cd4b5927b3eaf2e9c5769ca62059e4fe649a5a1.jpg",
+        "link": "/kanji/761-far-away"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/amount-302e93974444b88ecaf78271488f5127b984e7f8d501c6aa6117cce7e15c93dc.jpg",
+        "link": "/kanji/794-double-the-amount"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/worm-on-the-end-of-a-hook-9b6c21d6a38309280e30170389fe7f83772e398a289b5a08615db768d9f74447.jpg",
+        "link": "/kanji/1209-bait"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/STINKY-a2937a02f7d42cfb23d0c265791b68ffe2d56a48bb7bd50d5af4bc2319436746.jpg",
+        "link": "/kanji/1359-stank"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/wine-bottle-326a630e521ebaa33b144ad5eb73e00f177f587df5f3151d71dc99b119e705f0.jpg",
+        "link": "/kanji/1499-wine-bottle"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/orgy-b66a4017e2961ce98db535e0b3456766c108f0e1a3ea272d031a95290a6e43ef.jpg",
+        "link": "/kanji/1576-orgy"
+      },
+      {
+        "kanji": "https://www.kanjidamage.com/assets/radREALLYsmall/goatee-f0f4a557d7228e465bc222e736747441dd80e27b57ab376c416df57b0a25624a.jpg",
+        "link": "/kanji/1634-goatee"
+      },
+      {
+        "kanji": "台",
+        "link": "/kanji/139-big-thing-counter-%E5%8F%B0"
+      }
+    ],
+    "usefulness": 5
   }
 }
