@@ -57,41 +57,41 @@ function Kanjis() {
         <div class="flex flex-col w-full h-full bg-gray-50">
             <Navbar/>
             <div class="relative w-full h-full flex-1">
-                <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 absolute overflow-y-auto h-full p-2 sm:px-6 sm:pt-6 w-full pb-24">
+                <div class="grid gap-3 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 absolute overflow-y-auto h-full p-2 md:px-6 md:pt-6 w-full pb-24">
                     {entries().map((entry: Entry) => (
                         <div 
                             onClick={() => on_kanji_click(entry)}
                             class={`bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer 
-                                sm:${entry.is_radical ? 'border-l-4 border-blue-400' : ''}
-                                sm:${entry.practice ? 'border-r-4 border-green-400' : ''}`}
+                                md:${entry.is_radical ? 'border-l-4 border-blue-400' : ''}
+                                md:${entry.practice ? 'border-r-4 border-green-400' : ''}`}
                         >
-                            <div class="p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                                <div class="flex items-center gap-2 sm:gap-6">
-                                    <span class="text-gray-400 font-medium text-sm sm:text-base w-6 sm:w-8">
+                            <div class="p-3 md:p-4 flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div class="flex items-center gap-2 md:gap-6">
+                                    <span class="text-gray-400 font-medium text-sm md:text-base w-6 md:w-8">
                                         {entry.index}.
                                     </span>    
-                                    <span class={`text-xl sm:text-2xl font-semibold flex items-center justify-center min-w-[1.5rem] sm:min-w-[2rem] 
+                                    <span class={`text-xl md:text-2xl font-semibold flex items-center justify-center min-w-[1.5rem] md:min-w-[2rem] 
                                         ${entry.practice ? 'text-green-600' : 'text-gray-700'} 
                                         hover:text-blue-600 transition-colors`}>
                                         {render_kanji_content(entry)}
                                     </span>
-                                    <span class="text-gray-600 text-base sm:text-lg break-words">
+                                    <span class="text-gray-600 text-base md:text-lg break-words">
                                         {entry.meaning}
                                     </span>
                                 </div>
-                                <div class="flex items-center gap-2 mt-2 sm:mt-0">
+                                <div class="flex items-center gap-2 mt-2 md:mt-0">
                                     {entry.practice && 
-                                        <span class="inline-block sm:hidden px-2 py-1 text-xs font-medium bg-green-100 text-green-600 rounded">
+                                        <span class="inline-block md:hidden px-2 py-1 text-xs font-medium bg-green-100 text-green-600 rounded">
                                             Practice
                                         </span>
                                     }
                                     {entry.is_radical && 
-                                        <span class="inline-block sm:hidden px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded">
+                                        <span class="inline-block md:hidden px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded">
                                             Radical
                                         </span>
                                     }
                                 </div>
-                                <div class="hidden sm:flex items-center gap-2">
+                                <div class="hidden md:flex items-center gap-2">
                                     {entry.practice && 
                                         <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-600 rounded">
                                             Practice

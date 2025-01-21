@@ -155,7 +155,7 @@ function Navbar() {
                         >
                             Practice
                         </A>
-                        <A 
+                        {/* <A 
                             href="/synonyms" 
                             class="text-gray-300 hover:text-white transition-colors duration-200 px-3 py-2 rounded-md text-sm font-medium"
                             activeClass="text-white bg-gray-900"
@@ -168,7 +168,7 @@ function Navbar() {
                             activeClass="text-white bg-gray-900"
                         >
                             Tags
-                        </A>
+                        </A> */}
                     </div>
 
                     <div class="md:hidden">
@@ -276,7 +276,7 @@ function Navbar() {
                         >
                             Practice
                         </A>
-                        <A
+                        {/* <A
                             href="/synonyms"
                             class="block text-gray-300 hover:text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium"
                             activeClass="text-white bg-gray-900"
@@ -289,7 +289,7 @@ function Navbar() {
                             activeClass="text-white bg-gray-900"
                         >
                             Tags
-                        </A>
+                        </A> */}
                     </div>
                 </div>
             </div>
