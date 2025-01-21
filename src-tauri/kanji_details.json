@@ -937,6 +937,187 @@
     ],
     "usefulness": 1
   },
+  "8-rape-%E5%A7%A6": {
+    "breakdown": "\n<a href=\"/kanji/6-woman-%E5%A5%B3\" class=\"component\">女</a>\n(woman)\n\n",
+    "description": "<div class=\"description\">\nBy looking at the radicals you can see how Politically Incorrect Ancient China was when they were inventing kanji. You see three women and you'd assume the kanji would mean something positive, like sisterhood or a cheerleader human pyramid. Buuuuuut no. \n</div>",
+    "index": 8,
+    "jukugo": [
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/897-burly-%E5%BC%B7",
+            "image_src": null,
+            "kanji": "強",
+            "meaning": "burly"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/8-rape-%E5%A7%A6",
+            "image_src": null,
+            "kanji": "姦",
+            "meaning": "rape"
+          }
+        ],
+        "english": "rape",
+        "japanese": "強姦(ごうかん)",
+        "reading": "ごうかん",
+        "tags": [
+          {
+            "link": "/tags/8",
+            "name": "FP"
+          }
+        ],
+        "usefulness": 3
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/1258-law-%E6%B3%95",
+            "image_src": null,
+            "kanji": "法",
+            "meaning": "law"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/282-plan-%E5%AE%9A",
+            "image_src": null,
+            "kanji": "定",
+            "meaning": "plan"
+          }
+        ],
+        "english": "statuatory rape\n☆☆☆☆☆\nNP\n\n法 (law) + 定 (plan) + 強姦 (rape)\n = 法定強姦 (statuatory rape)",
+        "japanese": "法定強姦(ほうていごうかん)",
+        "reading": "ほうていごうかん",
+        "tags": [
+          {
+            "link": "/tags/16",
+            "name": "NP"
+          }
+        ],
+        "usefulness": 0
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/328-near-%E8%BF%91",
+            "image_src": null,
+            "kanji": "近",
+            "meaning": "near"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/525-parentskindness-%E8%A6%AA",
+            "image_src": null,
+            "kanji": "親",
+            "meaning": "parents/kindness"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/350-partner-%E7%9B%B8",
+            "image_src": null,
+            "kanji": "相",
+            "meaning": "partner"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/8-rape-%E5%A7%A6",
+            "image_src": null,
+            "kanji": "姦",
+            "meaning": "rape"
+          }
+        ],
+        "english": "incest\n☆☆☆☆☆\nABU\n\n近 (near) + 親 (parents/kindness) + 相 (partner) + 姦 (rape)\n = 近親相姦 (incest)",
+        "japanese": "近親相姦(きんしんそうかん)",
+        "reading": "きんしんそうかん",
+        "tags": [
+          {
+            "link": "/tags/1",
+            "name": "ABU"
+          }
+        ],
+        "usefulness": 0
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/598-beast-%E7%8D%A3",
+            "image_src": null,
+            "kanji": "獣",
+            "meaning": "beast"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/8-rape-%E5%A7%A6",
+            "image_src": null,
+            "kanji": "姦",
+            "meaning": "rape"
+          }
+        ],
+        "english": "bestiality\n☆☆☆☆☆\nABU\n\n獣 (beast) + 姦 (rape)\n = 獣姦 (bestiality)",
+        "japanese": "獣姦(じゅうかん)",
+        "reading": "じゅうかん",
+        "tags": [
+          {
+            "link": "/tags/1",
+            "name": "ABU"
+          }
+        ],
+        "usefulness": 0
+      },
+      {
+        "components": [
+          {
+            "href": "https://www.kanjidamage.com/kanji/120-death-%E6%AD%BB",
+            "image_src": null,
+            "kanji": "死",
+            "meaning": "death"
+          },
+          {
+            "href": "https://www.kanjidamage.com/kanji/8-rape-%E5%A7%A6",
+            "image_src": null,
+            "kanji": "姦",
+            "meaning": "rape"
+          }
+        ],
+        "english": "necrophilia\n☆☆☆☆☆\nABU\n\n死 (death) + 姦 (rape)\n = 死姦 (necrophilia)",
+        "japanese": "死姦(しかん)",
+        "reading": "しかん",
+        "tags": [
+          {
+            "link": "/tags/1",
+            "name": "ABU"
+          }
+        ],
+        "usefulness": 0
+      }
+    ],
+    "kanji": "姦",
+    "kunyomi": [],
+    "link": "https://www.kanjidamage.com/kanji/8-rape-%E5%A7%A6",
+    "lookalikes": [],
+    "meaning": "rape",
+    "mnemonic": null,
+    "next_link": "/kanji/9-mouth-small-box-radical-%E5%8F%A3",
+    "onyomi": [
+      [
+        "<td>\n<span class=\"onyomi\">KAN</span>\n</td>",
+        "<td>\n<p>Genghis <span class=\"onyomi\">KHAN</span> raped three <span class=\"component\">women</span>.</p>\n</td>"
+      ]
+    ],
+    "practice": true,
+    "prev_link": "/kanji/7-like-%E5%A5%BD",
+    "synonyms": [],
+    "tags": [
+      {
+        "link": "/tags/2",
+        "name": "BETA"
+      },
+      {
+        "link": "/tags/9",
+        "name": "FR"
+      },
+      {
+        "link": "/tags/1",
+        "name": "ABU"
+      }
+    ],
+    "used_in": [],
+    "usefulness": 1
+  },
   "9-mouth-small-box-radical-%E5%8F%A3": {
     "breakdown": "\n\n",
     "description": "<div class=\"description\">\nJERK RADICAL ALERT- although the kanji means 'mouth' the radical sometimes means \"box\". Irritating but not totally a hassle when you consider that it looks more like a box than a mouth, anyway.\n<p>\nAlso, jukugo with 口 tend to be KUNKUN for some reason.\n</p></div>",
