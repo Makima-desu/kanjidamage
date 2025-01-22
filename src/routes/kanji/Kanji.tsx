@@ -244,7 +244,7 @@ function Kanji() {
                                     {/* Meaning and details */}
                                     <div class="flex flex-col items-center md:items-start text-center md:text-left">
                                         <h1 class="text-2xl md:text-3xl text-green-600 font-medium tracking-wide">
-                                            {kanji()?.meaning}
+                                            {kanji()?.meanings?.join(' / ') || kanji()?.meanings}
                                         </h1>
                                         
                                         <div class="text-yellow-500 text-xl md:text-2xl mt-2">

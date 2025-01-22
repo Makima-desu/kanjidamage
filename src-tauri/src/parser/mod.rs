@@ -125,68 +125,6 @@ pub async fn get_kanji_list() -> Result<Vec<KanjiListing>, String> {
     Ok(kanji_list)
 }
 
-#[tauri::command]
-pub async fn get_kanji_list_v1() -> Result<Vec<KanjiListing>, String> {
-    let file = include_str!("kanjis.txt");
-    let document = scraper::Html::parse_document(file);
-    let row_selector = scraper::Selector::parse("tr").unwrap();
-    let td_selector = scraper::Selector::parse("td").unwrap();
-    let kanji_char_selector = scraper::Selector::parse("span.kanji_character").unwrap();
-    let img_selector = scraper::Selector::parse("img").unwrap();
-    
-    let mut entries = Vec::new();
-    
-    for row in document.select(&row_selector) {
-        let tds: Vec<_> = row.select(&td_selector).collect();
-        if tds.len() >= 4 {
-            let index = tds[0].text()
-                .next()
-                .and_then(|t| t.trim().parse::<i32>().ok())
-                .unwrap_or(0);
-                
-            let is_radical = tds[1].select(&img_selector).next().is_some();
-            
-            // Get kanji character or image from the third column (tds[2])
-            let (kanji, link, has_image) = if let Some(kanji_span) = tds[2].select(&kanji_char_selector).next() {
-                // Case 1: Regular kanji character
-                let k = kanji_span.text().collect::<String>();
-                let l = tds[2].select(&scraper::Selector::parse("a").unwrap())
-                    .next()
-                    .map(|a| format!("https://www.kanjidamage.com{}", 
-                        a.value().attr("href").unwrap_or("")))
-                    .unwrap_or_else(|| format!("https://www.kanjidamage.com/kanji/{}", index));
-                (k, l, false)
-            } else if let Some(img) = tds[2].select(&img_selector).next() {
-                // Case 2: Image kanji
-                let src = img.value().attr("src").unwrap_or_default();
-                let l = format!("https://www.kanjidamage.com/kanji/{}", index);
-                (format!("https://www.kanjidamage.com{}", src), l, true)
-            } else {
-                // Case 3: Direct text content (fallback)
-                let k = tds[2].text().collect::<String>().trim().to_string();
-                let l = format!("https://www.kanjidamage.com/kanji/{}", index);
-                (k, l, false)
-            };
-            
-            let meaning = tds[3].text().next().unwrap_or("").trim().to_string();
-            
-            if !meaning.is_empty() {
-                entries.push(KanjiListing {
-                    index,
-                    kanji,
-                    meaning,
-                    is_radical,
-                    link,
-                    has_image,
-                    practice: false,
-                });
-            }
-        }
-    }
-    
-    Ok(entries)
-}
-
 pub fn save_kanji_data(kanji_id: &str, kanji_detail: &KanjiDetail) -> Result<(), String> {
     let file_path = "kanji_details.json";
     let mut kanji_map = if Path::new(file_path).exists() {
@@ -319,10 +257,17 @@ pub async fn fetch_kanji(url: String) -> Result<KanjiDetail, String> {
         })
         .unwrap_or_default();
         
-    let meaning = document.select(&h1_selector)
+    let meanings = document.select(&h1_selector)
         .next()
         .and_then(|el| el.select(&Selector::parse("span.translation").unwrap()).next())
-        .map(|el| el.text().collect::<String>())
+        .map(|el| {
+            el.text()
+                .collect::<String>()
+                .split('/')
+                .map(|s| s.trim().to_string())
+                .filter(|s| !s.is_empty())
+                .collect::<Vec<String>>()
+        })
         .unwrap_or_default();
 
     // Get usefulness stars
@@ -373,27 +318,32 @@ pub async fn fetch_kanji(url: String) -> Result<KanjiDetail, String> {
     // First find the Onyomi section
     let mut onyomi = Vec::new();
 
-    // First find the Onyomi section
     if let Some(onyomi_table) = document
         .select(&Selector::parse("h2").unwrap())
         .find(|h2| h2.text().collect::<String>() == "Onyomi")
         .and_then(|h2| h2.next_sibling_element())
         .filter(|el| el.value().name() == "table") {
         
-        // Get the first row of the table
         if let Some(first_row) = onyomi_table.select(&Selector::parse("tr").unwrap()).next() {
-            let reading = first_row.select(&Selector::parse("td").unwrap())
+            let reading = first_row.select(&Selector::parse("td span.onyomi").unwrap())
                 .next()
-                .map(|td| td.html())
+                .map(|span| span.text().collect::<String>())
                 .unwrap_or_default();
                 
             let description = first_row.select(&Selector::parse("td").unwrap())
                 .nth(1)
-                .map(|td| td.html())  // Use html() instead of text()
+                .map(|td| td.html())
                 .unwrap_or_default();
                 
-            if !reading.is_empty() {
-                onyomi.push((reading, description));
+            // Split the readings by comma and trim whitespace
+            let readings = reading.split(',')
+                .map(|s| s.trim().to_string())
+                .filter(|s| !s.is_empty())
+                .collect::<Vec<_>>();
+                
+            // Create a tuple for each reading with the same description
+            for reading in readings {
+                onyomi.push((reading, description.clone()));
             }
         }
     }
@@ -700,7 +650,7 @@ pub async fn fetch_kanji(url: String) -> Result<KanjiDetail, String> {
             index,
             link: url.clone(),
             kanji,
-            meaning,
+            meanings,
             tags,
             description,
             onyomi,
@@ -829,17 +779,22 @@ pub fn initialize_practice_pool() -> Result<Vec<KanjiDetail>, String> {
                             .filter_map(|entry| {
                                 entry.as_array().and_then(|pair| {
                                     pair.get(0).and_then(|reading| {
-                                        let html_str = reading.as_str()?;
-                                        let fragment = Html::parse_fragment(html_str);
-                                        let selector = Selector::parse("span.onyomi").ok()?;
-                                        fragment.select(&selector)
-                                            .next()
-                                            .map(|element| {
-                                                (element.text().collect::<String>(), "".to_string())
-                                            })
+                                        reading.as_str().map(|s| {
+                                            // Split the string by comma and trim each part
+                                            let readings = s.split(',')
+                                                .map(|r| r.trim().to_string())
+                                                .filter(|r| !r.is_empty())
+                                                .collect::<Vec<_>>();
+                                            
+                                            // Create tuples for each reading
+                                            readings.into_iter()
+                                                .map(|r| (r, String::new()))
+                                                .collect::<Vec<_>>()
+                                        })
                                     })
                                 })
                             })
+                            .flatten()
                             .collect::<Vec<_>>()
                     })
                     .unwrap_or_default();
@@ -849,7 +804,15 @@ pub fn initialize_practice_pool() -> Result<Vec<KanjiDetail>, String> {
                     index: value.get("index").and_then(|i| i.as_u64()).unwrap_or(0) as u32,
                     kanji: value.get("kanji").and_then(|k| k.as_str()).unwrap_or("").to_string(),
                     link: value.get("link").and_then(|l| l.as_str()).unwrap_or("").to_string(), 
-                    meaning: value.get("meaning").and_then(|m| m.as_str()).unwrap_or("").to_string(),
+                    meanings: value.get("meanings")
+                    .and_then(|m| m.as_array())
+                    .map(|arr| {
+                        arr.iter()
+                            .filter_map(|v| v.as_str())
+                            .map(|s| s.to_string())
+                            .collect::<Vec<String>>()
+                    })
+                    .unwrap_or_default(),
                     tags: value.get("tags")
                         .and_then(|t| serde_json::from_value(t.clone()).ok())
                         .unwrap_or_default(),

@@ -2,7 +2,7 @@ export interface KanjiDetail {
     index: number,
     kanji: string;
     link: string
-    meaning: string;
+    meanings: string[];
     tags: any[],
     description: string,
     onyomi: string[];

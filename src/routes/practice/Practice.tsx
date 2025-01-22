@@ -7,7 +7,7 @@ interface PracticeItem {
     kanji: string;
     onyomi: [string, string][];
     kunyomi: Array<{ reading: string; description: string }>;
-    meaning: string;
+    meanings: string[];
     mnemonic: string | null;
     breakdown: string;
     lookalikes: Array<{ kanji: string; meaning: string }>;
@@ -16,6 +16,12 @@ interface PracticeItem {
         reading: string;
         english: string;
     }>;
+}
+
+interface ValidationState {
+  meaning: boolean | null;
+  onyomi: boolean | null;
+  kunyomi: boolean | null;
 }
 
 const InfoSection = (props: { 
@@ -57,6 +63,12 @@ function Practice() {
     onyomi: '',
     kunyomi: ''
   });
+  const [validationState, setValidationState] = createSignal<ValidationState>({
+    meaning: null,
+    onyomi: null,
+    kunyomi: null
+  });
+  const [showSolutions, setShowSolutions] = createSignal(false);
   const [mnemonicOpen, setMnemonicOpen] = createSignal(false);
   const [componentsOpen, setComponentsOpen] = createSignal(false);
   const [similarKanjiOpen, setSimilarKanjiOpen] = createSignal(false);
@@ -70,7 +82,6 @@ function Practice() {
         IMEMode: true,
         customKanaMapping: { nn: 'ん' }
       });
-
       return () => {
         if (kunyomiInputRef) {
           wanakana.unbind(kunyomiInputRef);
@@ -79,11 +90,11 @@ function Practice() {
     }
   });
 
-
   createEffect(async () => {
     try {
       const pool = await invoke<PracticeItem[]>('initialize_practice_pool');
       setPracticePool(pool);
+      console.log(pool)
       if (pool.length > 0) {
         setCurrentItem(pool[0]);
       }
@@ -92,18 +103,35 @@ function Practice() {
     }
   });
 
+  const getInputClass = (field: keyof ValidationState) => {
+    const baseClass = "w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2";
+    if (validationState()[field] === null) return `${baseClass} focus:ring-blue-500`;
+    return validationState()[field] 
+      ? `${baseClass} border-green-500 bg-green-50 focus:ring-green-500`
+      : `${baseClass} border-red-500 bg-red-50 focus:ring-red-500`;
+  };
+
   const handleSubmit = (e: Event) => {
     e.preventDefault();
     const current = currentItem();
     if (!current) return;
-
-    const meaningCorrect = current.meaning ? 
-      answers().meaning.toLowerCase().trim() === current.meaning.toLowerCase().trim() : true;
+  
+    const meaningCorrect = current.meanings ? 
+    current.meanings.some(meaning => 
+        answers().meaning.toLowerCase().trim() === meaning.toLowerCase().trim()
+    ) : true;
+    
     const onyomiCorrect = current.onyomi && current.onyomi.length > 0 ? 
       current.onyomi.some(([reading]) => reading.toLowerCase().trim() === answers().onyomi.toLowerCase().trim()) : true;
     const kunyomiCorrect = current.kunyomi && current.kunyomi.length > 0 ? 
       current.kunyomi.some(entry => entry.reading === answers().kunyomi) : true;
-
+  
+    setValidationState({
+      meaning: meaningCorrect,
+      onyomi: onyomiCorrect,
+      kunyomi: kunyomiCorrect
+    });
+  
     setIsCorrect(meaningCorrect && onyomiCorrect && kunyomiCorrect);
   };
 
@@ -114,6 +142,8 @@ function Practice() {
       setCurrentItem(practicePool()[nextIndex]);
       setAnswers({ meaning: '', onyomi: '', kunyomi: '' });
       setIsCorrect(null);
+      setValidationState({ meaning: null, onyomi: null, kunyomi: null });
+      setShowSolutions(false);
       setMnemonicOpen(false);
       setComponentsOpen(false);
       setSimilarKanjiOpen(false);
@@ -146,70 +176,69 @@ function Practice() {
               }
             >
               <div class="text-center mb-8">
-                <div class="text-8xl mb-4 font-bold">
-                  {currentItem()!.kanji.startsWith('/') ? (
-                    <img 
-                      src={`https://www.kanjidamage.com/${currentItem()!.kanji}`} 
-                      alt="Kanji character"
-                      class="h-[1em] w-auto inline-block"
-                      style="object-fit: contain"
-                    />
-                  ) : (
-                    currentItem()!.kanji
-                  )}
-                </div>
+                <div class="text-8xl mb-4 font-bold">{currentItem()!.kanji}</div>
               </div>
 
               <form onSubmit={handleSubmit} class="space-y-4">
-                <div class="space-y-4">
-                  <Show when={currentItem()?.meaning}>
+                <Show when={currentItem()?.meanings! && currentItem()?.meanings!.length! > 0}>
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
                         Meaning
-                      </label>
-                      <input
+                        </label>
+                        <input
                         type="text"
                         value={answers().meaning}
                         onInput={(e) => setAnswers({...answers(), meaning: e.currentTarget.value})}
-                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Enter the meaning..."
-                        disabled={isCorrect()!}
-                      />
-                    </div>
-                  </Show>
-                  
-                  <Show when={currentItem()?.onyomi && currentItem()?.onyomi.length! > 0}>
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
-                        On'yomi
-                      </label>
-                      <input
-                        type="text"
-                        value={answers().onyomi}
-                        onInput={(e) => setAnswers({...answers(), onyomi: e.currentTarget.value})}
-                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Enter the on'yomi reading..."
-                        disabled={isCorrect()!}
-                      />
-                    </div>
-                  </Show>
-
-                  <Show when={currentItem()?.kunyomi && currentItem()?.kunyomi.length! > 0}>
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
-                        Kun'yomi
-                      </label>
-                      <input
-                        type="text"
-                        value={answers().kunyomi}
-                        onInput={handleKunyomiInput}
-                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Enter the kun'yomi reading..."
+                        class={getInputClass('meaning')}
+                        placeholder="Enter any meaning..."
                         disabled={isCorrect()!}
                         />
+                        <Show when={validationState().meaning === false}>
+                        <p class="mt-1 text-sm text-red-600">
+                            {/* Incorrect meaning. Try one of: {currentItem()?.meanings?.split('/').join(', ')} */}
+                        </p>
+                        </Show>
                     </div>
-                  </Show>
-                </div>
+                </Show>
+
+                <Show when={currentItem()?.onyomi && currentItem()?.onyomi.length! > 0}>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                      On'yomi
+                    </label>
+                    <input
+                      type="text"
+                      value={answers().onyomi}
+                      onInput={(e) => setAnswers({...answers(), onyomi: e.currentTarget.value})}
+                      class={getInputClass('onyomi')}
+                      placeholder="Enter the on'yomi reading..."
+                      disabled={isCorrect()!}
+                    />
+                    <Show when={validationState().onyomi === false}>
+                      <p class="mt-1 text-sm text-red-600">Incorrect on'yomi</p>
+                    </Show>
+                  </div>
+                </Show>
+
+                <Show when={currentItem()?.kunyomi && currentItem()?.kunyomi.length! > 0}>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                      Kun'yomi
+                    </label>
+                    <input
+                      type="text"
+                      value={answers().kunyomi}
+                      onInput={handleKunyomiInput}
+                      class={getInputClass('kunyomi')}
+                      placeholder="Enter the kun'yomi reading..."
+                      disabled={isCorrect()!}
+                      ref={kunyomiInputRef}
+                    />
+                    <Show when={validationState().kunyomi === false}>
+                      <p class="mt-1 text-sm text-red-600">Incorrect kun'yomi</p>
+                    </Show>
+                  </div>
+                </Show>
 
                 <Show
                   when={!isCorrect()}
@@ -230,7 +259,48 @@ function Practice() {
                     Check Answers
                   </button>
                 </Show>
+
+                <Show when={!isCorrect() && isCorrect() !== null}>
+                  <button
+                    type="button"
+                    onClick={() => setShowSolutions(!showSolutions())}
+                    class="w-full mt-2 bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600 transition-colors"
+                  >
+                    {showSolutions() ? 'Hide Solutions' : 'Show Solutions'}
+                  </button>
+                </Show>
               </form>
+
+              <Show when={showSolutions() && !isCorrect() && currentItem()}>
+                <div class="mt-4 p-4 border rounded-md bg-gray-50">
+                  <h3 class="font-medium mb-2">Solutions:</h3>
+                  <div class="space-y-2">
+                    <Show when={currentItem()?.meanings}>
+                      <div>
+                        <span class="font-medium">Meaning: </span> 
+                            {currentItem()?.meanings.map((meaning: string) => 
+                            {
+                                return (
+                                    <span>
+                                        {meaning}, 
+                                    </span>
+                                )
+                            })}
+                      </div>
+                    </Show>
+                    <Show when={currentItem()?.onyomi}>
+                      <div>
+                        <span class="font-medium">On'yomi:</span> {currentItem()?.onyomi?.map(([reading]) => reading).join(', ')}
+                      </div>
+                    </Show>
+                    <Show when={currentItem()?.kunyomi}>
+                      <div>
+                        <span class="font-medium">Kun'yomi:</span> {currentItem()?.kunyomi?.[0]?.reading}
+                      </div>
+                    </Show>
+                  </div>
+                </div>
+              </Show>
 
               <Show when={isCorrect() !== null}>
                 <div
@@ -276,44 +346,45 @@ function Practice() {
                       <For each={currentItem()?.lookalikes}>
                         {(lookalike) => (
                           <div class="flex items-center space-x-2">
-                            <span class="text-2xl">{lookalike.kanji}</span>
-                            <span class="text-sm text-gray-600">{lookalike.meaning}</span>
-                          </div>
-                        )}
-                      </For>
-                    </div>
-                  </InfoSection>
+                          <span class="text-2xl">{lookalike.kanji}</span>
+                          <span class="text-sm text-gray-600">{lookalike.meaning}</span>
+                        </div>
+                      )}
+                    </For>
+                  </div>
+                </InfoSection>
 
-                  <InfoSection 
-                    title="Vocabulary" 
-                    isOpen={vocabularyOpen()} 
-                    onToggle={() => setVocabularyOpen(!vocabularyOpen())}
-                    available={currentItem()?.jukugo! && currentItem()?.jukugo!.length! > 0}
-                  >
-                    <div class="space-y-3">
-                      <For each={currentItem()?.jukugo}>
-                        {(word) => (
-                          <div class="border-b pb-2">
-                            <div class="font-medium">{word.japanese}</div>
-                            <div class="text-sm text-gray-600">{word.reading}</div>
-                            <div class="text-sm">{word.english}</div>
-                          </div>
-                        )}
-                      </For>
-                    </div>
-                  </InfoSection>
-                </div>
-              </Show>
-
-              <div class="mt-6 text-center text-gray-600">
-                Kanji {currentIndex() + 1} of {practicePool().length}
+                <InfoSection 
+                  title="Vocabulary" 
+                  isOpen={vocabularyOpen()} 
+                  onToggle={() => setVocabularyOpen(!vocabularyOpen())}
+                  available={currentItem()?.jukugo! && currentItem()?.jukugo!.length! > 0}
+                >
+                  <div class="space-y-3">
+                    <For each={currentItem()?.jukugo}>
+                      {(word) => (
+                        <div class="border-b pb-2">
+                          <div class="font-medium">{word.japanese}</div>
+                          <div class="text-sm text-gray-600">{word.reading}</div>
+                          <div class="text-sm">{word.english}</div>
+                        </div>
+                      )}
+                    </For>
+                  </div>
+                </InfoSection>
               </div>
             </Show>
-          </div>
+
+            <div class="mt-6 text-center text-gray-600">
+              Kanji {currentIndex() + 1} of {practicePool().length}
+            </div>
+          </Show>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default Practice;
+

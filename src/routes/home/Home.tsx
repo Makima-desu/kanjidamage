@@ -97,7 +97,9 @@ function Home() {
                                                         item.kanji
                                                     )}
                                                 </button>
-                                                <span class="text-sm text-gray-600 mb-2">{item.meaning}</span>
+                                                <span class="text-sm text-gray-600 mb-2">
+                                                    {item?.meanings?.join(' / ') || item?.meanings}    
+                                                </span>
                                                 <button
                                                     onClick={() => togglePractice(item)}
                                                     class="text-sm px-3 py-1 rounded-full bg-red-100 text-red-600 hover:bg-red-200 transition-colors"

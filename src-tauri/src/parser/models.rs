@@ -86,7 +86,7 @@ pub struct KanjiDetail {
     pub index: u32,
     pub link: String,
     pub kanji: String,
-    pub meaning: String,
+    pub meanings: Vec<String>,
     pub tags: Vec<Tag>,
     pub description: Option<String>,
     pub onyomi: Vec<(String, String)>, // (reading, description)

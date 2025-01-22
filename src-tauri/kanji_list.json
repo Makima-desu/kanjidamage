@@ -6,7 +6,7 @@
     "kanji": "一",
     "link": "https://www.kanjidamage.com/kanji/1-one-line-radical-%E4%B8%80",
     "meaning": "one (line radical)",
-    "practice": false
+    "practice": true
   },
   {
     "has_image": false,
@@ -15,7 +15,7 @@
     "kanji": "二",
     "link": "https://www.kanjidamage.com/kanji/2-two-%E4%BA%8C",
     "meaning": "two",
-    "practice": true
+    "practice": false
   },
   {
     "has_image": false,
@@ -42,7 +42,7 @@
     "kanji": "子",
     "link": "https://www.kanjidamage.com/kanji/5-child-%E5%AD%90",
     "meaning": "child",
-    "practice": true
+    "practice": false
   },
   {
     "has_image": false,
