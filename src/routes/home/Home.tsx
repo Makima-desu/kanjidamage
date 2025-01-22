@@ -9,6 +9,31 @@ function Home() {
     const [practicePool, setPracticePool] = createSignal<KanjiDetail[]>([]);
     const [isPoolOpen, setIsPoolOpen] = createSignal(true);
 
+    const [refreshingKanji, setRefreshingKanji] = createSignal<string | null>(null);
+
+    const handleRefresh = async (item: KanjiDetail, e: Event) => {
+        e.stopPropagation();
+        if (!item.link || refreshingKanji()) return;
+        
+        try {
+            setRefreshingKanji(item.kanji);
+            const refreshedData = await invoke("refresh_kanji_data", { 
+                url: item.link 
+            });
+            
+            // Update practice pool with refreshed data
+            setPracticePool(prev => prev.map(poolItem => 
+                poolItem.kanji === item.kanji 
+                    ? { ...poolItem, ...refreshedData! }
+                    : poolItem
+            ));
+        } catch (error) {
+            console.error('Failed to refresh kanji:', error);
+        } finally {
+            setRefreshingKanji(null);
+        }
+    };
+
     createEffect(async () => {
         try {
             const pool = await invoke<KanjiDetail[]>('initialize_practice_pool');
@@ -79,12 +104,13 @@ function Home() {
                         <Show when={isPoolOpen()}>
                             <div class="p-4 border-t">
                                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                                    <For each={practicePool()}>
-                                        {(item) => (
-                                            <div class="flex flex-col items-center p-4 border rounded-lg hover:shadow-md transition-shadow">
+                                <For each={practicePool()}>
+                                    {(item) => (
+                                        <div class="flex flex-col items-center p-4 border rounded-lg hover:shadow-md transition-shadow">
+                                            <div class="relative w-full flex justify-center mb-2">
                                                 <button 
                                                     onClick={() => handle_navigation(item.link, navigate)}
-                                                    class="text-3xl font-bold text-gray-900 mb-2 hover:text-blue-600"
+                                                    class="text-3xl font-bold text-gray-900 hover:text-blue-600"
                                                 >
                                                     {item.kanji.startsWith('/') ? (
                                                         <img 
@@ -97,18 +123,31 @@ function Home() {
                                                         item.kanji
                                                     )}
                                                 </button>
-                                                <span class="text-sm text-gray-600 mb-2">
-                                                    {item?.meanings?.join(' / ') || item?.meanings}    
-                                                </span>
                                                 <button
-                                                    onClick={() => togglePractice(item)}
-                                                    class="text-sm px-3 py-1 rounded-full bg-red-100 text-red-600 hover:bg-red-200 transition-colors"
+                                                    onClick={(e) => handleRefresh(item, e)}
+                                                    disabled={refreshingKanji() === item.kanji}
+                                                    class="absolute right-0 top-0 p-1 text-xs text-gray-400 
+                                                        hover:text-blue-500 disabled:text-gray-300 
+                                                        rounded-full hover:bg-gray-100 transition-colors
+                                                        flex items-center justify-center h-5 w-5"
                                                 >
-                                                    Remove
+                                                    <div class={`transform ${refreshingKanji() === item.kanji ? 'animate-spin' : ''}`}>
+                                                        ↻
+                                                    </div>
                                                 </button>
                                             </div>
-                                        )}
-                                    </For>
+                                            <span class="text-sm text-gray-600 mb-2">
+                                                {item?.meanings?.join(' / ') || item?.meanings}    
+                                            </span>
+                                            <button
+                                                onClick={() => togglePractice(item)}
+                                                class="text-sm px-3 py-1 rounded-full bg-red-100 text-red-600 hover:bg-red-200 transition-colors"
+                                            >
+                                                Remove
+                                            </button>
+                                        </div>
+                                    )}
+                                </For>
                                 </div>
                                 <Show when={practicePool().length === 0}>
                                     <p class="text-center text-gray-600 py-8">No kanji in practice pool</p>

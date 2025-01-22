@@ -15,15 +15,42 @@ interface Entry {
 
 function Kanjis() {
     const navigate = useNavigate();
-    const [entries, set_entries] = createSignal([]);
-
+    const [entries, setEntries] = createSignal([]);
+    const [refreshingKanji, setRefreshingKanji] = createSignal<string | null>(null);
+    
     invoke("get_kanji_list").then((kanji: any) => {
-        set_entries(kanji)
-        console.log(kanji)
-    })
+        setEntries(kanji);
+        console.log(kanji);
+    });
 
-    function on_kanji_click(entry: Entry) 
-    {
+    const handleRefresh = async (entry: Entry, e: Event) => {
+        e.stopPropagation(); // Prevent navigation when clicking refresh
+        
+        if (!entry.link || refreshingKanji()) return;
+        
+        try {
+            setRefreshingKanji(entry.kanji);
+            
+            // Fetch fresh data
+            const refreshedData = await invoke("refresh_kanji_data", { 
+                url: entry.link 
+            });
+            
+            // Update the entry in the list
+            setEntries((prev: any) => prev.map((item: any) => 
+                item.kanji === entry.kanji 
+                    ? { ...item, ...refreshedData! }
+                    : item
+            ));
+            
+        } catch (error) {
+            console.error('Failed to refresh kanji:', error);
+        } finally {
+            setRefreshingKanji(null);
+        }
+    };
+
+    function on_kanji_click(entry: Entry) {
         if (!entry.link) return;
         
         invoke("get_kanji", {url: entry.link}).then((response) => {
@@ -34,23 +61,40 @@ function Kanjis() {
     }
 
     function render_kanji_content(entry: Entry) {
-        if (entry.has_image) {
-            const imageUrl = entry.kanji.startsWith('http') 
-                ? entry.kanji 
-                : `https://www.kanjidamage.com${entry.kanji}`;
-            return (
-                <img 
-                    src={imageUrl}
-                    alt={entry.meaning}
-                    class="h-6 w-6 sm:h-8 sm:w-8 object-contain"
-                    onError={(e) => {
-                        console.error(`Failed to load image: ${imageUrl}`);
-                        e.currentTarget.style.display = 'none';
-                    }}
-                />
-            );
-        }
-        return <span>{entry.kanji}</span>;
+        return (
+            <div class="relative flex items-center gap-2">
+                <div class="flex-grow">
+                    {entry.has_image ? (
+                        <img 
+                            src={entry.kanji.startsWith('http') 
+                                ? entry.kanji 
+                                : `https://www.kanjidamage.com${entry.kanji}`}
+                            alt={entry.meaning}
+                            class="h-8 w-8 sm:h-10 sm:w-10 object-contain"
+                            onError={(e) => {
+                                console.error(`Failed to load image: ${entry.kanji}`);
+                                e.currentTarget.style.display = 'none';
+                            }}
+                        />
+                    ) : (
+                        <span class="text-2xl sm:text-3xl">{entry.kanji}</span>
+                    )}
+                </div>
+                <button
+                    onClick={(e) => handleRefresh(entry, e)}
+                    disabled={refreshingKanji() === entry.kanji}
+                    class="ml-1 p-1 text-xs text-gray-400 hover:text-blue-500 
+                           disabled:text-gray-300 rounded-full 
+                           hover:bg-gray-100 transition-colors
+                           flex items-center justify-center
+                           h-5 w-5 sm:h-6 sm:w-6"
+                >
+                    <div class={`transform ${refreshingKanji() === entry.kanji ? 'animate-spin' : ''}`}>
+                        ↻
+                    </div>
+                </button>
+            </div>
+        );
     }
 
     return (
@@ -109,7 +153,7 @@ function Kanjis() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Kanjis;
